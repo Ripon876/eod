@@ -1,0 +1,53 @@
+.vjs-youtube .vjs-iframe-blocker { display: none; };
+
+.vjs-youtube.vjs-user-inactive .vjs-iframe-blocker { display: block; };
+
+.vjs-youtube .vjs-poster { background-size: cover; };
+
+.vjs-youtube-mobile .vjs-big-play-button { display: none; };
+
+ .video-js {
+   width: 300px;
+   height: 150px;
+ };
+
+ .vjs-fluid {
+   padding-top: 56.25%
+ };
+.vjsElement_34341-dimensions {
+  width: 300px;
+  height: 168.75px;
+};
+
+.vjsElement_34341-dimensions.vjs-fluid {
+  padding-top: 56.25%;
+};
+.tb_button {
+	padding:1px;
+	cursor:pointer;
+	border-right: 1px solid #8b8b8b;
+	border-left: 1px solid #FFF;
+	border-bottom: 1px solid #fff;
+	};
+.tb_button.hover {
+   borer:2px outset #def;
+   background-color: #f8f8f8 !important;
+   };
+.ws_toolbar {
+	z-index:100000
+	}; 
+.ws_toolbar .ws_tb_btn {
+	cursor:pointer;
+	border:1px solid #555;
+	padding:3px
+	};   
+.tb_highlight{
+	background-color:yellow
+	} ;
+.tb_hide {
+	visibility:hidden
+	} ;
+.ws_toolbar img {
+	padding:2px;
+	margin:0px
+    };
