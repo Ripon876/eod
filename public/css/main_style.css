@@ -1,4 +1,4 @@
-/*.vjs-youtube .vjs-iframe-blocker { display: none; };
+.vjs-youtube .vjs-iframe-blocker { display: none; };
 
 .vjs-youtube.vjs-user-inactive .vjs-iframe-blocker { display: block; };
 
@@ -138,4 +138,119 @@ body{
 .footer-text-container div img:hover {
   
     width: 40% !important;
+}
+
+
+
+
+
+/*============================*/
+/*term and condition page*/
+/*============================*/
+#terms{
+	padding-top: 4%;
+	font-family: Arial;
+}
+.tc-header{
+	box-shadow: rgb(245 73 73) -1px 0px 4px 3px;
+	box-sizing: border-box;
+	background-color: black;
+}
+.header-logo{
+	text-align: center;
+}
+.header-logo img{
+	max-width: 85%;
+}
+.back-icon{
+	margin-top: 100%;
+}
+.menu-icon{
+	margin-top: 98%;
+}
+.fa-chevron-left,.fa-bars{
+	color: rgb(197 179 88) ;
+	font-size: 36px;
+	float: right;
+	cursor: pointer;
+}
+.fa-chevron-left{
+	font-size: 36px !important;
+}
+
+.tc-title-1{
+	box-sizing: border-box;
+    height: 44px;
+    width: 310px;
+    white-space: pre-wrap;
+    font-weight: 700 !important;
+    padding-bottom: 0px;
+    font-family: Arial;
+    font-size: 24px;
+    color: rgb(227, 227, 229);
+    line-height: 1.5;
+    border-radius: 0px;
+    cursor: pointer;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    float: right;
+    margin-right: 43px;
+}
+.tc-title-2{
+	box-sizing: border-box;
+    width: 310px;
+    white-space: pre-wrap;
+    font-weight: 700 !important;
+    padding-bottom: 0px;
+    font-family: Arial;
+    font-size: 24px;
+    color: rgb(227, 227, 229);
+    line-height: 1.5;
+    border-radius: 0px;
+    cursor: pointer;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    float: right;
+    margin-right: -45%;
+    text-align: center;
+
+}
+
+.tc-title-1:hover,.tc-title-2:hover{
+	    color: red;
+}
+.terms-title-container{
+	    width: 83% ;
+}
+
+
+/* Smartphones (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+body{
+	background-color: red !important; 
+}
+.terms-title-container{
+	    width: 100% !important;
+}
+
+.tc-title-1{
+	font-size: 10px;
+}
+.back-icon{
+	margin-top: 1%;
+}
+.menu-icon{
+	margin-top: 200% !important;
+}
+
+.icons{
+	width: 10% !important;
+}
+.logo{
+	width: 80% !important;
+}
 }

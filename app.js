@@ -43,6 +43,10 @@ app.get("/",function(req,res){
 	res.render("index");
 });
 
+app.get("/terms_conditions",function(req,res){
+  res.render("term-conditions");
+});
+
 app.post("/register",function(req,res){
   var Rtitle = "EOD| Home"
 	var newUser = new User({username: req.body.username,name: req.body.name});
