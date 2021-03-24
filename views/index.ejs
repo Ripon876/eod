@@ -6,34 +6,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
     <link rel="stylesheet" href="./css/main_style.css"> 
     <link rel="preconnect" href="https://fonts.gstatic.com">
    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Spectral+SC:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
-    <script src="http://localhost:5000/livereload.js" type="text/javascript">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-</script>
-
-
+<link rel="stylesheet" href="./css/sina-nav.css">
+<script src="./js/sina-nav.js"></script>
     <title>Hello, world !</title>
   </head>
-  <body>
+  <body style="overflow-x: hidden;">
+    <div id="pop-up-overlay" style="position: relative;"></div>
+
+<nav class="sina-nav">
+    
+    <div class="widget-bar off">
+        <h3 class="close-widget-bar" style="color: white;cursor: pointer;">X</h3>
+        <div class="widget">
+            <h6 class="title">Custom Pages</h6>
+            <ul class="link">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">ELITE ESCORTS</a></li>
+                <li><a href="#">Terms & Conditions/Privacy policy</a></li>
+                <li><a href="#">Advertise with us</a></li>
+                <li><a href="#">Profile/Sign in</a></li>
+                <li><a href="#">Log Out</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- End widget-bar -->
+</nav>
+
+<!-- login pop up -->
+<div class="bubble-element Login-popup" style="height: 370px; top: 100px; position: fixed; left: 50%; z-index: 2002; display: none; box-sizing: border-box; opacity: 1; margin-left: -149px; width: 298px; background-color: rgb(18, 18, 18); border-radius: 4px;">
+    <div class="bubble-r-line" style="margin-top: 0px; height: 370px;">
+        <div class="bubble-r-box" style="height: 370px; left: 1px; width: 293px;">
+            <div class="bubble-element Group" style="box-sizing: border-box; position: absolute; z-index: 2; height: 370px; width: 283px; left: 6px; top: 0px; border-radius: 0px;">
+                <div class="bubble-r-line" style="margin-top: 15px; height: 52px;">
+                    <div class="bubble-r-box" style="height: 52px;width: 230px;margin: auto;">
+                        <div class="bubble-element Text" style="box-sizing: border-box;z-index: 2;width: 230px;left: 0px;top: 0px;height: 52px;overflow: visible;padding-bottom: 0px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 36px;color: rgb(229, 228, 226);text-align: center;letter-spacing: -1px;line-height: 1.3;border-radius: 0px;"><div class="content">Login</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bubble-r-line" style="margin-top: 0px; height: 40px;">
+                <div class="bubble-r-box" style="height: 40px;width: 251px;margin: auto;">
+                    <input type="email" class="bubble-element Input" tabindex="7" placeholder="Email" maxlength="" style="border-width: 1px;border-style: none none solid;border-color: rgb(189, 189, 189) rgb(189, 189, 189) rgb(151, 151, 151);border-image: initial;background: none transparent;box-sizing: border-box;z-index: 3;height: 40px;width: 251px;border-radius: 0px;font-family: Quicksand;font-size: 12px;font-weight: 500;color: rgb(229, 228, 226);padding: 0px 10px;outline: none;">
+                </div>
+            </div>
+            <div class="bubble-r-line" style="margin-top: 15px; height: 40px;">
+                <div class="bubble-r-box" style="height: 40px;width: 251px;margin: 0 auto;">
+                    <input type="password" autocomplete="new-password" class="bubble-element Input" tabindex="8" placeholder="Password" maxlength="" style="border-top: none;border-right: none;border-bottom: 1px solid rgb(151, 151, 151);border-left: none;border-image: initial;background-color: transparent;box-sizing: border-box;z-index: 4;height: 40px;width: 251px;border-radius: 0px;font-family: Quicksand;font-size: 12px;font-weight: 500;color: rgb(229, 228, 226);padding: 0px 10px;outline: none;">
+                </div>
+            </div>
+            <div class="bubble-r-line" style="margin-top: 16px; height: 23px;">
+                <div class="bubble-r-box" style="height: 23px;width: 111px;margin-left: 6%;">
+                    <div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 6;height: 23px;width: 111px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(229, 228, 226);line-height: 1;">
+                        <input type="checkbox" id="1616601185092x3858" style="background-color: white;" tabindex="9">
+                        <label for="1616601185092x3858">Remember me</label>
+                    </div>
+                </div>
+                <div class="bubble-r-box" style="height: 23px;width: 136px;margin-left: 4%;">
+                <button class="bubble-element Button clickable-element" tabindex="10" style="padding: 0px;cursor: pointer;background: none;border: none;text-align: center;box-sizing: border-box;z-index: 10;height: 20px;width: 136px;user-select: none;font-family: Arial;font-size: 14px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1;border-radius: 3px;transition: box-shadow 100ms ease 0s;">Forgot password?</button></div>
+            </div>
+            <div class="bubble-r-line" style="margin-top: 67px; height: 40px;">
+                <div class="bubble-r-box" style="height: 40px;width: 251px;margin: 0 auto;">
+                    <button class="bubble-element Button clickable-element" tabindex="11" style="padding: 0px;cursor: pointer;background: none rgb(219, 4, 4);border: none;text-align: center;box-sizing: border-box;height: 40px;width: 251px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 20px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1;border-radius: 3px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;">Login</button>
+                </div>
+            </div>
+            
+            <div class="bubble-r-line" style="margin-top: 8px; height: 24px;">
+                <div class="bubble-r-box" style="height: 24px;width: 133px;margin: 0 auto;"><div class="bubble-element Text" style="white-space: pre-wrap;box-sizing: border-box;z-index: 8;width: 133px;height: 24px;overflow: visible;padding-bottom: 2px;font-family: Arial;font-size: 12px;color: rgb(229, 228, 226);line-height: 1.5;padding-top: 2px;border-radius: 0px;"><div class="content">Don't have an account?</div>
+            </div>
+        </div>
+        <div class="bubble-r-box" style="height: 20px;width: 81px;margin: 0 auto;">
+            <button class="bubble-element Button clickable-element" tabindex="12" style="padding: 0px;cursor: pointer;background: none;border: none;text-align: center;box-sizing: border-box;z-index: 9;height: 20px;width: 81px;user-select: none;font-family: Arial;font-size: 15px;font-weight: bold;color: rgb(227, 227, 229);line-height: 1;border-radius: 3px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;">Sign up</button>
+        </div>
+    </div>
+</div>
+<div class="bubble-element Group" style="display: none; box-sizing: border-box;">
+</div>
+</div>
+</div>
+</div>
+
+
+
+
 
 <header>
+
     <div class="row">
         
         <div class="col-md-6 text-white  mt-1"><p style="font-size: 14px;font-family: Arial;padding-left: 12px;
-            padding-top: 2px;">Already have an account<a href="#" style="padding-left: 13px;font-family: Arial;font-size: 14px;font-weight: 700;color: white;line-height: 1px;">Log In</a></p></div>
+            padding-top: 2px;">Already have an account<a href="#" class="pop-up-loader" style="padding-left: 13px;font-family: Arial;font-size: 14px;font-weight: 700;color: white;line-height: 1px;">Log In</a></p></div>
 
             <!-- <div class="col-md-4 text-white">se c on  d co ll um </div> -->
             
             <div class="col-md-6 text-white" style="text-align: right;">
+
                 <div>
                     <div style="float: left;width: 80%;padding-top: 5px;font-size: 13px;font-family: 'Quicksand', sans-serif;padding-left: 45%;text-align: center;">Just like In-house only the selections bigger.</div>
-                    <div style="padding-right: 15px !important;float: right;width: 20%"><img src="./img/menu.png" class="img-fluid" style="width: 35%;cursor: pointer;"></div>
+                    <div style="padding-right: 15px !important;float: right;width: 20%">
+
+
+
+                     <img src="./img/menu.png" class="img-fluid widget-bar-btn" style="width: 35%;cursor: pointer;"></div>
                 </div>
             </div>
             
@@ -118,9 +199,68 @@
 
 
 
-
    
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+
+
+
+
+<script> 
+
+   // $(document).on("click", function(event){
+        // var $trigger = $(".widget-bar-btn");
+        // if($trigger !== event.target && !$trigger.has(event.target).length){
+                 // $(".widget-bar").addClass("off");
+     
+     // $(".widget-bar").removeClass("on");
+        // }            
+    // });
+
+
+$(document).ready(function(){
+  $(".widget-bar-btn").click(function(){
+    $(".widget-bar").addClass("on");
+     // $(".widget-bar").addClass("widget-bar");
+     $(".widget-bar").removeClass("off");
+  });
+});
+
+$(document).ready(function(){
+  $(".close-widget-bar").click(function(){
+    $(".widget-bar").addClass("off");
+     // $(".widget-bar").addClass("widget-bar");
+     $(".widget-bar").removeClass("on");
+  });
+});
+
+$(document).ready(function(){
+  $(".pop-up-loader").click(function(){
+
+$(".Login-popup").css("display", "block");
+
+    $("#pop-up-overlay").addClass("overlay");
+    // $(".widget-bar").addClass("off");
+     // $(".widget-bar").addClass("widget-bar");
+     // $(".widget-bar").removeClass("on");
+  });
+});
+
+
+
+$( "body" ).click(function( event ) {
+  var i = event.target.className;
+  console.log(i);
+
+if(i == "overlay"){
+    $("#pop-up-overlay").removeClass("overlay") && $(".Login-popup").css("display", "none");
+
+}
+
+
+});
+
+</script>
   </body>
 </html>
