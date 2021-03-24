@@ -46,6 +46,9 @@ app.get("/",function(req,res){
 app.get("/terms_conditions",function(req,res){
   res.render("term-conditions");
 });
+app.get("/advertise-with-us",function(req,res){
+  res.render("advertise-with-us");
+});
 
 app.post("/register",function(req,res){
   var Rtitle = "EOD| Home"

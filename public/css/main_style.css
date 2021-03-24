@@ -67,6 +67,11 @@ body{
     overflow-x: hidden;
 }
 
+section , header{
+	background-color: black;
+}
+
+
 .header_img{
 	text-align: center;
 	z-index: 1;
@@ -155,6 +160,8 @@ body{
 	box-shadow: rgb(245 73 73) -1px 0px 4px 3px;
 	box-sizing: border-box;
 	background-color: black;
+	z-index: 99999;
+    position: relative;
 }
 .header-logo{
 	text-align: center;
@@ -227,7 +234,7 @@ body{
 
 
 /* Smartphones (portrait and landscape) ----------- */
-
+/*
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
 body{
@@ -252,5 +259,6 @@ body{
 }
 .logo{
 	width: 80% !important;
-}
-}
+}*/
+/*}
+*/
