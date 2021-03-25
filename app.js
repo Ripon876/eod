@@ -50,6 +50,7 @@ app.get("/advertise-with-us",function(req,res){
   res.render("advertise-with-us");
 });
 
+
 app.post("/register",function(req,res){
   var Rtitle = "EOD| Home"
 	var newUser = new User({username: req.body.username,name: req.body.name});
@@ -68,6 +69,7 @@ app.post("/register",function(req,res){
                 console.log("Directory is created.");
               
                      });
+            	
              if (req.body.username == "ripon") {
 
               var doAuthor = {isAdmin: true};
