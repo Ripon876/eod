@@ -91,7 +91,7 @@
             </div>
         </div>
         <div class="bubble-r-box" style="height: 20px;width: 81px;margin: 0 auto;">
-            <button class="bubble-element Button clickable-element" tabindex="12" style="padding: 0px;cursor: pointer;background: none;border: none;text-align: center;box-sizing: border-box;z-index: 9;height: 20px;width: 81px;user-select: none;font-family: Arial;font-size: 15px;font-weight: bold;color: rgb(227, 227, 229);line-height: 1;border-radius: 3px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;">Sign up</button>
+            <a class="bubble-element Button clickable-element sign-up-pop-up-loader" tabindex="12" style="padding: 0px;cursor: pointer;background: none;border: none;text-align: center;box-sizing: border-box;z-index: 9;height: 20px;width: 81px;user-select: none;font-family: Arial;font-size: 15px;font-weight: bold;color: rgb(227, 227, 229);line-height: 1;border-radius: 3px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;">Sign up</a>
         </div>
     </div>
 </div>
@@ -103,7 +103,7 @@
 
 <!-- regitrasion pop up -->
 
- <div class="bubble-r-line" style="position: fixed;z-index: 1;left: 50%;margin-left: -147px;top: 100px;">
+<div class="Sign-up-popup" style="position: fixed;z-index: 999;left: 50%;margin-left: -147px;top: 100px;display: none;">
     <div class="bubble-r-box" style="height: 365px;width: 293px;position: absolute;top: 18%;left: 14%;">
         <div class="bubble-element Group" style="box-sizing: border-box;position: absolute;z-index: 5;height: 365px;top: 0px;background-color: rgb(18, 18, 18);border-radius: 0px;width: 293px;left: 0px;">
             <div class="bubble-r-line" style="margin-top: 7px; height: 52px;">
@@ -113,19 +113,21 @@
                     </div>
                 </div>
             </div>
+
+<form action="/register" method="POST">
             <div class="bubble-r-line" style="margin-top: 0px; height: 40px;">
                 <div class="bubble-r-box" style="height: 40px;width: 251px;margin: 0 auto;">
-                    <input type="email" class="bubble-element Input" tabindex="13" placeholder="Email" maxlength="" style="border-width: 1px;border-style: none none solid;border-color: rgb(189, 189, 189) rgb(189, 189, 189) rgb(151, 151, 151);border-image: initial;background: none transparent;box-sizing: border-box;z-index: 5;height: 40px;border-radius: 0px;font-family: Quicksand;font-size: 12px;font-weight: 500;color: rgb(229, 228, 226);padding: 0px 10px;width: 251px;outline: none;">
+                    <input type="email" name="username" class="bubble-element Input" tabindex="13" placeholder="Email" maxlength="" style="border-width: 1px;border-style: none none solid;border-color: rgb(189, 189, 189) rgb(189, 189, 189) rgb(151, 151, 151);border-image: initial;background: none transparent;box-sizing: border-box;z-index: 5;height: 40px;border-radius: 0px;font-family: Quicksand;font-size: 12px;font-weight: 500;color: rgb(229, 228, 226);padding: 0px 10px;width: 251px;outline: none;">
                 </div>
             </div>
             <div class="bubble-r-line" style="margin-top: 17px; height: 40px;">
                 <div class="bubble-r-box" style="height: 40px;width: 251px;margin: 0 auto;">
-                    <input type="password" autocomplete="new-password" class="bubble-element Input" tabindex="14" placeholder="Password" maxlength="" style="border-top: none;border-right: none;border-bottom: 1px solid rgb(151, 151, 151);border-left: none;border-image: initial;background-color: transparent;box-sizing: border-box;z-index: 6;height: 40px;border-radius: 0px;font-family: Quicksand;font-size: 12px;font-weight: 500;color: rgb(229, 228, 226);padding: 0px 10px;width: 251px;outline: none;" aria-autocomplete="list">
+                    <input type="password" name="password" autocomplete="new-password" class="pwd bubble-element Input" tabindex="14" placeholder="Password" maxlength="" style="border-top: none;border-right: none;border-bottom: 1px solid rgb(151, 151, 151);border-left: none;border-image: initial;background-color: transparent;box-sizing: border-box;z-index: 6;height: 40px;border-radius: 0px;font-family: Quicksand;font-size: 12px;font-weight: 500;color: rgb(229, 228, 226);padding: 0px 10px;width: 251px;outline: none;" aria-autocomplete="list">
                 </div>
             </div>
             <div class="bubble-r-line" style="margin-top: 14px; height: 40px;">
                 <div class="bubble-r-box" style="height: 40px;width: 251px;margin: 0 auto;">
-                    <input type="password" autocomplete="new-password" class="bubble-element Input" tabindex="15" placeholder="Confirm password" maxlength="" style="border-width: 1px;border-style: none none solid;border-color: rgb(189, 189, 189) rgb(189, 189, 189) rgb(151, 151, 151);border-image: initial;background: none transparent;box-sizing: border-box;z-index: 7;height: 40px;border-radius: 0px;font-family: Quicksand;font-size: 12px;font-weight: 500;color: rgb(229, 228, 226);padding: 0px 10px;width: 251px;outline: none;">
+                    <input type="password" autocomplete="new-password" class="bubble-element Input Confirm-pwd" tabindex="15" placeholder="Confirm password" maxlength="" style="border-width: 1px;border-style: none none solid;border-color: rgb(189, 189, 189) rgb(189, 189, 189) rgb(151, 151, 151);border-image: initial;background: none transparent;box-sizing: border-box;z-index: 7;height: 40px;border-radius: 0px;font-family: Quicksand;font-size: 12px;font-weight: 500;color: rgb(229, 228, 226);padding: 0px 10px;width: 251px;outline: none;">
                 </div>
             </div>
             <div class="bubble-r-line" style="margin-top: 13px; height: 33px;">
@@ -137,26 +139,32 @@
                         <input type="checkbox" id="1616682809717x4805" style="background-color: white;" tabindex="17">
                         <label for="1616682809717x4805"></label>
                     </div>
-                </div></div><div class="bubble-r-line" style="margin-top: 12px; height: 40px;"><div class="bubble-r-box" style="height: 40px;width: 251px;margin: 0 auto;">
-                <button class="bubble-element Button clickable-element" tabindex="18" style="padding: 0px;cursor: pointer;background: none rgb(173, 0, 0);border: none;text-align: center;box-sizing: border-box;z-index: 8;height: 40px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 20px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1;border-radius: 3px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;width: 251px;outline: none;">Create ...</button>
-            </div>
-        </div>
-        <div class="bubble-r-line" style="margin-top: 14px; height: 1px;">
-            <div class="bubble-r-box" style="height: 1px;width: 251px;margin: 0 auto;">
-                <div class="bubble-element Shape" style="box-sizing: border-box;z-index: 9;height: 1px;background-color: rgb(229, 228, 226);border-radius: 0px;width: 251px;">
                 </div>
             </div>
-        </div>
-        <div class="bubble-r-line" style="margin-top: 8px; height: 24px;">
-            <div class="bubble-r-box" style="height: 24px;width: 213px;margin: 0 auto;">
-                <div class="bubble-element Text" style="box-sizing: border-box;z-index: 10;height: 24px;overflow: visible;padding-bottom: 2px;font-family: Quicksand;font-size: 12px;font-weight: 500;color: rgb(229, 228, 226);line-height: 1.5;padding-top: 2px;border-radius: 0px;width: 70%;float: left;">
-                    <div class="content">Already have an account?</div>
+            <div class="bubble-r-line" style="margin-top: 12px; height: 40px;">
+                <div class="bubble-r-box" style="height: 40px;width: 251px;margin: 0 auto;">
+                    <button class="bubble-element Button clickable-element" type="submit" tabindex="18" style="padding: 0px;cursor: pointer;background: none rgb(173, 0, 0);border: none;text-align: center;box-sizing: border-box;z-index: 8;height: 40px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 20px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1;border-radius: 3px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;width: 251px;outline: none;">Create ...</button>
                 </div>
-                <button class="bubble-element Button clickable-element" tabindex="19" style="padding: 0px;outline: none;cursor: pointer;background: none;border: none;text-align: center;box-sizing: border-box;z-index: 11;height: 20px;user-select: none;font-family: Arial;font-size: 15px;font-weight: bold;color: rgb(227, 227, 229);line-height: 1;border-radius: 3px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;width: 30%;text-decoration: none;font-style: normal;float: right;">Login </button>
+            </div>
+
+</form>
+
+            <div class="bubble-r-line" style="margin-top: 14px; height: 1px;">
+                <div class="bubble-r-box" style="height: 1px;width: 251px;margin: 0 auto;">
+                    <div class="bubble-element Shape" style="box-sizing: border-box;z-index: 9;height: 1px;   background-color: rgb(229, 228, 226);border-radius: 0px;width: 251px;">
+                    </div>
+                </div>
+            </div>
+            <div class="bubble-r-line" style="margin-top: 8px; height: 24px;">
+                <div class="bubble-r-box" style="height: 24px;width: 213px;margin: 0 auto;">
+                    <div class="bubble-element Text" style="box-sizing: border-box;z-index: 10;height: 24px;overflow: visible;padding-bottom: 2px;font-family: Quicksand;font-size: 12px;font-weight: 500;color: rgb(229, 228, 226);line-height: 1.5;padding-top: 2px;border-radius: 0px;width: 70%;float: left;">
+                        <div class="content">Already have an account?</div>
+                    </div>
+                    <button class="bubble-element Button clickable-element login-pop-up-loader" tabindex="19" style="padding: 0px;outline: none;cursor: pointer;background: none;border: none;text-align: center;box-sizing: border-box;z-index: 11;height: 20px;user-select: none;font-family: Arial;font-size: 15px;font-weight: bold;color: rgb(227, 227, 229);line-height: 1;border-radius: 3px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;width: 30%;text-decoration: none;font-style: normal;float: right;outline: none;">Login </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- registration ends here -->
@@ -175,7 +183,7 @@
     <div class="row">
         
         <div class="col-md-6 text-white  mt-1"><p style="font-size: 14px;font-family: Arial;padding-left: 12px;
-            padding-top: 2px;">Already have an account<a href="#" class="pop-up-loader" style="padding-left: 13px;font-family: Arial;font-size: 14px;font-weight: 700;color: white;line-height: 1px;">Log In</a></p></div>
+            padding-top: 2px;">Already have an account<a  class="login-pop-up-loader" style="padding-left: 13px;font-family: Arial;font-size: 14px;font-weight: 700;color: white;line-height: 1px;cursor: pointer;">Log In</a></p></div>
 
             <!-- <div class="col-md-4 text-white">se c on  d co ll um </div> -->
             
@@ -282,41 +290,40 @@
 
 <script> 
 
-   // $(document).on("click", function(event){
-        // var $trigger = $(".widget-bar-btn");
-        // if($trigger !== event.target && !$trigger.has(event.target).length){
-                 // $(".widget-bar").addClass("off");
-     
-     // $(".widget-bar").removeClass("on");
-        // }            
-    // });
+
+
 
 
 $(document).ready(function(){
   $(".widget-bar-btn").click(function(){
-    $(".widget-bar").addClass("on");
-     // $(".widget-bar").addClass("widget-bar");
-     $(".widget-bar").removeClass("off");
+    $(".widget-bar").addClass("on") && $(".widget-bar").removeClass("off") && $("#pop-up-overlay").addClass("overlay");
+  
   });
 });
 
 $(document).ready(function(){
   $(".close-widget-bar").click(function(){
-    $(".widget-bar").addClass("off");
-     // $(".widget-bar").addClass("widget-bar");
-     $(".widget-bar").removeClass("on");
+    $(".widget-bar").addClass("off") && $(".widget-bar").removeClass("on") && $("#pop-up-overlay").removeClass("overlay");
+  
+    
   });
 });
 
 $(document).ready(function(){
-  $(".pop-up-loader").click(function(){
+  $(".login-pop-up-loader").click(function(){
 
-$(".Login-popup").css("display", "block");
+$(".Login-popup").css("display", "block") && $("#pop-up-overlay").addClass("overlay") && $(".Sign-up-popup").css("display", "block");
 
-    $("#pop-up-overlay").addClass("overlay");
-    // $(".widget-bar").addClass("off");
-     // $(".widget-bar").addClass("widget-bar");
-     // $(".widget-bar").removeClass("on");
+    
+  });
+});
+
+$(document).ready(function(){
+  $(".sign-up-pop-up-loader").click(function(){
+
+$(".Sign-up-popup").css("display", "block") && $(".Login-popup").css("display", "none") && $("#pop-up-overlay").addClass("overlay");
+
+
   });
 });
 
@@ -327,7 +334,7 @@ $( "body" ).click(function( event ) {
   console.log(i);
 
 if(i == "overlay"){
-    $("#pop-up-overlay").removeClass("overlay") && $(".Login-popup").css("display", "none");
+    $("#pop-up-overlay").removeClass("overlay") && $(".Login-popup").css("display", "none") && $(".Sign-up-popup").css("display", "none") && $(".widget-bar").addClass("off") && $(".widget-bar").removeClass("on");
 
 }
 
