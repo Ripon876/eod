@@ -24,7 +24,12 @@
   <body style="overflow-x: hidden;">
 
 
-       <h1 style="color: black !important;"> <%= message %></h1>
+
+<% if(message == "true"){ %>
+    <h1 style="color: black !important;">message exits</h1>
+<% } %>
+       
+
  <%  if(!currentUser){ %>
 <form action="/login" method="POST">
     

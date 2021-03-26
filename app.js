@@ -7,6 +7,7 @@ var User          = require("./models/user");
 var localStrategy = require("passport-local");
 var bodyParser    = require("body-parser");
 var nodeMailer    = require("nodemailer");
+const crypto      = require('crypto');
 var fs            = require('fs');
 var path          = require('path');
 var port          = process.env.PORT || 5000;
@@ -50,6 +51,7 @@ app.use(function(req,res,next){
 
 app.get("/",function(req,res){
 	res.render("index",{message: req.flash("success")});
+	
 });
 
 app.get("/terms_conditions",function(req,res){
@@ -82,8 +84,17 @@ app.post("/register",function(req,res){
       	}else{
       		console.log(user);
       		passport.authenticate("local")(req,res,function(){
+            
 
-        		      
+              console.log(user.verificationId);
+
+              var id = crypto.randomBytes(20).toString('hex');
+        	  user.verificationId = id;
+
+        	  console.log(user.verificationId);
+
+
+
             	var email = req.user.username;
              
                 var userName = email.substring(0, email.lastIndexOf("@"));
@@ -96,7 +107,7 @@ app.post("/register",function(req,res){
                 console.log("Directory is created.");                              
                                                                                    
                      });                                                           
-              req.flash("success","successfully signed up");
+              req.flash("success","true");
               res.redirect("/");
              
              
@@ -120,6 +131,11 @@ app.get("/logout",function(req,res){
 	req.logout();
 	res.redirect("/");
 });
+
+app.get("/verify/:verifyId",function(req,res){
+	var verificationId = verifyId;
+	
+})
 
 app.listen(port,function(){
 	console.log(`server started at port ${port}`);
