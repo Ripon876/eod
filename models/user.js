@@ -26,7 +26,10 @@ var userSchema = new mongoose.Schema({
     avilable: { type: Boolean, default: false },
     instagramUrl: String,
 	isUser: { type: Boolean, default: true },
-	isAdmin: { type: Boolean, default: false }
+	isAdmin: { type: Boolean, default: false },
+	bronzeMember:{ type: Boolean, default: false },
+	premiumMember:{ type: Boolean, default: false },
+	eliteMember:{ type: Boolean, default: false },
 });
 
 userSchema.plugin(passportLocalMongoose);

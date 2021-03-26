@@ -2,6 +2,7 @@ var dotenv        = require('dotenv').config();
 var express       = require("express");
 var passport      = require("passport");
 var mongoose      = require("mongoose");
+var flash         = require("connect-flash");
 var User          = require("./models/user");
 var localStrategy = require("passport-local");
 var bodyParser    = require("body-parser");
@@ -20,6 +21,7 @@ var app = express();
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(flash());
 
 
 // passport / authentication - configuration
@@ -28,22 +30,26 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-// passport.serializeUser(function(user, cb) {
-//   cb(null, user);
-// });
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
 
-// passport.deserializeUser(function(obj, cb) {
-//   cb(null, obj);
-// });
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
 
+app.use(function(req,res,next){
+	res.locals.currentUser = req.user;
+	next();
+})
 
 
 
 
 app.get("/",function(req,res){
-	res.render("index");
+	res.render("index",{message: req.flash("success")});
 });
 
 app.get("/terms_conditions",function(req,res){
@@ -62,63 +68,11 @@ app.post("/sign-up",function(req,res){
    console.log(user);
 });
 
-// app.post("/register",function(req,res,next){
-//   var Rtitle = "EOD| Home";
-     
-//     var email = req.body.email;
-
-//    var name   = email.substring(0, email.lastIndexOf("@"));
-       
-//        console.log(name);
-
-
-// 	var newUser = new User({username: name,email: req.body.email});
-//       User.register(newUser,req.body.password,function(err,user){
-//       	if(err){
-//       		console.log(err);
-//       		res.send("something went wrong...")
-//       	}else{
-//       		console.log(user);
-//       		passport.authenticate("local",)(req,res,function(){
-            
-//             	fs.mkdir('public/uploads/' + req.user.username, function(err){
-//               if (err) {
-//                   console.log(err);
-//                 };
-//                 console.log("Directory is created.");
-              
-//                      });
-            	
-//             //  if (req.body.username == "ripon") {
-
-//             //   var doAuthor = {isAdmin: true};
-//             // User.findByIdAndUpdate(req.user._id,doAuthor,{new: true},function(err,user){
-//             //        if (err) {
-//             //         console.log(err);
-//             //        }else{
-//             //           console.log(user);
-//             //           res.redirect("/admin");
-//             //        };
-//             //      });
-//             //  }else{
-//               res.send("successfully registered");
-//              // };
-             
-//       		});
-//       	};
-//       });
-
-// });
-
 
 app.post("/register",function(req,res){
   var Rtitle = "EOD | HOME";
 
-          // var email = req.body.email;
-
-          // var username   = email.substring(0, email.lastIndexOf("@"));
-       
-          // console.log(name);
+ 
 
 	var newUser = new User({username: req.body.username});
       User.register(newUser,req.body.password,function(err,user){
@@ -129,18 +83,20 @@ app.post("/register",function(req,res){
       		console.log(user);
       		passport.authenticate("local")(req,res,function(){
 
-      			var email = req.user.username;
+        		      
+            	var email = req.user.username;
              
-               var folderName = email.substring(0, email.lastIndexOf("@"));
+                var userName = email.substring(0, email.lastIndexOf("@"));
+   
 
-            	fs.mkdir(__dirname +'/' + 'public/uploads/' + folderName,function(err){
+            	fs.mkdir(__dirname +'/' + 'public/uploads/' + userName,function(err){
               if (err) {                                                           
                   console.log(err);                                                
                 };                                                                 
                 console.log("Directory is created.");                              
                                                                                    
                      });                                                           
-        
+              req.flash("success","successfully signed up");
               res.redirect("/");
              
              
@@ -150,8 +106,20 @@ app.post("/register",function(req,res){
 
 
 })
+app.get("/login",function(req,res){
+	res.send("something went wrong...");
+})
 
+app.post("/login",passport.authenticate("local",{successRedirect: "/",failureRedirect: "/",failureFlash: 'Invalid username or password.'}),function(req,res){
+	console.log(req,res);
+	console.log("successfully logged in");
+});
 
+app.get("/logout",function(req,res){
+
+	req.logout();
+	res.redirect("/");
+});
 
 app.listen(port,function(){
 	console.log(`server started at port ${port}`);
