@@ -74,9 +74,14 @@ app.post("/sign-up",function(req,res){
 app.post("/register",function(req,res){
   var Rtitle = "EOD | HOME";
 
- 
+             // console.log(user.verificationId);
 
-	var newUser = new User({username: req.body.username});
+              var id = crypto.randomBytes(20).toString('hex');
+        	  // user.verificationId = id;
+
+
+	var newUser = new User({username: req.body.username, verificationId:id});
+
       User.register(newUser,req.body.password,function(err,user){
       	if(err){
       		console.log(err);
@@ -85,16 +90,43 @@ app.post("/register",function(req,res){
       		console.log(user);
       		passport.authenticate("local")(req,res,function(){
             
+               
 
-              console.log(user.verificationId);
+var email = req.body.username;
+var sub = "Please verify your email";
+var mes = `<h1><a href="http://localhost:5000/verify/${id}">Verify</a></h1>`;
 
-              var id = crypto.randomBytes(20).toString('hex');
-        	  user.verificationId = id;
+
+// node mailer
+
+var transporter = nodeMailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_ADDRESS,
+    pass: process.env.GMAIL_PASSWORD
+  }
+});
+// mdforhadhossain297@gmail.com
+var mailOptions = {
+  from: process.env.GMAIL_ADDRESS,
+  to: email,
+  subject: sub,
+  text: mes
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+
+  if (error) {
+    console.log(error);
+
+  } else {
+    console.log('Verification Email sent: ' + info.response);
+
+  }
+})
+             
 
         	  console.log(user.verificationId);
-
-
-
             	var email = req.user.username;
              
                 var userName = email.substring(0, email.lastIndexOf("@"));
@@ -133,9 +165,38 @@ app.get("/logout",function(req,res){
 });
 
 app.get("/verify/:verifyId",function(req,res){
-	var verificationId = verifyId;
+
+var oneTimeId = req.params.verifyId;
+
+var update = {
+	verified:true,
+	verificationId:""
+}
+
+User.findOneAndUpdate({verificationId: oneTimeId},update, {new: true}, function (err, user) {
+
+
+    if (err){
+        console.log(err);
+        res.send("something went wrong");
+    }
+    else{
+        if(user == null){
+        	console.log(" nullllllllllllll");
+        	res.send("something went wrong");
+        }else {
+        	 console.log("Original Doc : ",user);
+        	 res.send("email verified successfully..");
+        }
+
+    	
+       
+    }
+
+
 	
-})
+});
+});
 
 app.listen(port,function(){
 	console.log(`server started at port ${port}`);

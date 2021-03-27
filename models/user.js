@@ -28,7 +28,7 @@ var userSchema = new mongoose.Schema({
 	isUser: { type: Boolean, default: true },
 	isAdmin: { type: Boolean, default: false },
 	verified: { type: Boolean, default: false },
-	verificationId:{type: String, expires: 3600 },
+	verificationId:String,
 	bronzeMember:{ type: Boolean, default: false },
 	premiumMember:{ type: Boolean, default: false },
 	eliteMember:{ type: Boolean, default: false },

@@ -223,8 +223,18 @@
 
     <div class="row">
         
-        <div class="col-md-6 text-white  mt-1"><p style="font-size: 14px;font-family: Arial;padding-left: 12px;
-            padding-top: 2px;">Already have an account<a  class="login-pop-up-loader" style="padding-left: 13px;font-family: Arial;font-size: 14px;font-weight: 700;color: white;line-height: 1px;cursor: pointer;">Log In</a></p></div>
+     
+
+      
+
+        <div class="col-md-6 text-white  mt-1">
+ <%   if(!currentUser){ %>
+            <p style="font-size: 14px;font-family: Arial;padding-left: 12px;
+            padding-top: 2px;">Already have an account<a  class="login-pop-up-loader" style="padding-left: 13px;font-family: Arial;font-size: 14px;font-weight: 700;color: white;line-height: 1px;cursor: pointer;">
+            Log In</a>
+            </p>
+  <%  } %>
+         </div>
 
             <!-- <div class="col-md-4 text-white">se c on  d co ll um </div> -->
             
