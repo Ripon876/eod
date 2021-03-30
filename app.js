@@ -198,6 +198,22 @@ User.findOneAndUpdate({verificationId: oneTimeId},update, {new: true}, function 
 });
 });
 
+app.get("/profile",isLoggedIn,function(req,res){
+	res.render('profile');
+});
+app.get("/edit-profile",isLoggedIn,function(req,res){
+	res.render('edit-profile');
+});
+
+
 app.listen(port,function(){
 	console.log(`server started at port ${port}`);
 });
+
+function isLoggedIn(req,res,next){ // 
+	if(req.isAuthenticated()){      //   this function used for preventing   
+		return next();               //   a logged out user to visite   
+	}else{                        //   the secreat pages      
+		res.redirect("/");    //          
+	}
+}
