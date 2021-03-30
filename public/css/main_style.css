@@ -313,7 +313,7 @@ section , header{
 /*======================*/
 
 
-/*.ytp-pause-overlay .ytp-scroll-min{
-	display: none !important;
+.PictureInput:hover
+{
+	background-color: #e4dfdf !important;
 }
-*/

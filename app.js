@@ -201,8 +201,39 @@ User.findOneAndUpdate({verificationId: oneTimeId},update, {new: true}, function 
 app.get("/profile",isLoggedIn,function(req,res){
 	res.render('profile');
 });
-app.get("/edit-profile",isLoggedIn,function(req,res){
+app.get("/edit-profile/:id",isLoggedIn,function(req,res){
 	res.render('edit-profile');
+});
+
+app.post("/edit-profile",isLoggedIn,function(req,res){
+
+ var user = {
+ 	name: req.body.name,
+ 	age: req.body.age,
+ 	hairColour: req.body.hair-color,
+ 	eyeColour: req.body.eye-color,
+ 	cupSize: req.body.cupSize,
+ 	dressSize: req.body.dress-size,
+ 	height: req.body.height,
+ 	nationality: req.body.nationality,
+ 	location: req.body.location,
+ 	area: req.body.area,
+ 	thingWeCanDo: req.body.things-we-can,
+ 	about: req.body.about
+ }
+
+ 
+    User.findByIdAndUpdate(req.user._id,user,{new: true},function(err,user){
+     if (err) {
+      console.log(err)
+     }else{
+        console.log(user);
+     res.redirect("/profile");
+       
+     };
+   });
+
+	// console.log(req.body);
 });
 
 

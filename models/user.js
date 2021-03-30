@@ -18,6 +18,7 @@ var userSchema = new mongoose.Schema({
     twoHourRate: String,
     threeHourRate: String,
     liaiseWith:[{ type: String }],
+    about:String,
     thingWeCanDo: String,
     email: String,
     phoneNumber: Number,
