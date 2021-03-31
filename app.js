@@ -8,6 +8,7 @@ var localStrategy = require("passport-local");
 var bodyParser    = require("body-parser");
 var nodeMailer    = require("nodemailer");
 const crypto      = require('crypto');
+var fileUpload     = require('express-fileupload');
 var fs            = require('fs');
 var path          = require('path');
 var port          = process.env.PORT || 5000;
@@ -23,6 +24,10 @@ app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash());
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : path.join(__dirname,'tmp'),
+}));
 
 
 // passport / authentication - configuration
@@ -201,39 +206,45 @@ User.findOneAndUpdate({verificationId: oneTimeId},update, {new: true}, function 
 app.get("/profile",isLoggedIn,function(req,res){
 	res.render('profile');
 });
+
+
 app.get("/edit-profile/:id",isLoggedIn,function(req,res){
-	res.render('edit-profile');
+
+User.findById(req.params.id,function(err,user){
+
+  if (err) {
+    console.log(err);
+  }else{
+  	  console.log(user); 
+      res.render("edit-profile",{currentUser: user});
+
+  }
+
+})
+
+
+
+})
+
+app.post("/edit-profile/:id",isLoggedIn,function(req,res){
+
+var id = req.params.id;
+var user = req.body.user;
+User.findByIdAndUpdate(id,user,{new:true},function(err,user){
+  if(err){
+    console.log(err);
+  }else{
+    console.log(user);
+    res.redirect("/");
+  }
+});
 });
 
-app.post("/edit-profile",isLoggedIn,function(req,res){
 
- var user = {
- 	name: req.body.name,
- 	age: req.body.age,
- 	hairColour: req.body.hair-color,
- 	eyeColour: req.body.eye-color,
- 	cupSize: req.body.cupSize,
- 	dressSize: req.body.dress-size,
- 	height: req.body.height,
- 	nationality: req.body.nationality,
- 	location: req.body.location,
- 	area: req.body.area,
- 	thingWeCanDo: req.body.things-we-can,
- 	about: req.body.about
- }
 
- 
-    User.findByIdAndUpdate(req.user._id,user,{new: true},function(err,user){
-     if (err) {
-      console.log(err)
-     }else{
-        console.log(user);
-     res.redirect("/profile");
-       
-     };
-   });
 
-	// console.log(req.body);
+app.post("/profile-pic",function(req,res){
+
 });
 
 
@@ -241,10 +252,10 @@ app.listen(port,function(){
 	console.log(`server started at port ${port}`);
 });
 
-function isLoggedIn(req,res,next){ // 
-	if(req.isAuthenticated()){      //   this function used for preventing   
+function isLoggedIn(req,res,next){   // 
+	if(req.isAuthenticated()){       //   this function used for preventing   
 		return next();               //   a logged out user to visite   
-	}else{                        //   the secreat pages      
-		res.redirect("/");    //          
+	}else{                           //   the secreat pages      
+		res.redirect("/");           //          
 	}
 }
