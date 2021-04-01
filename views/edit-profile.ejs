@@ -22,7 +22,7 @@
 				</div>
 			</div>
 		</header>
-<form action="/edit-profile/<%= currentUser._id %>" method="POST">
+<form action="/edit-profile/<%= currentUser._id %>" method="POST" encType="multipart/form-data">>
 
 
 
@@ -46,9 +46,9 @@
 <div class="bubble-r-line" style="margin-top: 15px; height: 419px;">
 	<div class="bubble-r-box" style="height: 419px;width: 449px;margin: 0 auto;">
 		<div class="bubble-element PictureInput clickable-element" style="position: relative;box-sizing: border-box;z-index: 11;height: 419px;width: 449px;left: 0px;top: 0px;border-radius: 20px;">
-			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" id="profile-picture" style="width: 100%; height: 100%; z-index: 5; position: absolute; opacity: 1;border-radius: 20px;">
+			<img src="../uploads/<%= currentUser.sortName %>/profile_pic.png" id="profile-picture" style="width: 100%; height: 100%; z-index: 5; position: absolute; opacity: 1;border-radius: 20px;">
 			<button class="button_for_file_uploader" style="border: none; background: none rgba(255, 255, 255, 0); z-index: 4; position: absolute; left: 0px; top: 0px; cursor: pointer; width: 100%; height: 100%; opacity: 1; font-family: &quot;Space Mono&quot;; font-size: 12px; color: rgb(153, 153, 153); text-align: center;">Click to upload an image</button>
-			<input type="file" accept="image/*" id="imgInp" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
+			<input type="file" accept="image/*" id="imgInp" name="profilePic" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
 		</div>
 	</div>
 </div>
@@ -66,23 +66,23 @@
 
 	<div class="bubble-r-box" style="height: 140px;width: 140px;">
 		<div class="bubble-element PictureInput clickable-element" style="position: relative;box-sizing: border-box;z-index: 11;height: 140px;width: 140px;left: 0px;top: 0px;border-radius: 20px;">
-			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" id="gallary-1" style="width: 100%; height: 100%; z-index: 5; position: absolute;opacity: 1;border-radius: 20px;">
+			<img src="../uploads/<%= currentUser.sortName %>/gallary_1.png" id="gallary-1" style="width: 100%; height: 100%; z-index: 5; position: absolute;opacity: 1;border-radius: 20px;">
 			<button class="button_for_file_uploader" style="border: none; background: none rgba(255, 255, 255, 0); z-index: 4; position: absolute; left: 0px; top: 0px; cursor: pointer; width: 100%; height: 100%; opacity: 1; font-family: &quot;Space Mono&quot;; font-size: 12px; color: rgb(153, 153, 153); text-align: center;">Click to upload an image</button>
-			<input type="file" accept="image/*"  id="up-gallary-1" name="profile-pic" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
+			<input type="file" accept="image/*"  id="up-gallary-1" name="gallary_1" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
 		</div>
 	</div>
 	<div class="bubble-r-box" style="height: 140px;width: 140px;">
 		<div class="bubble-element PictureInput clickable-element" style="position: relative;box-sizing: border-box;z-index: 11;height: 140px;width: 140px;left: 0px;top: 0px;border-radius: 20px;">
-			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"  id="gallary-2" style="width: 100%; height: 100%; z-index: 5; position: absolute; opacity: 1;border-radius: 20px;">
+			<img src="../uploads/<%= currentUser.sortName %>/gallary_2.png"  id="gallary-2" style="width: 100%; height: 100%; z-index: 5; position: absolute; opacity: 1;border-radius: 20px;">
 			<button class="button_for_file_uploader" style="border: none; background: none rgba(255, 255, 255, 0); z-index: 4; position: absolute; left: 0px; top: 0px; cursor: pointer; width: 100%; height: 100%; opacity: 1; font-family: &quot;Space Mono&quot;; font-size: 12px; color: rgb(153, 153, 153); text-align: center;">Click to upload an image</button>
-			<input type="file" accept="image/*" id="up-gallary-2" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
+			<input type="file" accept="image/*" id="up-gallary-2" name="gallary_2" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
 		</div>
 	</div>
 	<div class="bubble-r-box" style="height: 140px;width: 140px;">
 		<div class="bubble-element PictureInput clickable-element" style="position: relative;box-sizing: border-box;z-index: 11;height: 140px;width: 140px;left: 0px;top: 0px;border-radius: 20px;">
-			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"  id="gallary-3" style="width: 100%; height: 100%; z-index: 5; position: absolute; opacity: 1;border-radius: 20px;">
+			<img src="../uploads/<%= currentUser.sortName %>/gallary_3.png"  id="gallary-3" style="width: 100%; height: 100%; z-index: 5; position: absolute; opacity: 1;border-radius: 20px;">
 			<button class="button_for_file_uploader" style="border: none; background: none rgba(255, 255, 255, 0); z-index: 4; position: absolute; left: 0px; top: 0px; cursor: pointer; width: 100%; height: 100%; opacity: 1; font-family: &quot;Space Mono&quot;; font-size: 12px; color: rgb(153, 153, 153); text-align: center;">Click to upload an image</button>
-			<input type="file" accept="image/*" id="up-gallary-3" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
+			<input type="file" accept="image/*" id="up-gallary-3" name="gallary_3" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
 		</div>
 	</div>
 

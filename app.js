@@ -83,9 +83,11 @@ app.post("/register",function(req,res){
 
               var id = crypto.randomBytes(20).toString('hex');
         	  // user.verificationId = id;
+	           var email = req.body.username;
+             
+                var sortname = email.substring(0, email.lastIndexOf("@"));
 
-
-	var newUser = new User({username: req.body.username, verificationId:id});
+	var newUser = new User({username: req.body.username, verificationId:id, sortName:sortname});
 
       User.register(newUser,req.body.password,function(err,user){
       	if(err){
@@ -230,22 +232,60 @@ app.post("/edit-profile/:id",isLoggedIn,function(req,res){
 
 var id = req.params.id;
 var user = req.body.user;
+var profilePic = req.files.profilePic;
+var gallary_1 = req.files.gallary_1;
+var gallary_2 = req.files.gallary_2;
+var gallary_3 = req.files.gallary_3;
+
+	
+console.log(req.files);
+	  User.findById(id,function(err,user){
+
+      var email = user.username;
+      var folderName = email.substring(0,email.indexOf('@'))
+
+      if(req.files.profilePic){
+      	console.log("profilePic");
+      	profilePic.name = "profile_pic.png";
+      	var p = profilePic.name;
+      	moveFile(req.files.profilePic,user,p)
+      }
+      if(req.files.gallary_1){
+      	console.log("gallary_1")
+      	gallary_1.name = "gallary_1.png";
+      	var p = gallary_1.name;
+      		moveFile(req.files.gallary_1,user,p)
+      }
+      if(req.files.gallary_2){
+      	console.log("gallary_2")
+      	gallary_2.name = "gallary_2.png";
+      	var p = gallary_2.name;
+      		moveFile(req.files.gallary_2,user,p)
+      }
+      if(req.files.gallary_2){
+      	console.log("gallary_3")
+      	gallary_3.name = "gallary_3.png";
+      	var p = gallary_3.name;
+      		moveFile(req.files.gallary_3,user,p)
+      };
+      
+   
+
+	});
+
+    
+
+
 User.findByIdAndUpdate(id,user,{new:true},function(err,user){
   if(err){
     console.log(err);
   }else{
-    console.log(user);
     res.redirect("/");
   }
 });
 });
 
 
-
-
-app.post("/profile-pic",function(req,res){
-
-});
 
 
 app.listen(port,function(){
@@ -258,4 +298,22 @@ function isLoggedIn(req,res,next){   //
 	}else{                           //   the secreat pages      
 		res.redirect("/");           //          
 	}
+}
+
+
+
+
+
+function moveFile(img,user,p){
+	console.log(user);
+	  var email = user.username;
+      var folderName = email.substring(0,email.indexOf('@'))
+
+	 img.mv(path.join(__dirname, 'public/uploads/' + folderName, p), function(err){
+
+        if (err){
+         console.log(err);
+        }        
+        console.log('File uploaded!');
+    });
 }
