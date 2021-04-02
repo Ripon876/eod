@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
+     <link type="text/css" rel="stylesheet" href="./css/video-js.min.css" />
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
@@ -61,7 +62,7 @@
                                             </div>
                                         </div>
                                         <div class="bubble-r-box" style="height: 25px;left: 248px;width: 40%;float: right;">
-                                            <button class="bubble-element Button clickable-element" tabindex="10" style="padding: 0px;cursor: pointer;margin: 0 auto;background: none;border: none;text-align: center;box-sizing: border-box;z-index: 0;height: 25px;width: 153px;user-select: none;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 15px;text-decoration: underline;color: rgb(197, 179, 88);line-height: 1;border-radius: 3px;font-weight: normal;font-style: normal;">taxeme5448@asfalio.com</button>
+                                            <button class="bubble-element Button clickable-element" tabindex="10" style="padding: 0px;cursor: pointer;margin: 0 auto;background: none;border: none;text-align: center;box-sizing: border-box;z-index: 0;height: 25px;width: 153px;user-select: none;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 15px;text-decoration: underline;color: rgb(197, 179, 88);line-height: 1;border-radius: 3px;font-weight: normal;font-style: normal;"><%= currentUser.username %></button>
                                         </div>
                                     </div>
                                 </div>
@@ -106,10 +107,10 @@
         <div class="widget">
             <h6 class="title">Custom Pages</h6>
             <ul class="link">
-                <li><a href="#">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="#">ELITE ESCORTS</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">Advertise with us</a></li>
+                <li><a href="/term-conditions">Terms & Conditions</a></li>
+                <li><a href="/advertise-with-us">Advertise with us</a></li>
               
 
                <%  if(currentUser){ %>
@@ -118,10 +119,10 @@
                 <li><a href="/logout">Log Out</a></li>
 
                   <% }else{ %>
-                <li><a href="#">Sign in</a></li>
+                <li><a href="/">Sign in</a></li>
              <% } %>
                
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="/contact-us">Contact Us</a></li>
             </ul>
         </div>
     </div>
@@ -264,7 +265,9 @@
 
 
 
-
+<% if(c_email == "true"){ %>
+   <div class="alert alert-success" role="alert" style="margin: 0;text-align: center;height: 50px;"><p>Message succefuly send</p></div> 
+<% } %>
 
 <header>
 
@@ -317,7 +320,8 @@
     </div>
 </section>
 
-<!-- <section>
+<section>
+
     <div class="row">
         <div class="col-md-2 ml-auto mr-auto text-white"></div>  
         <div class="col-md-8 ml-auto mr-auto text-white">
@@ -344,48 +348,63 @@
 <div class="bubble-r-line" style="margin-top: 58px; height: 45px;">
     <div class="bubble-r-box" style="height: 45px;margin: 0 auto; width: 222px;">
 
-        <button class="bubble-element Button clickable-element" style="box-sizing: border-box;z-index: 5;height: 45px;width: 222px;padding: 0px;cursor: pointer;background: none rgb(173, 0, 0);border: none;text-align: center;font-family: Arial;font-size: 24px;font-weight: bold;color: rgb(255, 255, 255);line-height: 1;border-radius: 5px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;" tabindex="2">Ente</button></div></div></div>
+        <button class="bubble-element Button show-video clickable-element" style="box-sizing: border-box;z-index: 5;height: 45px;width: 222px;padding: 0px;cursor: pointer;background: none rgb(173, 0, 0);border: none;text-align: center;font-family: Arial;font-size: 24px;font-weight: bold;color: rgb(255, 255, 255);line-height: 1;border-radius: 5px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;" tabindex="2">Enter</button></div></div></div>
             </div>
 
 
         </div>  
         <div class="col-md-2 ml-auto mr-auto text-white"></div>  
     </div>
-</section> -->
+</section>
 
 <!-- video  -->
-<section>
+<section class="video-img-link" style="display: none;">
+        <div class="container">
     <div class="row">
         <div class="col-md-2 ml-auto mr-auto text-white"></div>  
         <div class="col-md-8 ml-auto mr-auto text-white">
             
 
-     <div class="main-content-container">
-
-<video
-    id="my-video"
-    class="video-js"
+  <video
+    id="vid1"
+    class="video-js vjs-default-skin"
     controls
-    preload="auto"
-    width="640"
-    height="264"
-    poster="MY_VIDEO_POSTER.jpg"
-    data-setup="{}"
+    width="628" height="306"
+    poster="https://img.youtube.com/vi/Zia9eGpfYHk/0.jpg"
+    data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://youtu.be/Zia9eGpfYHk"}] }'
+    style="margin:0 auto;"
   >
-    <source src="https://youtu.be/Zia9eGpfYHk" type="video/mp4" />
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a
-      web browser that
-      <a href="https://videojs.com/html5-video-support/" target="_blank"
-        >supports HTML5 video</a
-      >
-    </p>
   </video>
-     </div>
 
 
         </div>  
         <div class="col-md-2 ml-auto mr-auto text-white"></div>  
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+<div class="col-md-6">
+                    <div class="bubble-r-box" style="height: 75px; left: 6px; width: 380px;"><div class="bubble-element Group" style="position: absolute;box-sizing: border-box;z-index: 2;height: 75px;margin-top: 5px;width: 380px;left: 0px;top: 0px;border-radius: 6px;"><div class="bubble-r-line" style="height: 7px;"><div class="bubble-r-box" style="height: 7px; left: 5px; width: 360px;"><div class="bubble-element Shape" style="position: absolute; box-sizing: border-box; z-index: 10; height: 7px; width: 360px; left: 0px; top: 0px; background-color: rgb(0, 0, 0); border-radius: 0px;"></div></div></div><div class="bubble-r-line" style="margin-top: 0;height: 47px;"><div class="bubble-r-box" style="height: 47px; left: 0px; width: 380px;"><div class="bubble-element Shape" style="position: absolute; box-sizing: border-box; z-index: 4; height: 47px; width: 12px; left: 0px; top: 0px; background-color: rgb(0, 0, 0); border-radius: 0px;"></div>
+
+                    <button class="bubble-element btn-home Button clickable-element" tabindex="3" style="padding: 0px; cursor: pointer; background: none; border: none; text-align: center; display: block; position: absolute; box-sizing: border-box; z-index: 2; height: 44px; top: 0px; user-select: none; font-family: &quot;Spectral SC&quot;; font-size: 20px; font-weight: 500; color: rgb(224, 211, 130); letter-spacing: 1px; word-spacing: 1px; line-height: 1; border-radius: 5px; box-shadow: rgb(255, 36, 36) 0px 2px 4px 0px; transition: box-shadow 100ms ease 0s; width: 363px; left: 5px;"><a href="/escort" style="text-decoration: none;color: rgb(224 211 130);">Advertise with us</a></button>
+
+
+                    <div class="bubble-element Shape" style="position: absolute; box-sizing: border-box; z-index: 5; height: 47px; width: 17px; left: 363px; top: 0px; background-color: rgb(0, 0, 0); border-radius: 0px;"></div></div></div><div class="bubble-r-line" style="margin-top: 0px; height: 21px;"><div class="bubble-r-box" style="height: 21px; left: 12px; width: 353px;"><div class="bubble-element Text" style="white-space: pre-wrap; display: none; position: absolute; box-sizing: border-box; z-index: 6; top: 0px; height: 21px; overflow: visible; padding-bottom: 0px; font-family: &quot;Spectral SC&quot;; font-size: 12px; font-weight: 500; color: rgb(227, 227, 229); text-align: center; line-height: 1.5; border-radius: 0px; width: 353px; left: 0px;"><div class="content">Create your 'free' account today! </div></div></div></div></div></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="bubble-r-box" style="height: 59px; left: 413px; width: 377px;"><div class="bubble-element Group" style="position: absolute; box-sizing: border-box; z-index: 3; height: 59px; width: 377px; left: 0px; top: 0px; border-radius: 6px;"><div class="bubble-r-line" style="margin-top: 0px; height: 54px;"><div class="bubble-r-box" style="height: 54px; left: 0px; width: 377px;"><div class="bubble-element Shape" style="position: absolute; box-sizing: border-box; z-index: 5; height: 14px; width: 360px; left: 0px; top: 0px; background-color: rgb(0, 0, 0); border-radius: 0px;"></div><div class="bubble-element Shape" style="position: absolute; box-sizing: border-box; z-index: 3; height: 47px; width: 17px; left: 0px; top: 7px; background-color: rgb(0, 0, 0); border-radius: 0px;"></div>
+
+                    <button class="bubble-element btn-home Button clickable-element" tabindex="4" style="padding: 0px; cursor: pointer; background: none; border-top: none; border-right: none; border-bottom: 1px solid rgb(41, 1, 1); border-left: none; border-image: initial; text-align: center; display: block; position: absolute; box-sizing: border-box; z-index: 2; height: 44px; user-select: none; font-family: &quot;Spectral SC&quot;; font-size: 19px; color: rgb(224, 211, 130); letter-spacing: 1px; word-spacing: 1px; line-height: 1; border-radius: 3px; box-shadow: rgb(255, 36, 36) 0px 2px 4px 0px; transition: box-shadow 100ms ease 0s; top: 7px; width: 363px; left: 9px;"><a href="/escort" style="text-decoration: none;color: rgb(224 211 130);">View the ladies here</a></button>
+
+                    <div class="bubble-element Shape" style="position: absolute; box-sizing: border-box; z-index: 4; height: 47px; width: 17px; left: 360px; top: 7px; background-color: rgb(0, 0, 0); border-radius: 0px;"></div></div></div></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <img src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1610359846638x643831753302201300%2Fc09934348d0119a72321e29de44405db.jpg?w=512&amp;h=1002&amp;auto=compress&amp;fit=crop&amp;dpr=1" title="escorts on demand" style="position: absolute;top: 44%;width: 20%;left: 80%;" class="video-right-img">
     </div>
 </section>
 
@@ -431,6 +450,17 @@
 
 
 
+//===============
+
+$(document).ready(function(){
+  $(".show-video").click(function(){
+    $(".video-img-link").css("display","block") && $(".main-content-container").css("display","none");
+
+  
+  });
+});
+
+// ===============
 
 
 $(document).ready(function(){
@@ -482,7 +512,7 @@ $(".Sign-up-popup").css("display", "block") && $(".Login-popup").css("display", 
 
 $( "body" ).click(function( event ) {
   var i = event.target.className;
-  console.log(i);
+  
 
 if(i == "overlay"){
     $("#pop-up-overlay").removeClass("overlay") && $(".Login-popup").css("display", "none") && $(".Sign-up-popup").css("display", "none") && $(".widget-bar").addClass("off") && $(".widget-bar").removeClass("on");
@@ -493,6 +523,9 @@ if(i == "overlay"){
 });
 
 </script>
-   <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.0.0/video.min.js" integrity="sha512-LiILFcpZ9QKSH41UkK59Zag/7enHzqjr5lO2M0wGqGn8W19A/x2rV3iufAHkEtrln+Bt+Zv1U6NlLIp+lEqeWQ==" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.0.6/Youtube.min.js" integrity="sha512-5AUhe+DfPojLVFX5wg5EX5AC/ElGN9E2xclOL4qjMaaRytjo3TPRBrClpdo6WLn70Y5hjxfyhuGmTSv8/x71zw==" crossorigin="anonymous"></script>
   </body>
 </html>

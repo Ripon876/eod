@@ -8,9 +8,10 @@ var localStrategy = require("passport-local");
 var bodyParser    = require("body-parser");
 var nodeMailer    = require("nodemailer");
 const crypto      = require('crypto');
-var fileUpload     = require('express-fileupload');
+var fileUpload    = require('express-fileupload');
 var fs            = require('fs');
 var path          = require('path');
+var ejs           = require("ejs");
 var port          = process.env.PORT || 5000;
 
 // database - configuration
@@ -55,7 +56,7 @@ app.use(function(req,res,next){
 
 
 app.get("/",function(req,res){
-	res.render("index",{message: req.flash("success")});
+	res.render("index",{message: req.flash("success"),c_email: req.flash("mes-send")});
 	
 });
 
@@ -285,12 +286,97 @@ User.findByIdAndUpdate(id,user,{new:true},function(err,user){
 });
 });
 
+// contact us routs
+app.get("/contact-us",function(req,res){
+   res.render("contact-us");
+});
+app.post("/contact-us",function(req,res){
+    
 
+
+var name = req.body.name;
+var email = req.body.email;
+var sub = req.body.subject;
+var mes = req.body.message;
+var message = {
+	name: name,
+	email:email,
+	sub:sub,
+	mes:mes
+}
+
+console.log(email, sub, mes)
+
+// node mailer
+
+var transporter = nodeMailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_ADDRESS,
+    pass: process.env.GMAIL_PASSWORD
+  }
+});
+// mdforhadhossain297@gmail.com
+
+
+ejs.renderFile(__dirname + "/views/contact-email-template.ejs", { message: message}, function (err, data) {
+if (err) {
+	console.log(err)
+}else {
+	var mailOptions = {
+  from: process.env.GMAIL_ADDRESS,
+  to: email,
+  subject: sub,
+  html: data
+};
+
+
+transporter.sendMail(mailOptions, function(error, info){
+
+  if (error) {
+    console.log(error);
+
+  } else {
+    console.log('Verification Email sent: ' + info.response);
+    req.flash("mes-send","true");
+    res.redirect("/");
+
+  };
+});
+
+
+};
+
+});
+
+
+
+
+
+
+});
+
+// term and condition rout
+app.get("/term-conditions",function(req,res){
+   res.render("term-conditions");
+});
+
+// advertise with us route
+app.get("/advertise-with-us",function(req,res){
+
+   res.render("advertise-with-us");
+
+});
 
 
 app.listen(port,function(){
 	console.log(`server started at port ${port}`);
 });
+
+
+
+
+
 
 function isLoggedIn(req,res,next){   // 
 	if(req.isAuthenticated()){       //   this function used for preventing   
@@ -299,9 +385,6 @@ function isLoggedIn(req,res,next){   //
 		res.redirect("/");           //          
 	}
 }
-
-
-
 
 
 function moveFile(img,user,p){
