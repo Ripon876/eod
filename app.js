@@ -368,6 +368,17 @@ app.get("/advertise-with-us",function(req,res){
 
 });
 
+// elite escorts only rout
+app.get("/elite-escorts-only",function(req,res){
+	User.find({},function(err,users){
+        if(err){
+        	console.log(err);
+        }else {
+        	res.render("elite-escorts-only",{users: users});
+        }
+	});
+});
+
 
 app.listen(port,function(){
 	console.log(`server started at port ${port}`);
