@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+		<form action="/charge" method="POST">
+			<script
+			src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+			data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV"
+			data-amount="2500"
+			data-name="Web Development Ebook"
+			data-description="Ebook written by Brad Traversy"
+			data-image="./img/marketplace.png"
+			data-locale="auto">
+			</script>
+			<script>
+			// Hide default stripe button
+			document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
+			</script>
+			<button type="submit" class="btn btn-outline-dark text-white btn-lg">Purchase For $25</button>
+		</form>
+	</body>
+</html>

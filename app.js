@@ -9,10 +9,13 @@ var bodyParser    = require("body-parser");
 var nodeMailer    = require("nodemailer");
 const crypto      = require('crypto');
 var fileUpload    = require('express-fileupload');
+var stripe        = require("stripe")("sk_test_51IT6NiI7ttdO5TTg8MKrPjljs8s0U0AwoibgwXRaoEKlK2npxTpBvZuYS6lhQnoRhmWw0eDtovrlHr3TcyWjLSsA00aBEu8f2W");
 var fs            = require('fs');
 var path          = require('path');
 var ejs           = require("ejs");
 var port          = process.env.PORT || 5000;
+
+
 
 // database - configuration
 mongoose.connect("mongodb://localhost:27017/eod", {useUnifiedTopology: true, useNewUrlParser: true});
@@ -24,6 +27,7 @@ var app = express();
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(flash());
 app.use(fileUpload({
     useTempFiles : true,
@@ -230,49 +234,55 @@ User.findById(req.params.id,function(err,user){
 })
 
 app.post("/edit-profile/:id",isLoggedIn,function(req,res){
+	// console.log(req.files);
+	console.log(req.body);
 
 var id = req.params.id;
 var user = req.body.user;
-var profilePic = req.files.profilePic;
-var gallary_1 = req.files.gallary_1;
-var gallary_2 = req.files.gallary_2;
-var gallary_3 = req.files.gallary_3;
-
+console.log(user)
 	
-console.log(req.files);
-	  User.findById(id,function(err,user){
 
-      var email = user.username;
-      var folderName = email.substring(0,email.indexOf('@'))
+// var profilePic = req.files.profilePic;
+// var gallary_1 = req.files.gallary_1;
+// var gallary_2 = req.files.gallary_2;
+// var gallary_3 = req.files.gallary_3;
 
-      if(req.files.profilePic){
-      	console.log("profilePic");
-      	profilePic.name = "profile_pic.png";
-      	var p = profilePic.name;
-      	moveFile(req.files.profilePic,user,p)
-      }
-      if(req.files.gallary_1){
-      	console.log("gallary_1")
-      	gallary_1.name = "gallary_1.png";
-      	var p = gallary_1.name;
-      		moveFile(req.files.gallary_1,user,p)
-      }
-      if(req.files.gallary_2){
-      	console.log("gallary_2")
-      	gallary_2.name = "gallary_2.png";
-      	var p = gallary_2.name;
-      		moveFile(req.files.gallary_2,user,p)
-      }
-      if(req.files.gallary_2){
-      	console.log("gallary_3")
-      	gallary_3.name = "gallary_3.png";
-      	var p = gallary_3.name;
-      		moveFile(req.files.gallary_3,user,p)
-      };
+
+// 	  User.findById(id,function(err,user){
+
+//       var email = user.username;
+//       var folderName = email.substring(0,email.indexOf('@'))
+
+// // if(req.files !== null){
+
+// //       if(req.files.profilePic){
+// //       	console.log("profilePic");
+// //       	profilePic.name = "profile_pic.png";
+// //       	var p = profilePic.name;
+// //       	moveFile(req.files.profilePic,user,p)
+// //       }
+// //       if(req.files.gallary_1){
+// //       	console.log("gallary_1")
+// //       	gallary_1.name = "gallary_1.png";
+// //       	var p = gallary_1.name;
+// //       		moveFile(req.files.gallary_1,user,p)
+// //       }
+// //       if(req.files.gallary_2){
+// //       	console.log("gallary_2")
+// //       	gallary_2.name = "gallary_2.png";
+// //       	var p = gallary_2.name;
+// //       		moveFile(req.files.gallary_2,user,p)
+// //       }
+// //       if(req.files.gallary_2){
+// //       	console.log("gallary_3")
+// //       	gallary_3.name = "gallary_3.png";
+// //       	var p = gallary_3.name;
+// //       		moveFile(req.files.gallary_3,user,p)
+// //       };
       
-   
+// //    }
 
-	});
+// 	});
 
     
 
@@ -378,6 +388,86 @@ app.get("/elite-escorts-only",function(req,res){
         }
 	});
 });
+
+
+// stripe route
+app.get("/s",function(req,res){
+
+   res.render("stripe");
+
+});
+// Charge Route
+app.post('/charge', (req, res) => {
+  const amount = 2500;
+  
+  stripe.customers.create({
+    email: req.body.stripeEmail,
+    source: req.body.stripeToken
+  })
+  .then(customer => stripe.charges.create({
+    amount,
+    description: 'Simple User',
+    currency: 'usd',
+    customer: customer.id
+  }))
+  .then(charge => res.render('success'));
+});
+
+
+app.post('/edit-profile/photos/:id',(req, res) => {
+    var id = req.params.id;
+
+	  User.findById(id,function(err,user){
+
+      var email = user.username;
+      var folderName = email.substring(0,email.indexOf('@'))
+
+
+      if (err) {
+      	console.log(err);
+      	res.redirect('/profile');
+      }else {
+      	
+if(req.files !== null){
+
+      if(req.files.profilePic){
+      	console.log("profilePic");
+      	profilePic.name = "profile_pic.png";
+      	var p = profilePic.name;
+      	moveFile(req.files.profilePic,user,p)
+      }
+      if(req.files.gallary_1){
+      	console.log("gallary_1")
+      	gallary_1.name = "gallary_1.png";
+      	var p = gallary_1.name;
+      		moveFile(req.files.gallary_1,user,p)
+      }
+      if(req.files.gallary_2){
+      	console.log("gallary_2")
+      	gallary_2.name = "gallary_2.png";
+      	var p = gallary_2.name;
+      		moveFile(req.files.gallary_2,user,p)
+      }
+      if(req.files.gallary_2){
+      	console.log("gallary_3")
+      	gallary_3.name = "gallary_3.png";
+      	var p = gallary_3.name;
+      		moveFile(req.files.gallary_3,user,p)
+      };
+      
+   }
+
+
+
+   res.redirect("/profile")
+      }
+   
+
+	});
+
+
+
+})
 
 
 app.listen(port,function(){
