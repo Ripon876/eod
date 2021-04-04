@@ -4,6 +4,7 @@ var passport      = require("passport");
 var mongoose      = require("mongoose");
 var flash         = require("connect-flash");
 var User          = require("./models/user");
+var CSF           = require("./customFuctions/copysamplefiles");
 var localStrategy = require("passport-local");
 var bodyParser    = require("body-parser");
 var nodeMailer    = require("nodemailer");
@@ -57,6 +58,15 @@ app.use(function(req,res,next){
 })
 
 
+// app.get("/f",function(req,res){
+
+
+
+// // var a = require("./customFuctions/copysamplefiles")(sortName);
+
+
+// });
+
 
 
 app.get("/",function(req,res){
@@ -106,6 +116,8 @@ app.post("/register",function(req,res){
               console.log(err);
             }
             console.log(user.personalInformation);
+
+
           })
       		passport.authenticate("local")(req,res,function(){
             
@@ -157,7 +169,13 @@ transporter.sendMail(mailOptions, function(error, info){
                 };                                                                 
                 console.log("Directory is created.");                              
                                                                                    
-                     });                                                           
+                     });  
+
+             var sortName = user.sortName;
+            console.log(sortName);
+            console.log(CSF.csf(sortName));
+                
+
               req.flash("success","true");
               res.redirect("/");
              
@@ -172,7 +190,7 @@ app.get("/login",function(req,res){
 	res.send("something went wrong...");
 })
 
-app.post("/login",passport.authenticate("local",{successRedirect: "/",failureRedirect: "/",failureFlash: 'Invalid username or password.'}),function(req,res){
+app.post("/login",passport.authenticate("local",{successRedirect: "/profile",failureRedirect: "/",failureFlash: 'Invalid username or password.'}),function(req,res){
 	console.log(req,res);
 	console.log("successfully logged in");
 });
@@ -438,7 +456,7 @@ if(req.files !== null){
       	var p = gallary_2.name;
       		moveFile(req.files.gallary_2,user,p)
       }
-      if(req.files.gallary_2){
+      if(req.files.gallary_3){
       	console.log("gallary_3")
         var gallary_3 = req.files.gallary_3;
       	gallary_3.name = "gallary_3.png";
@@ -450,7 +468,7 @@ if(req.files !== null){
 
 
 
-   res.redirect("/edit-profile");
+   res.redirect("/edit-profile/" + id);
       };
    
 
