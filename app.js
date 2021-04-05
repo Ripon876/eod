@@ -58,15 +58,6 @@ app.use(function(req,res,next){
 })
 
 
-// app.get("/f",function(req,res){
-
-
-
-// // var a = require("./customFuctions/copysamplefiles")(sortName);
-
-
-// });
-
 
 
 app.get("/",function(req,res){
@@ -94,10 +85,9 @@ app.post("/sign-up",function(req,res){
 app.post("/register",function(req,res){
   var Rtitle = "EOD | HOME";
 
-             // console.log(user.verificationId);
 
               var id = crypto.randomBytes(20).toString('hex');
-        	  // user.verificationId = id;
+
 	           var email = req.body.username;
              
                 var sortname = email.substring(0, email.lastIndexOf("@"));
@@ -190,7 +180,7 @@ app.get("/login",function(req,res){
 	res.send("something went wrong...");
 })
 
-app.post("/login",passport.authenticate("local",{successRedirect: "/profile",failureRedirect: "/",failureFlash: 'Invalid username or password.'}),function(req,res){
+app.post("/login",passport.authenticate("local",{successRedirect: "/user-profile",failureRedirect: "/",failureFlash: 'Invalid username or password.'}),function(req,res){
 	console.log(req,res);
 	console.log("successfully logged in");
 });
@@ -235,7 +225,7 @@ User.findOneAndUpdate({verificationId: oneTimeId},update, {new: true}, function 
 });
 });
 
-app.get("/profile",isLoggedIn,function(req,res){
+app.get("/user-profile",isLoggedIn,function(req,res){
 	res.render('profile');
 });
 
@@ -258,11 +248,12 @@ User.findById(req.params.id,function(err,user){
 
       if (user.personalInformation.firstName == undefined ) {
              console.log("fill personal information");
-         req.flash("fill_data","true");
+         var reIn = true;
 
-        res.render("edit-profile",{currentUser: user,fill_data: req.flash("fill_data")});
+        res.render("edit-profile",{currentUser: user,fill_data: reIn});
       }else{
-       res.render("edit-profile",{currentUser: user});
+        var reIn = false;
+       res.render("edit-profile",{currentUser: user,fill_data: reIn});
       }
 
      
@@ -274,12 +265,10 @@ User.findById(req.params.id,function(err,user){
 
 
 });
-app.get("/c",function(req,res){
-  res.render("personal-details")
-})
+
 
 app.post("/edit-profile/:id",isLoggedIn,function(req,res){
-	// console.log(req.files);
+
 	console.log(req.body);
 
 var id = req.params.id;
@@ -426,7 +415,7 @@ app.post('/edit-profile/photos/:id',isLoggedIn,(req, res) => {
 
       if (err) {
       	console.log(err);
-      	res.redirect('/profile');
+      	res.redirect('/user-profile');
       }else {
       	
 if(req.files !== null){
@@ -478,9 +467,43 @@ if(req.files !== null){
 
 });
 
+// update info rout
+app.post("/update-info/:id",function(req,res){
+  var id = req.params.id;
+  var personalInformation = req.body.personalInformation;
+
+User.findById(id,function(err,user){
+ 
+ if (err) {
+   console.log(err);
+ }
 
 
-// show escorts depending  on location
+user.personalInformation = personalInformation;
+          user.save(function(err){
+            if (err) {
+              console.log(err);
+            }
+            console.log(user.personalInformation);
+            
+            res.redirect("/edit-profile/" + id);
+              
+          });
+
+});
+});
+
+
+app.get("/profile/:id",function(req,res){
+  User.findById(req.params.id,function(err,user){
+    if (err) {
+      console.log(err);
+    }
+   console.log(user);
+   res.render("public-profile",{currentUser: user});
+
+  });
+});
 
 app.get("/location/:location",function(req,res){
   var location = req.params.location;
@@ -495,16 +518,9 @@ app.get("/location/:location",function(req,res){
 });
 
 
-
-
-
-
-
-
 app.listen(port,function(){
 	console.log(`server started at port ${port}`);
 });
-
 
 
 
