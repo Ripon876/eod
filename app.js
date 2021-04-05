@@ -14,8 +14,7 @@ var stripe        = require("stripe")("sk_test_51IT6NiI7ttdO5TTg8MKrPjljs8s0U0Aw
 var fs            = require('fs');
 var path          = require('path');
 var ejs           = require("ejs");
-var port          = process.env.PORT || 5000;
-
+var port          = process.env.PORT || 5000; 
 
 
 // database - configuration
