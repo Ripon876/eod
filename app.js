@@ -478,8 +478,25 @@ if(req.files !== null){
 
 });
 
-// update info rout
-app.post("/update-info")
+
+
+// show escorts depending  on location
+
+app.get("/location/:location",function(req,res){
+  var location = req.params.location;
+
+  User.find({location : location},function(err,users){
+    if(err){
+      console.log(err)
+    };
+    console.log(users.length);
+    res.render("custom-locations-escorts",{users: users});
+  });
+});
+
+
+
+
 
 
 
@@ -487,6 +504,7 @@ app.post("/update-info")
 app.listen(port,function(){
 	console.log(`server started at port ${port}`);
 });
+
 
 
 
