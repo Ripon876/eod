@@ -49,7 +49,8 @@ var userSchema = new mongoose.Schema({
         email: { type: String },
         birthDate:{type: Date},
         
-    }
+    },
+    advertiseForDays:[]
 });
 
 userSchema.plugin(passportLocalMongoose);

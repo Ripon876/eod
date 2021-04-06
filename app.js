@@ -41,8 +41,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
 
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
 passport.serializeUser(function(user, cb) {
   cb(null, user);
 });
@@ -233,9 +231,23 @@ app.get("/user-profile",isLoggedIn,function(req,res){
 });
 
 
+app.get("/m",function(req,res){
+  var arr = [5,5,5,5,5,5,5,5];
+  var days = 0;
+  arr.forEach( function(i) {
+      
+      days = days + i;
+
+
+  });
+ 
+ console.log(days);
+
+})
+
 app.get("/edit-profile/:id",isLoggedIn,function(req,res){
 
-
+var title = "EOD | Edit Profile";
 
 
 User.findById(req.params.id,function(err,user){
@@ -253,10 +265,10 @@ User.findById(req.params.id,function(err,user){
              console.log("fill personal information");
          var reIn = true;
 
-        res.render("edit-profile",{currentUser: user,fill_data: reIn});
+        res.render("edit-profile",{currentUser: user,fill_data: reIn,title: title});
       }else{
         var reIn = false;
-       res.render("edit-profile",{currentUser: user,fill_data: reIn});
+       res.render("edit-profile",{currentUser: user,fill_data: reIn,title: title});
       }
 
      
@@ -290,7 +302,7 @@ User.findByIdAndUpdate(id,user,{new:true},function(err,user){
       if (err) {
         console.log(err);
       }
-       res.redirect("/");
+       res.redirect("/user-profile");
     })
 
    
@@ -397,29 +409,6 @@ app.get("/elite-escorts-only",function(req,res){
 	});
 });
 
-
-// stripe route
-app.get("/s",function(req,res){
-
-   res.render("stripe");
-
-});
-// Charge Route
-app.post('/charge', (req, res) => {
-  const amount = 2500;
-  
-  stripe.customers.create({
-    email: req.body.stripeEmail,
-    source: req.body.stripeToken
-  })
-  .then(customer => stripe.charges.create({
-    amount,
-    description: 'Simple User',
-    currency: 'usd',
-    customer: customer.id
-  }))
-  .then(charge => res.render('success'));
-});
 
 
 app.post('/edit-profile/photos/:id',isLoggedIn,(req, res) => {
@@ -547,11 +536,39 @@ app.get("/location/:location",function(req,res){
 });
 
 
-app.listen(port,function(){
-	console.log(`server started at port ${port}`);
+// stripe route
+app.get("/s",function(req,res){
+
+   res.render("stripe");
+
+});
+// Charge Route
+app.post('/charge', (req, res) => {
+  console.log(req.body);
+  const amount = 2500;
+  
+  stripe.customers.create({
+    email: req.body.stripeEmail,
+    source: req.body.stripeToken
+  })
+  .then(customer => stripe.charges.create({
+    amount,
+    description: 'Simple User',
+    currency: 'usd',
+    customer: customer.id
+  }))
+  .then(function(charge){
+    var d = addNewDays(2);
+    if (d){
+      res.render('success')
+    }
+  })
 });
 
 
+app.listen(port,function(){
+	console.log(`server started at port ${port}`);
+});
 
 
 
@@ -586,4 +603,28 @@ Object.prototype.isEmpty = function() {
             return false;
     }
     return true;
+};
+
+
+function addNewDays(days){
+var userID = req.user._id;
+User.findById(userID,function(err,user){
+if (err) {
+  console.log(err);
+}
+
+user.advertiseForDays.push(days);
+user.save(function(err){
+  if (err){
+    console.log(err);
+    };
+
+return true;
+
+
+});
+
+});
+
+
 }
