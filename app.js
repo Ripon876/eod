@@ -65,10 +65,13 @@ app.get("/",function(req,res){
 });
 
 app.get("/terms_conditions",function(req,res){
+
+  
   res.render("term-conditions");
 });
 app.get("/advertise-with-us",function(req,res){
-  res.render("advertise-with-us");
+  var title = "EOD | Advertise With Us"
+  res.render("advertise-with-us",{title: title});
 });
 
 
@@ -225,7 +228,8 @@ User.findOneAndUpdate({verificationId: oneTimeId},update, {new: true}, function 
 });
 
 app.get("/user-profile",isLoggedIn,function(req,res){
-	res.render('profile');
+  var title = "EOD| Member Profile";
+	res.render('profile',{title: title});
 });
 
 
@@ -272,7 +276,7 @@ app.post("/edit-profile/:id",isLoggedIn,function(req,res){
 
 var id = req.params.id;
 var user = req.body.user;
-console.log(user)
+var laisWith = req.body.laisWith;
 	
 
     
@@ -280,7 +284,16 @@ User.findByIdAndUpdate(id,user,{new:true},function(err,user){
   if(err){
     console.log(err);
   }else{
-    res.redirect("/");
+    
+    user.liaiseWith = laisWith;
+    user.save(function(err){
+      if (err) {
+        console.log(err);
+      }
+       res.redirect("/");
+    })
+
+   
   }
 });
 });
@@ -362,8 +375,14 @@ app.get("/term-conditions",function(req,res){
 
 // advertise with us route
 app.get("/advertise-with-us",function(req,res){
+  var t = "EOD | Advertise With Us"
+   res.render("advertise-with-us",{title: t});
 
-   res.render("advertise-with-us");
+});
+app.get("/change-location",function(req,res){
+  var t = "EOD | Change Location"
+
+   res.render("change-location",{title: t});
 
 });
 
@@ -494,25 +513,36 @@ user.personalInformation = personalInformation;
 
 
 app.get("/profile/:id",function(req,res){
+
+
   User.findById(req.params.id,function(err,user){
+  var title ="EOD | " + user.name;
+
     if (err) {
       console.log(err);
+      res.send("we couldn't find any user with the user id")
     }
    console.log(user);
-   res.render("public-profile",{currentUser: user});
+
+ 
+
+ res.render("public-profile",{currentUser: user,title: title});
+   
 
   });
 });
 
 app.get("/location/:location",function(req,res){
   var location = req.params.location;
+  var title = "EOD | " + location.toUpperCase();
+  console.log(title);
 
   User.find({location : location},function(err,users){
     if(err){
       console.log(err)
     };
     console.log(users.length);
-    res.render("custom-locations-escorts",{users: users});
+    res.render("custom-locations-escorts",{users: users,title: title});
   });
 });
 
@@ -526,11 +556,11 @@ app.listen(port,function(){
 
 
 
-function isLoggedIn(req,res,next){   // 
-	if(req.isAuthenticated()){       //   this function used for preventing   
-		return next();               //   a logged out user to visite   
-	}else{                           //   the secreat pages      
-		res.redirect("/");           //          
+function isLoggedIn(req,res,next){   // _____________________________________
+	if(req.isAuthenticated()){        // |  this function used for preventing |  
+		return next();                 //  |  a logged out user to visite       |
+	}else{                          //   |  the secreat pages                 |
+		res.redirect("/");           //    |____________________________________|      
 	}
 }
 

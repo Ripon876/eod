@@ -18,7 +18,13 @@ var userSchema = new mongoose.Schema({
     inCall: String,
     outCall: String,
     hour: String,
-    liaiseWith:[{ type: String }],
+    liaiseWith:{
+        man: String,
+        woman: String,
+        group_sex: String,
+        pairs: String,
+        men_woman: String
+    },
     thingCan: String,
     about: String,
     email: String,

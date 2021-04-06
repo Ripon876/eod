@@ -1,27 +1,15 @@
 <%- include('../partials/header'); -%>
-
-
-
-
-
 <!--        update info -->
-
 <% if(fill_data === true){ %>
-  <div id="pop-up-overlay" class="overlay" style="position: relative;"></div>
+<div id="pop-up-overlay" class="overlay" style="position: relative;"></div>
 <% } %>
-
-
-
 <div class="container personal-info" style="<% if(fill_data === true){ %>
 	
 	display: block;
-
-<%  }else{ %>
-
+	<%  }else{ %>
 	display: none;
-
-<%  } %>
-">
+	<%  } %>
+	">
 	<div class="row">
 		<div class="col-md-12 col-10 col-sm-10 m-auto">
 			<div class="bubble-element personalInformation-Popup" style="height: 801px;top: 30px;position: absolute;left: 33%;padding: 20px;z-index:99999999;display: block;box-sizing: border-box;opacity: 1;width: 40%;border-radius: 4px;box-shadow: rgb(0, 0, 0) 0px 0px 6px 0px;background-color: rgb(0, 0, 0);">
@@ -178,1239 +166,1187 @@
 </div>
 </div>
 </div>
-
-
-<!--        update info -->
-
-
-
-<!-- <div class="c">
-	<div class="bubble-element Text" style="box-sizing: border-box;z-index: 2;height: 28px;width: 46px;left: 23px;top: 0px;text-align: center;overflow: visible;padding-bottom: 0px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 14px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1.5;border-radius: 0px;">
-		<div class="content">Men</div>
-	</div>
-	<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 26px;width: 24px;left: 0px;top: 0px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(0, 0, 0);line-height: 1;">
-		<input type="checkbox" id="1617633048183x4330" style="background-color: white;" tabindex="14">
-		<label for="1617633048183x4330"></label>
-	</div> -->
 </div>
+
 <div class="container">
-	<div class="row">
+	<a href="/profile/<%= currentUser._id %>" style="box-sizing: border-box;z-index: 6;height: 26px;padding: 7px;cursor: pointer;background: none;border: none;text-align: center;float: right;user-select: none;font-family: Arial;font-size: 14px;font-weight: bold;color: rgb(197, 179, 88);line-height: 1;border-radius: 3px;box-shadow: rgb(0 0 0 / 15%) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;
+">View As</a>
+<div class="row">
+
 
 
 <div class="col-md-6" style="padding-top: 50px;">
-	<div class="bubble-r-box" style="height: 1594px; left: 23px; width: 485px;">
-		<div class="bubble-element Group" style=" box-sizing: border-box; z-index: 6; height: 637px; width: 467px; left: 18px; top: 0px; border-radius: 6px;">
-
+<div class="bubble-r-box" style="height: 1594px; left: 23px; width: 485px;">
+<div class="bubble-element Group" style=" box-sizing: border-box; z-index: 6; height: 637px; width: 467px; left: 18px; top: 0px; border-radius: 6px;">
 <form action="/edit-profile/photos/<%= currentUser._id %>" class="upload-photos" method="POST" encType="multipart/form-data">
-
-
 <div class="bubble-r-line" style="margin-top: 15px; height: 419px;">
-	<div class="bubble-r-box" style="height: 419px;width: 449px;margin: 0 auto;">
-		<div class="bubble-element PictureInput clickable-element" style="position: relative; text-align: center;box-sizing: border-box;z-index: 11;height: 419px;width: 449px;left: 0px;top: 0px;border-radius: 20px;">
-			<img src="../uploads/<%= currentUser.sortName %>/profile_pic.png" id="profile-picture" style="max-height: 100%;z-index: 5;opacity: 1;max-width: 100%;border-radius: 20px;">
-			<button class="button_for_file_uploader" style="border: none; background: none rgba(255, 255, 255, 0); z-index: 4; position: absolute; left: 0px; top: 0px; cursor: pointer; width: 100%; height: 100%; opacity: 1; font-family: &quot;Space Mono&quot;; font-size: 12px; color: rgb(153, 153, 153); text-align: center;">Click to upload an image</button>
-			<input type="file" accept="image/*" id="imgInp" name="profilePic" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
+<div class="bubble-r-box" style="height: 419px;width: 449px;margin: 0 auto;">
+	<div class="bubble-element PictureInput clickable-element" style="position: relative; text-align: center;box-sizing: border-box;z-index: 11;height: 419px;width: 449px;left: 0px;top: 0px;border-radius: 20px;">
+		<img src="../uploads/<%= currentUser.sortName %>/profile_pic.png" id="profile-picture" style="max-height: 100%;z-index: 5;opacity: 1;max-width: 100%;border-radius: 20px;">
+		<button class="button_for_file_uploader" style="border: none; background: none rgba(255, 255, 255, 0); z-index: 4; position: absolute; left: 0px; top: 0px; cursor: pointer; width: 100%; height: 100%; opacity: 1; font-family: &quot;Space Mono&quot;; font-size: 12px; color: rgb(153, 153, 153); text-align: center;">Click to upload an image</button>
+		<input type="file" accept="image/*" id="imgInp" name="profilePic" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
+	</div>
+</div>
+</div>
+<div class="bubble-r-line" style="margin-top: 42px;height: 140px;display: flex;justify-content: space-around;">
+<div class="bubble-r-box" style="height: 140px;width: 140px;">
+	<div class="bubble-element PictureInput clickable-element" style="position: relative;box-sizing: border-box;z-index: 11;height: 140px;width: 140px;left: 0px;top: 0px;border-radius: 20px;">
+		<img src="../uploads/<%= currentUser.sortName %>/gallary_1.png" id="gallary-1" style="width: 100%; height: 100%; z-index: 5; position: absolute;opacity: 1;border-radius: 20px;">
+		<button class="button_for_file_uploader" style="border: none; background: none rgba(255, 255, 255, 0); z-index: 4; position: absolute; left: 0px; top: 0px; cursor: pointer; width: 100%; height: 100%; opacity: 1; font-family: &quot;Space Mono&quot;; font-size: 12px; color: rgb(153, 153, 153); text-align: center;">Click to upload an image</button>
+		<input type="file" accept="image/*"  id="up-gallary-1" name="gallary_1" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
+	</div>
+</div>
+<div class="bubble-r-box" style="height: 140px;width: 140px;">
+	<div class="bubble-element PictureInput clickable-element" style="position: relative;box-sizing: border-box;z-index: 11;height: 140px;width: 140px;left: 0px;top: 0px;border-radius: 20px;">
+		<img src="../uploads/<%= currentUser.sortName %>/gallary_2.png"  id="gallary-2" style="width: 100%; height: 100%; z-index: 5; position: absolute; opacity: 1;border-radius: 20px;">
+		<button class="button_for_file_uploader" style="border: none; background: none rgba(255, 255, 255, 0); z-index: 4; position: absolute; left: 0px; top: 0px; cursor: pointer; width: 100%; height: 100%; opacity: 1; font-family: &quot;Space Mono&quot;; font-size: 12px; color: rgb(153, 153, 153); text-align: center;">Click to upload an image</button>
+		<input type="file" accept="image/*" id="up-gallary-2" name="gallary_2" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
+	</div>
+</div>
+<div class="bubble-r-box" style="height: 140px;width: 140px;">
+	<div class="bubble-element PictureInput clickable-element" style="position: relative;box-sizing: border-box;z-index: 11;height: 140px;width: 140px;left: 0px;top: 0px;border-radius: 20px;">
+		<img src="../uploads/<%= currentUser.sortName %>/gallary_3.png"  id="gallary-3" style="width: 100%; height: 100%; z-index: 5; position: absolute; opacity: 1;border-radius: 20px;">
+		<button class="button_for_file_uploader" style="border: none; background: none rgba(255, 255, 255, 0); z-index: 4; position: absolute; left: 0px; top: 0px; cursor: pointer; width: 100%; height: 100%; opacity: 1; font-family: &quot;Space Mono&quot;; font-size: 12px; color: rgb(153, 153, 153); text-align: center;">Click to upload an image</button>
+		<input type="file" accept="image/*" id="up-gallary-3" name="gallary_3" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
+	</div>
+</div>
+</div>
+</form>
+</div>
+<div class="bubble-element Group" style="box-sizing: border-box;z-index: 9;height: 165px;width: 271px;left: 138px;margin: 0 auto;top: 664px;border-radius: 6px;">
+<div class="bubble-r-line" style="margin-top: 0px;height: 165px;text-align: center;">
+<div class="bubble-r-box" style="height: 154px;left: 0px;margin: 0 auto;width: 161px;">
+<div class="bubble-element Group" style=" box-sizing: border-box; z-index: 2; height: 154px; width: 161px; left: 0px; top: 0px; border-radius: 6px;">
+	<div class="bubble-r-line" style="margin-top: 0px; height: 39px;">
+		<div class="bubble-r-box" style="height: 39px; left: 0px; width: 155px;">
+			<div class="bubble-element Text" style=" box-sizing: border-box; z-index: 3; height: 39px; width: 155px; left: 0px; top: 0px;   overflow: visible; padding-bottom: 0px; font-family: &quot;Sorts Mill Goudy&quot;; font-size: 24px; font-weight: bold; color: rgb(229, 228, 226); text-align: center; line-height: 1.5; border-radius: 0px;">
+				<div class="content">Photo Album</div>
+			</div>
+		</div>
+	</div>
+	<div class="bubble-r-line" style="text-align: center;height: 101px;">
+		<div class="bubble-r-box" style="height: 101px;left: 25px;width: 105px;margin: 0 auto;">
+			<button class="bubble-element Button clickable-element" style=" box-sizing: border-box; z-index: 2; height: 101px; width: 105px; left: 0px; top: 0px; padding: 0px; cursor: pointer; background: url(&quot;https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1594018608619x619904073544667000%2F165721-00.png?w=128&amp;h=123&amp;auto=compress&amp;fit=crop&amp;dpr=1&quot;) center center / cover no-repeat rgba(255, 255, 255, 0); border: 1px solid rgb(0, 0, 0); text-align: center; font-family: Arial; font-size: 14px; font-weight: bold; color: rgb(255, 255, 255); line-height: 1; border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px; transition: box-shadow 100ms ease 0s;" tabindex="33"></button>
+			
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-				<div class="bubble-r-line" style="margin-top: 42px;height: 140px;display: flex;justify-content: space-around;">
-
-
-
-	<div class="bubble-r-box" style="height: 140px;width: 140px;">
-		<div class="bubble-element PictureInput clickable-element" style="position: relative;box-sizing: border-box;z-index: 11;height: 140px;width: 140px;left: 0px;top: 0px;border-radius: 20px;">
-			<img src="../uploads/<%= currentUser.sortName %>/gallary_1.png" id="gallary-1" style="width: 100%; height: 100%; z-index: 5; position: absolute;opacity: 1;border-radius: 20px;">
-			<button class="button_for_file_uploader" style="border: none; background: none rgba(255, 255, 255, 0); z-index: 4; position: absolute; left: 0px; top: 0px; cursor: pointer; width: 100%; height: 100%; opacity: 1; font-family: &quot;Space Mono&quot;; font-size: 12px; color: rgb(153, 153, 153); text-align: center;">Click to upload an image</button>
-			<input type="file" accept="image/*"  id="up-gallary-1" name="gallary_1" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
-		</div>
-	</div>
-	<div class="bubble-r-box" style="height: 140px;width: 140px;">
-		<div class="bubble-element PictureInput clickable-element" style="position: relative;box-sizing: border-box;z-index: 11;height: 140px;width: 140px;left: 0px;top: 0px;border-radius: 20px;">
-			<img src="../uploads/<%= currentUser.sortName %>/gallary_2.png"  id="gallary-2" style="width: 100%; height: 100%; z-index: 5; position: absolute; opacity: 1;border-radius: 20px;">
-			<button class="button_for_file_uploader" style="border: none; background: none rgba(255, 255, 255, 0); z-index: 4; position: absolute; left: 0px; top: 0px; cursor: pointer; width: 100%; height: 100%; opacity: 1; font-family: &quot;Space Mono&quot;; font-size: 12px; color: rgb(153, 153, 153); text-align: center;">Click to upload an image</button>
-			<input type="file" accept="image/*" id="up-gallary-2" name="gallary_2" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
-		</div>
-	</div>
-	<div class="bubble-r-box" style="height: 140px;width: 140px;">
-		<div class="bubble-element PictureInput clickable-element" style="position: relative;box-sizing: border-box;z-index: 11;height: 140px;width: 140px;left: 0px;top: 0px;border-radius: 20px;">
-			<img src="../uploads/<%= currentUser.sortName %>/gallary_3.png"  id="gallary-3" style="width: 100%; height: 100%; z-index: 5; position: absolute; opacity: 1;border-radius: 20px;">
-			<button class="button_for_file_uploader" style="border: none; background: none rgba(255, 255, 255, 0); z-index: 4; position: absolute; left: 0px; top: 0px; cursor: pointer; width: 100%; height: 100%; opacity: 1; font-family: &quot;Space Mono&quot;; font-size: 12px; color: rgb(153, 153, 153); text-align: center;">Click to upload an image</button>
-			<input type="file" accept="image/*" id="up-gallary-3" name="gallary_3" tabindex="1" style="opacity: 0; position: absolute; z-index: 15; cursor: pointer; left: 0px; width: 100%; height: 100%;">
-		</div>
-	</div>
-
-
-
-							</div>
-							
-
-</form>
-
-						</div>
-						<div class="bubble-element Group" style="box-sizing: border-box;z-index: 9;height: 165px;width: 271px;left: 138px;margin: 0 auto;top: 664px;border-radius: 6px;">
-							<div class="bubble-r-line" style="margin-top: 0px;height: 165px;text-align: center;">
-								<div class="bubble-r-box" style="height: 154px;left: 0px;margin: 0 auto;width: 161px;">
-									<div class="bubble-element Group" style=" box-sizing: border-box; z-index: 2; height: 154px; width: 161px; left: 0px; top: 0px; border-radius: 6px;">
-										<div class="bubble-r-line" style="margin-top: 0px; height: 39px;">
-											<div class="bubble-r-box" style="height: 39px; left: 0px; width: 155px;">
-												<div class="bubble-element Text" style=" box-sizing: border-box; z-index: 3; height: 39px; width: 155px; left: 0px; top: 0px;   overflow: visible; padding-bottom: 0px; font-family: &quot;Sorts Mill Goudy&quot;; font-size: 24px; font-weight: bold; color: rgb(229, 228, 226); text-align: center; line-height: 1.5; border-radius: 0px;">
-													<div class="content">Photo Album</div>
-												</div>
-											</div>
-										</div>
-										<div class="bubble-r-line" style="text-align: center;height: 101px;">
-											<div class="bubble-r-box" style="height: 101px;left: 25px;width: 105px;margin: 0 auto;">
-												<button class="bubble-element Button clickable-element" style=" box-sizing: border-box; z-index: 2; height: 101px; width: 105px; left: 0px; top: 0px; padding: 0px; cursor: pointer; background: url(&quot;https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1594018608619x619904073544667000%2F165721-00.png?w=128&amp;h=123&amp;auto=compress&amp;fit=crop&amp;dpr=1&quot;) center center / cover no-repeat rgba(255, 255, 255, 0); border: 1px solid rgb(0, 0, 0); text-align: center; font-family: Arial; font-size: 14px; font-weight: bold; color: rgb(255, 255, 255); line-height: 1; border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px; transition: box-shadow 100ms ease 0s;" tabindex="33"></button>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="bubble-r-box" style="height: 165px; left: 180px; width: 91px;">
-									<div class="bubble-element Text" style="  display: none;  box-sizing: border-box; z-index: 4; top: 0px; height: 165px; overflow: visible; padding-bottom: 7px; font-family: Arial; font-size: 12px; color: rgb(227, 227, 229); text-align: center; line-height: 1.5; padding-top: 7px; border-style: solid; border-width: 1px; border-color: rgb(207, 179, 101); border-radius: 0px; width: 91px; left: 0px;">
-										<div class="content">Please make sure you have saved all your information before adding photos. &nbsp;Any unsaved info will be lost. </div>
-									</div>
-								</div>
-							</div>
-							<div class="bubble-r-line" style="margin-top: 0px; height: 165px; display: none;"></div>
-						</div>
-
-
-
-
-
+</div>
+<div class="bubble-r-box" style="height: 165px; left: 180px; width: 91px;">
+<div class="bubble-element Text" style="  display: none;  box-sizing: border-box; z-index: 4; top: 0px; height: 165px; overflow: visible; padding-bottom: 7px; font-family: Arial; font-size: 12px; color: rgb(227, 227, 229); text-align: center; line-height: 1.5; padding-top: 7px; border-style: solid; border-width: 1px; border-color: rgb(207, 179, 101); border-radius: 0px; width: 91px; left: 0px;">
+	<div class="content">Please make sure you have saved all your information before adding photos. &nbsp;Any unsaved info will be lost. </div>
+</div>
+</div>
+</div>
+<div class="bubble-r-line" style="margin-top: 0px; height: 165px; display: none;"></div>
+</div>
 <form action="/edit-profile/<%= currentUser._id %>" method="POST" >
-
-
-
-						<div class="bubble-element Group" style=" box-sizing: border-box; z-index: 42; height: 746px; width: 453px; left: 0px; top: 848px; border-radius: 6px;">
-							<div class="bubble-r-line" style="margin-top: 0px; height: 33px;">
-								<div class="bubble-r-box" style="height: 33px; left: 0px; width: 132px;">
-									<div class="bubble-element Text" style=" box-sizing: border-box; z-index: 8; height: 33px; width: 132px; left: 0px; top: 0px;   overflow: visible; padding-bottom: 0px; font-family: &quot;Sorts Mill Goudy&quot;; font-size: 22px; font-weight: bold; color: rgb(229, 228, 226); text-align: center; line-height: 1.5; border-radius: 0px;">
-										<div class="content">About me</div>
+<div class="bubble-element Group" style=" box-sizing: border-box; z-index: 42; height: 746px; width: 453px; left: 0px; top: 848px; border-radius: 6px;">
+<div class="bubble-r-line" style="margin-top: 0px; height: 33px;">
+<div class="bubble-r-box" style="height: 33px; left: 0px; width: 132px;">
+	<div class="bubble-element Text" style=" box-sizing: border-box; z-index: 8; height: 33px; width: 132px; left: 0px; top: 0px;   overflow: visible; padding-bottom: 0px; font-family: &quot;Sorts Mill Goudy&quot;; font-size: 22px; font-weight: bold; color: rgb(229, 228, 226); text-align: center; line-height: 1.5; border-radius: 0px;">
+		<div class="content">About me</div>
+	</div>
+</div>
+</div>
+<div class="bubble-r-line" style="margin-top: 15px; height: 698px;">
+<div class="bubble-r-box" style="height: 698px; left: 0px; width: 453px;">
+	<textarea class="bubble-element MultiLineInput" name="user[about]" data-gramm_editor="false" placeholder="Type here..." maxlength="" tabindex="38" style=" box-sizing: border-box; z-index: 4; height: 698px; width: 453px; left: 0px; top: 0px; border: 1px solid rgb(230, 230, 230); background-color: transparent; border-radius: 6px; font-family: &quot;Sorts Mill Goudy&quot;; font-size: 14px; font-weight: bold; color: rgb(229, 228, 226); line-height: 1; padding: 10px; text-decoration: none; font-style: normal; text-align: left;"><%= currentUser.about %></textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="bubble-r-box" style="height: 1607px; left: 519px; width: 457px;">
+<div class="bubble-element Group" style="box-sizing: border-box; z-index: 7; height: 428px; width: 457px; left: 0px; top: 0px; border-radius: 6px;">
+<div class="bubble-r-line" style="margin-top: 15px; height: 93px;">
+<div class="bubble-r-box" style="height: 93px; left: 5px; width: 435px;">
+	<div class="bubble-element Text" style="
+		box-sizing: border-box;
+		z-index: 3;
+		height: 52px;
+		width: 427px;
+		left: 8px;
+		top: 0px;
+		
+		overflow: visible;
+		padding-bottom: 4px;
+		font-family: 'Sorts Mill Goudy';
+		font-size: 25px;
+		color: rgb(229, 228, 226);
+		text-align: center;
+		line-height: 1.5;
+		padding-top: 4px;
+		border-radius: 0px;
+		">
+		<div class="content">Nice to see you, my names</div>
+	</div>
+	<input type="input" class="bubble-element Input" name="user[name]" value="<%= currentUser.name %>" placeholder="Type here..." maxlength="" tabindex="32" style="
+	box-sizing: border-box;
+	z-index: 2;
+	height: 52px;
+	width: 426px;
+	left: 0px;
+	top: 41px;
+	border: none;
+	background-color: transparent;
+	border-radius: 6px;
+	font-family: 'Sorts Mill Goudy';
+	font-size: 36px;
+	color: rgb(229, 228, 226);
+	text-align: center;
+	padding: 0px 10px;
+	">
+</div>
+</div>
+<div class="bubble-r-line" style="margin-top: 6px; height: 38px;">
+<div class="bubble-r-box" style="height: 38px; left: 4px; width: 56px;">
+	<div class="bubble-element Text" style="
+		box-sizing: border-box;
+		z-index: 4;
+		height: 38px;
+		width: 56px;
+		left: 0px;
+		top: 0px;
+		
+		overflow: visible;
+		padding-bottom: 2px;
+		font-family: 'Sorts Mill Goudy';
+		font-size: 22px;
+		font-weight: bold;
+		color: rgb(229, 228, 226);
+		line-height: 1.5;
+		padding-top: 2px;
+		border-radius: 0px;
+		">
+		<div class="content">Bio</div>
+	</div>
+</div>
+</div>
+<div class="bubble-r-line" style="margin-top: 0px; height: 276px;">
+<div class="bubble-r-box" style="height: 276px; left: 5px; width: 442px;">
+	<div class="bubble-element Group" style="box-sizing: border-box; z-index: 6; height: 276px; width: 442px; left: 0px; top: 0px; background-color: rgb(255, 255, 255); border-radius: 6px;">
+		<div class="bubble-r-line" style="margin-top: 0px; height: 276px;">
+			<div class="bubble-r-box" style="height: 276px; left: 0px; width: 445px;">
+				<div class="bubble-element Group" style="box-sizing: border-box; z-index: 5; height: 276px; width: 445px; left: 0px; top: 0px; background-color: rgb(242, 242, 242); border-radius: 10px;">
+					<div class="bubble-r-line" style="margin-top: 20px; height: 36px; display: flex;">
+						<div class="bubble-r-box" style="height: 33px; left: 5px; width: 125px;">
+							<div class="bubble-element Text clickable-element" tabindex="23" style="
+								box-sizing: border-box;
+								z-index: 13;
+								height: 30px;
+								width: 125px;
+								left: 0px;
+								top: 3px;
+								
+								overflow: visible;
+								padding-bottom: 0px;
+								font-family: 'Sorts Mill Goudy';
+								font-size: 18px;
+								color: rgb(0, 0, 0);
+								text-align: center;
+								line-height: 1.5;
+								border-radius: 0px;
+								cursor: pointer;
+								">
+								<div class="content">Age</div>
+							</div>
+						</div>
+						<div class="bubble-r-box" style="height: 36px; left: 156px; width: 132px;">
+							<div class="bubble-element Group" style="box-sizing: border-box; z-index: 19; height: 35px; width: 132px; left: 0px; top: 1px; border-radius: 6px;">
+								<div class="bubble-r-line" style="margin-top: 0px; height: 35px;">
+									<div class="bubble-r-box" style="height: 35px; left: 0px; width: 132px;">
+										<div class="bubble-element Text" style="
+											box-sizing: border-box;
+											z-index: 6;
+											height: 35px;
+											width: 125px;
+											left: 0px;
+											top: 0px;
+											
+											overflow: visible;
+											padding-bottom: 1px;
+											font-family: 'Sorts Mill Goudy';
+											font-size: 18px;
+											color: rgb(0, 0, 0);
+											text-align: center;
+											line-height: 1.5;
+											padding-top: 1px;
+											border-radius: 0px;
+											">
+											<div class="content">Hair colour</div>
+										</div>
+										<button class="fa fa-question-circle-o inner-element bubble-element clickable-element" tabindex="20" style="
+										box-sizing: border-box;
+										z-index: 17;
+										height: 14px;
+										width: 19px;
+										left: 113px;
+										top: 0px;
+										padding: 0px;
+										text-align: center;
+										background: none;
+										border: none;
+										cursor: pointer;
+										color: rgb(0, 0, 0);
+										font-size: 14px;
+										border-radius: 4px;
+										" aria-hidden="true"></button>
 									</div>
 								</div>
 							</div>
-							<div class="bubble-r-line" style="margin-top: 15px; height: 698px;">
-								<div class="bubble-r-box" style="height: 698px; left: 0px; width: 453px;">
-									<textarea class="bubble-element MultiLineInput" name="user[about]" data-gramm_editor="false" placeholder="Type here..." maxlength="" tabindex="38" style=" box-sizing: border-box; z-index: 4; height: 698px; width: 453px; left: 0px; top: 0px; border: 1px solid rgb(230, 230, 230); background-color: transparent; border-radius: 6px; font-family: &quot;Sorts Mill Goudy&quot;; font-size: 14px; font-weight: bold; color: rgb(229, 228, 226); line-height: 1; padding: 10px; text-decoration: none; font-style: normal; text-align: left;"><%= currentUser.about %></textarea>
-								</div>
+						</div>
+						<div class="bubble-r-box" style="height: 35px; left: 305px; width: 125px;">
+							<div class="bubble-element Text" style="
+								box-sizing: border-box;
+								z-index: 5;
+								height: 35px;
+								width: 125px;
+								left: 0px;
+								top: 0px;
+								
+								overflow: visible;
+								padding-bottom: 0px;
+								font-family: 'Sorts Mill Goudy';
+								font-size: 18px;
+								color: rgb(0, 0, 0);
+								text-align: center;
+								line-height: 1.5;
+								border-radius: 0px;
+								">
+								<div class="content">Cup Size</div>
 							</div>
 						</div>
 					</div>
+					<div class="bubble-r-line" style="margin-top: 7px; height: 25px; justify-content: space-around; display: flex;">
+						<div class="bubble-r-box" style="height: 25px; left: 9px; width: 125px;">
+							<input type="input" class="bubble-element Input" value="<%= currentUser.age %>" name="user[age]" placeholder="22" maxlength="" tabindex="24" style="
+							box-sizing: border-box;
+							z-index: 9;
+							height: 25px;
+							width: 125px;
+							left: 0px;
+							top: 0px;
+							border: none;
+							background: none rgb(255, 255, 255);
+							border-radius: 6px;
+							font-family: Quicksand;
+							font-size: 14px;
+							font-weight: 500;
+							color: rgb(0, 0, 0);
+							text-align: center;
+							padding: 0px 10px;
+							">
+						</div>
+						<div class="bubble-r-box" style="height: 25px; left: 160px; width: 125px;">
+							<input type="input" class="bubble-element Input" value="<%= currentUser.hairColour %>" name="user[hairColour]" placeholder="Blonde" maxlength="" tabindex="25" style="
+							box-sizing: border-box;
+							z-index: 12;
+							height: 25px;
+							width: 125px;
+							left: 0px;
+							top: 0px;
+							border: none;
+							background-color: rgb(255, 255, 255);
+							border-radius: 6px;
+							font-family: Quicksand;
+							font-size: 14px;
+							font-weight: 500;
+							color: rgb(0, 0, 0);
+							text-align: center;
+							padding: 0px 10px;
+							">
+						</div>
+						<div class="bubble-r-box" style="height: 25px; left: 301px; width: 125px;">
+							<input type="input" class="bubble-element Input" value="<%= currentUser.cupSize %>" name="user[cupSize]" placeholder="34D" maxlength="" tabindex="26" style="
+							box-sizing: border-box;
+							z-index: 12;
+							height: 25px;
+							width: 125px;
+							left: 0px;
+							top: 0px;
+							border: none;
+							background-color: rgb(255, 255, 255);
+							border-radius: 6px;
+							font-family: Quicksand;
+							font-size: 14px;
+							font-weight: 500;
+							color: rgb(0, 0, 0);
+							text-align: center;
+							padding: 0px 10px;
+							">
+						</div>
+					</div>
+					<div class="bubble-r-line" style="margin-top: 17px; height: 41px; display: flex; justify-content: space-around;">
+						<div class="bubble-r-box" style="height: 41px; left: 6px; width: 125px;">
+							<div class="bubble-element Text" style="
+								box-sizing: border-box;
+								z-index: 4;
+								height: 35px;
+								width: 125px;
+								left: 0px;
+								top: 6px;
+								
+								overflow: visible;
+								padding-bottom: 2px;
+								font-family: 'Sorts Mill Goudy';
+								font-size: 18px;
+								color: rgb(0, 0, 0);
+								text-align: center;
+								line-height: 1.5;
+								padding-top: 2px;
+								border-radius: 0px;
+								">
+								<div class="content">Dress size</div>
+							</div>
+						</div>
+						<div class="bubble-r-box" style="height: 35px; left: 160px; width: 125px;">
+							<div class="bubble-element Text" style="
+								box-sizing: border-box;
+								z-index: 30;
+								height: 35px;
+								width: 125px;
+								left: 0px;
+								top: 0px;
+								
+								overflow: visible;
+								padding-bottom: 4px;
+								font-family: 'Sorts Mill Goudy';
+								font-size: 18px;
+								color: rgb(0, 0, 0);
+								text-align: center;
+								line-height: 1.5;
+								padding-top: 4px;
+								border-radius: 0px;
+								">
+								<div class="content">Eye colour</div>
+							</div>
+						</div>
+						<div class="bubble-r-box" style="height: 36px; left: 306px; width: 125px;">
+							<div class="bubble-element Text" style="
+								box-sizing: border-box;
+								z-index: 7;
+								height: 36px;
+								width: 125px;
+								left: 0px;
+								top: 0px;
+								
+								overflow: visible;
+								padding-bottom: 0px;
+								font-family: 'Sorts Mill Goudy';
+								font-size: 18px;
+								color: rgb(0, 0, 0);
+								text-align: center;
+								line-height: 1.5;
+								border-radius: 0px;
+								">
+								<div class="content">Height</div>
+							</div>
+						</div>
+					</div>
+					<div class="bubble-r-line" style="justify-content: space-around; margin-top: 0px; display: flex; height: 25px;">
+						<div class="bubble-r-box" style="height: 25px; left: 9px; width: 125px;">
+							<input type="input" class="bubble-element Input" value="<%=currentUser.dressSize %>" name="user[dressSize]" placeholder=" 12" maxlength="" tabindex="27" style="
+							box-sizing: border-box;
+							z-index: 11;
+							height: 25px;
+							width: 125px;
+							left: 0px;
+							top: 0px;
+							border: none;
+							background: none rgb(255, 255, 255);
+							border-radius: 6px;
+							font-family: Quicksand;
+							font-size: 14px;
+							font-weight: 500;
+							color: rgb(0, 0, 0);
+							text-align: center;
+							padding: 0px 10px;
+							">
+						</div>
+						<div class="bubble-r-box" style="height: 25px; left: 160px; width: 125px;">
+							<input type="input" class="bubble-element Input" value="<%= currentUser.eyeColour %>" name="user[eyeColour]" placeholder="Brown" maxlength="" tabindex="28" style="
+							box-sizing: border-box;
+							z-index: 32;
+							height: 25px;
+							width: 125px;
+							left: 0px;
+							top: 0px;
+							border: none;
+							background: none rgb(255, 255, 255);
+							border-radius: 6px;
+							font-family: Quicksand;
+							font-size: 14px;
+							font-weight: 500;
+							color: rgb(0, 0, 0);
+							text-align: center;
+							padding: 0px 10px;
+							">
+						</div>
+						<div class="bubble-r-box" style="height: 25px; left: 306px; width: 125px;">
+							<input type="input" class="bubble-element Input" value="<%= currentUser.height %>" name="user[height]" placeholder="165cm" maxlength="" tabindex="29" style="
+							box-sizing: border-box;
+							z-index: 12;
+							height: 25px;
+							width: 125px;
+							left: 0px;
+							top: 0px;
+							border: none;
+							background-color: rgb(255, 255, 255);
+							border-radius: 6px;
+							font-family: Quicksand;
+							font-size: 14px;
+							font-weight: 500;
+							color: rgb(0, 0, 0);
+							text-align: center;
+							padding: 0px 10px;
+							">
+						</div>
+					</div>
+					<div class="bubble-r-line" style="margin-top: 13px; height: 30px;">
+						<div class="bubble-r-box" style="height: 30px; left: 83px; width: 333px; margin: 0 auto;">
+							<div class="bubble-element Group" style="box-sizing: border-box; z-index: 33; height: 30px; width: 333px; left: 0px; top: 0px; border-radius: 6px;">
+								<div class="bubble-r-line" style="margin-top: 0px; display: flex; height: 30px;">
+									<div class="bubble-r-box" style="height: 30px; left: 0px; width: 117px;">
+										<div class="bubble-element Text" style="
+											box-sizing: border-box;
+											z-index: 3;
+											height: 30px;
+											width: 117px;
+											left: 0px;
+											top: 0px;
+											
+											overflow: visible;
+											padding-bottom: 0px;
+											font-family: 'Sorts Mill Goudy';
+											font-size: 18px;
+											color: rgb(0, 0, 0);
+											text-align: center;
+											line-height: 1.5;
+											border-radius: 0px;
+											">
+											<div class="content">Nationality</div>
+										</div>
+									</div>
+									<div class="bubble-r-box" style="height: 25px; left: 124px; width: 209px;">
+										<input type="input" class="bubble-element Input"  value="<%= currentUser.nationality %>"  name="user[nationality]" placeholder="Australian" maxlength="" tabindex="22" style="
+										box-sizing: border-box;
+										z-index: 10;
+										height: 25px;
+										width: 209px;
+										left: 0px;
+										top: 0px;
+										border: none;
+										background-color: rgb(255, 255, 255);
+										border-radius: 6px;
+										font-family: Quicksand;
+										font-size: 14px;
+										font-weight: 500;
+										color: rgb(0, 0, 0);
+										text-align: center;
+										padding: 0px 10px;
+										">
+									</div>
+								</div>
+								<div class="bubble-r-line" style="margin-top: 0px; height: 25px; display: none;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="bubble-r-line" style="margin-top: 6px; height: 56px;">
+						<div class="bubble-r-box" style="height: 56px; left: 3px; width: 370px;">
+							<div class="bubble-element Group" style="float: left; box-sizing: border-box; z-index: 31; height: 37px; width: 132px; left: 0px; top: 0px; border-radius: 6px;">
+								<div class="bubble-r-line" style="margin-top: 0px; height: 37px;">
+									<div class="bubble-r-box" style="height: 37px; left: 0px; width: 132px;">
+										<div class="bubble-element Text" style="
+											float: left;
+											box-sizing: border-box;
+											z-index: 13;
+											height: 37px;
+											left: 0px;
+											padding-left: 10px;
+											top: 0px;
+											
+											overflow: visible;
+											padding-bottom: 0px;
+											font-family: Arial;
+											font-size: 24px;
+											color: rgb(252, 8, 8);
+											text-align: center;
+											line-height: 1.5;
+											border-radius: 0px;
+											">
+											<div class="content">*</div>
+										</div>
+										<div class="bubble-element Text" style="
+											box-sizing: border-box;
+											z-index: 8;
+											height: 35px;
+											width: 96px;
+											left: 25px;
+											top: 2px;
+											
+											overflow: visible;
+											padding-bottom: 2px;
+											font-family: 'Sorts Mill Goudy';
+											font-size: 18px;
+											color: rgb(0, 0, 0);
+											text-align: center;
+											line-height: 1.5;
+											padding-top: 2px;
+											border-radius: 0px;
+											">
+											<div class="content">Location</div>
+										</div>
+										<button class="fa fa-question-circle-o inner-element bubble-element clickable-element" tabindex="21" style="
+										box-sizing: border-box;
+										z-index: 16;
+										height: 14px;
+										width: 19px;
+										left: 113px;
+										top: 2px;
+										padding: 0px;
+										text-align: center;
+										background: none;
+										border: none;
+										cursor: pointer;
+										color: rgb(0, 0, 0);
+										font-size: 14px;
+										border-radius: 4px;
+										" aria-hidden="true"></button>
+									</div>
+								</div>
+							</div>
+							<input type="input" class="bubble-element Input"  value="<%= currentUser.location %>"  name="user[location]" placeholder="Sydney " maxlength="" tabindex="30" style="
+							box-sizing: border-box;
+							z-index: 12;
+							height: 23px;
+							width: 229px;
+							left: 141px;
+							top: 5px;
+							border: none;
+							background: none rgb(255, 255, 255);
+							border-radius: 6px;
+							font-family: Quicksand;
+							font-size: 14px;
+							font-weight: 500;
+							color: rgb(0, 0, 0);
+							text-align: center;
+							padding: 0px 10px;
+							">
+							<div class="bubble-element Text" style="
+								box-sizing: border-box;
+								z-index: 17;
+								height: 27px;
+								width: 42px;
+								margin-top: 15px;
+								left: 29px;
+								float: left;
+								top: 29px;
+								
+								overflow: visible;
+								padding-bottom: 2px;
+								font-family: 'Sorts Mill Goudy';
+								font-size: 14px;
+								color: rgb(0, 0, 0);
+								text-align: right;
+								line-height: 1.5;
+								padding-top: 2px;
+								border-radius: 0px;
+								">
+								<div class="content">Area:</div>
+							</div>
+							<input type="input" class="bubble-element Input"  value="<%= currentUser.area %>"  name="user[area]" placeholder="Darling Harbour,Cronulla etc." maxlength="" tabindex="31" style="
+							box-sizing: border-box;
+							z-index: 18;
+							height: 22px;
+							float: right;
+							width: 147px;
+							left: 71px;
+							margin-top: 20px;
+							top: 29px;
+							border: none;
+							background-color: transparent;
+							border-radius: 6px;
+							font-family: 'Sorts Mill Goudy';
+							font-size: 14px;
+							color: rgb(0, 0, 0);
+							padding: 0px 10px;
+							">
+						</div>
+					</div>
 				</div>
-
-
-
-
-
-
-
-<div class="col-md-6">
-    <div class="bubble-r-box" style="height: 1607px; left: 519px; width: 457px;">
-        <div class="bubble-element Group" style="box-sizing: border-box; z-index: 7; height: 428px; width: 457px; left: 0px; top: 0px; border-radius: 6px;">
-            <div class="bubble-r-line" style="margin-top: 15px; height: 93px;">
-                <div class="bubble-r-box" style="height: 93px; left: 5px; width: 435px;">
-                    <div class="bubble-element Text" style="
-                            box-sizing: border-box;
-                            z-index: 3;
-                            height: 52px;
-                            width: 427px;
-                            left: 8px;
-                            top: 0px;
-                             
-                            overflow: visible;
-                            padding-bottom: 4px;
-                            font-family: 'Sorts Mill Goudy';
-                            font-size: 25px;
-                            color: rgb(229, 228, 226);
-                            text-align: center;
-                            line-height: 1.5;
-                            padding-top: 4px;
-                            border-radius: 0px;
-                        ">
-                        <div class="content">Nice to see you, my names</div>
-                    </div>
-                    <input type="input" class="bubble-element Input" name="user[name]" value="<%= currentUser.name %>" placeholder="Type here..." maxlength="" tabindex="32" style="
-                            box-sizing: border-box;
-                            z-index: 2;
-                            height: 52px;
-                            width: 426px;
-                            left: 0px;
-                            top: 41px;
-                            border: none;
-                            background-color: transparent;
-                            border-radius: 6px;
-                            font-family: 'Sorts Mill Goudy';
-                            font-size: 36px;
-                            color: rgb(229, 228, 226);
-                            text-align: center;
-                            padding: 0px 10px;
-                        ">
-                </div>
-            </div>
-            <div class="bubble-r-line" style="margin-top: 6px; height: 38px;">
-                <div class="bubble-r-box" style="height: 38px; left: 4px; width: 56px;">
-                    <div class="bubble-element Text" style="
-                            box-sizing: border-box;
-                            z-index: 4;
-                            height: 38px;
-                            width: 56px;
-                            left: 0px;
-                            top: 0px;
-                             
-                            overflow: visible;
-                            padding-bottom: 2px;
-                            font-family: 'Sorts Mill Goudy';
-                            font-size: 22px;
-                            font-weight: bold;
-                            color: rgb(229, 228, 226);
-                            line-height: 1.5;
-                            padding-top: 2px;
-                            border-radius: 0px;
-                        ">
-                        <div class="content">Bio</div>
-                    </div>
-                </div>
-            </div>
-            <div class="bubble-r-line" style="margin-top: 0px; height: 276px;">
-                <div class="bubble-r-box" style="height: 276px; left: 5px; width: 442px;">
-                    <div class="bubble-element Group" style="box-sizing: border-box; z-index: 6; height: 276px; width: 442px; left: 0px; top: 0px; background-color: rgb(255, 255, 255); border-radius: 6px;">
-                        <div class="bubble-r-line" style="margin-top: 0px; height: 276px;">
-                            <div class="bubble-r-box" style="height: 276px; left: 0px; width: 445px;">
-                                <div class="bubble-element Group" style="box-sizing: border-box; z-index: 5; height: 276px; width: 445px; left: 0px; top: 0px; background-color: rgb(242, 242, 242); border-radius: 10px;">
-                                    <div class="bubble-r-line" style="margin-top: 20px; height: 36px; display: flex;">
-                                        <div class="bubble-r-box" style="height: 33px; left: 5px; width: 125px;">
-                                            <div class="bubble-element Text clickable-element" tabindex="23" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 13;
-                                                    height: 30px;
-                                                    width: 125px;
-                                                    left: 0px;
-                                                    top: 3px;
-                                                     
-                                                    overflow: visible;
-                                                    padding-bottom: 0px;
-                                                    font-family: 'Sorts Mill Goudy';
-                                                    font-size: 18px;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: center;
-                                                    line-height: 1.5;
-                                                    border-radius: 0px;
-                                                    cursor: pointer;
-                                                ">
-                                                <div class="content">Age</div>
-                                            </div>
-                                        </div>
-                                        <div class="bubble-r-box" style="height: 36px; left: 156px; width: 132px;">
-                                            <div class="bubble-element Group" style="box-sizing: border-box; z-index: 19; height: 35px; width: 132px; left: 0px; top: 1px; border-radius: 6px;">
-                                                <div class="bubble-r-line" style="margin-top: 0px; height: 35px;">
-                                                    <div class="bubble-r-box" style="height: 35px; left: 0px; width: 132px;">
-                                                        <div class="bubble-element Text" style="
-                                                                box-sizing: border-box;
-                                                                z-index: 6;
-                                                                height: 35px;
-                                                                width: 125px;
-                                                                left: 0px;
-                                                                top: 0px;
-                                                                 
-                                                                overflow: visible;
-                                                                padding-bottom: 1px;
-                                                                font-family: 'Sorts Mill Goudy';
-                                                                font-size: 18px;
-                                                                color: rgb(0, 0, 0);
-                                                                text-align: center;
-                                                                line-height: 1.5;
-                                                                padding-top: 1px;
-                                                                border-radius: 0px;
-                                                            ">
-                                                            <div class="content">Hair colour</div>
-                                                        </div>
-                                                        <button class="fa fa-question-circle-o inner-element bubble-element clickable-element" tabindex="20" style="
-                                                                box-sizing: border-box;
-                                                                z-index: 17;
-                                                                height: 14px;
-                                                                width: 19px;
-                                                                left: 113px;
-                                                                top: 0px;
-                                                                padding: 0px;
-                                                                text-align: center;
-                                                                background: none;
-                                                                border: none;
-                                                                cursor: pointer;
-                                                                color: rgb(0, 0, 0);
-                                                                font-size: 14px;
-                                                                border-radius: 4px;
-                                                            " aria-hidden="true"></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="bubble-r-box" style="height: 35px; left: 305px; width: 125px;">
-                                            <div class="bubble-element Text" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 5;
-                                                    height: 35px;
-                                                    width: 125px;
-                                                    left: 0px;
-                                                    top: 0px;
-                                                     
-                                                    overflow: visible;
-                                                    padding-bottom: 0px;
-                                                    font-family: 'Sorts Mill Goudy';
-                                                    font-size: 18px;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: center;
-                                                    line-height: 1.5;
-                                                    border-radius: 0px;
-                                                ">
-                                                <div class="content">Cup Size</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bubble-r-line" style="margin-top: 7px; height: 25px; justify-content: space-around; display: flex;">
-                                        <div class="bubble-r-box" style="height: 25px; left: 9px; width: 125px;">
-                                            <input type="input" class="bubble-element Input" value="<%= currentUser.age %>" name="user[age]" placeholder="22" maxlength="" tabindex="24" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 9;
-                                                    height: 25px;
-                                                    width: 125px;
-                                                    left: 0px;
-                                                    top: 0px;
-                                                    border: none;
-                                                    background: none rgb(255, 255, 255);
-                                                    border-radius: 6px;
-                                                    font-family: Quicksand;
-                                                    font-size: 14px;
-                                                    font-weight: 500;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: center;
-                                                    padding: 0px 10px;
-                                                ">
-                                        </div>
-                                        <div class="bubble-r-box" style="height: 25px; left: 160px; width: 125px;">
-                                            <input type="input" class="bubble-element Input" value="<%= currentUser.hairColour %>" name="user[hairColour]" placeholder="Blonde" maxlength="" tabindex="25" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 12;
-                                                    height: 25px;
-                                                    width: 125px;
-                                                    left: 0px;
-                                                    top: 0px;
-                                                    border: none;
-                                                    background-color: rgb(255, 255, 255);
-                                                    border-radius: 6px;
-                                                    font-family: Quicksand;
-                                                    font-size: 14px;
-                                                    font-weight: 500;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: center;
-                                                    padding: 0px 10px;
-                                                ">
-                                        </div>
-                                        <div class="bubble-r-box" style="height: 25px; left: 301px; width: 125px;">
-                                            <input type="input" class="bubble-element Input" value="<%= currentUser.cupSize %>" name="user[cupSize]" placeholder="34D" maxlength="" tabindex="26" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 12;
-                                                    height: 25px;
-                                                    width: 125px;
-                                                    left: 0px;
-                                                    top: 0px;
-                                                    border: none;
-                                                    background-color: rgb(255, 255, 255);
-                                                    border-radius: 6px;
-                                                    font-family: Quicksand;
-                                                    font-size: 14px;
-                                                    font-weight: 500;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: center;
-                                                    padding: 0px 10px;
-                                                ">
-                                        </div>
-                                    </div>
-                                    <div class="bubble-r-line" style="margin-top: 17px; height: 41px; display: flex; justify-content: space-around;">
-                                        <div class="bubble-r-box" style="height: 41px; left: 6px; width: 125px;">
-                                            <div class="bubble-element Text" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 4;
-                                                    height: 35px;
-                                                    width: 125px;
-                                                    left: 0px;
-                                                    top: 6px;
-                                                     
-                                                    overflow: visible;
-                                                    padding-bottom: 2px;
-                                                    font-family: 'Sorts Mill Goudy';
-                                                    font-size: 18px;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: center;
-                                                    line-height: 1.5;
-                                                    padding-top: 2px;
-                                                    border-radius: 0px;
-                                                ">
-                                                <div class="content">Dress size</div>
-                                            </div>
-                                        </div>
-                                        <div class="bubble-r-box" style="height: 35px; left: 160px; width: 125px;">
-                                            <div class="bubble-element Text" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 30;
-                                                    height: 35px;
-                                                    width: 125px;
-                                                    left: 0px;
-                                                    top: 0px;
-                                                     
-                                                    overflow: visible;
-                                                    padding-bottom: 4px;
-                                                    font-family: 'Sorts Mill Goudy';
-                                                    font-size: 18px;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: center;
-                                                    line-height: 1.5;
-                                                    padding-top: 4px;
-                                                    border-radius: 0px;
-                                                ">
-                                                <div class="content">Eye colour</div>
-                                            </div>
-                                        </div>
-                                        <div class="bubble-r-box" style="height: 36px; left: 306px; width: 125px;">
-                                            <div class="bubble-element Text" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 7;
-                                                    height: 36px;
-                                                    width: 125px;
-                                                    left: 0px;
-                                                    top: 0px;
-                                                     
-                                                    overflow: visible;
-                                                    padding-bottom: 0px;
-                                                    font-family: 'Sorts Mill Goudy';
-                                                    font-size: 18px;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: center;
-                                                    line-height: 1.5;
-                                                    border-radius: 0px;
-                                                ">
-                                                <div class="content">Height</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bubble-r-line" style="justify-content: space-around; margin-top: 0px; display: flex; height: 25px;">
-                                        <div class="bubble-r-box" style="height: 25px; left: 9px; width: 125px;">
-                                            <input type="input" class="bubble-element Input" value="<%=currentUser.dressSize %>" name="user[dressSize]" placeholder=" 12" maxlength="" tabindex="27" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 11;
-                                                    height: 25px;
-                                                    width: 125px;
-                                                    left: 0px;
-                                                    top: 0px;
-                                                    border: none;
-                                                    background: none rgb(255, 255, 255);
-                                                    border-radius: 6px;
-                                                    font-family: Quicksand;
-                                                    font-size: 14px;
-                                                    font-weight: 500;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: center;
-                                                    padding: 0px 10px;
-                                                ">
-                                        </div>
-                                        <div class="bubble-r-box" style="height: 25px; left: 160px; width: 125px;">
-                                            <input type="input" class="bubble-element Input" value="<%= currentUser.eyeColour %>" name="user[eyeColour]" placeholder="Brown" maxlength="" tabindex="28" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 32;
-                                                    height: 25px;
-                                                    width: 125px;
-                                                    left: 0px;
-                                                    top: 0px;
-                                                    border: none;
-                                                    background: none rgb(255, 255, 255);
-                                                    border-radius: 6px;
-                                                    font-family: Quicksand;
-                                                    font-size: 14px;
-                                                    font-weight: 500;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: center;
-                                                    padding: 0px 10px;
-                                                ">
-                                        </div>
-                                        <div class="bubble-r-box" style="height: 25px; left: 306px; width: 125px;">
-                                            <input type="input" class="bubble-element Input" value="<%= currentUser.height %>" name="user[height]" placeholder="165cm" maxlength="" tabindex="29" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 12;
-                                                    height: 25px;
-                                                    width: 125px;
-                                                    left: 0px;
-                                                    top: 0px;
-                                                    border: none;
-                                                    background-color: rgb(255, 255, 255);
-                                                    border-radius: 6px;
-                                                    font-family: Quicksand;
-                                                    font-size: 14px;
-                                                    font-weight: 500;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: center;
-                                                    padding: 0px 10px;
-                                                ">
-                                        </div>
-                                    </div>
-                                    <div class="bubble-r-line" style="margin-top: 13px; height: 30px;">
-                                        <div class="bubble-r-box" style="height: 30px; left: 83px; width: 333px; margin: 0 auto;">
-                                            <div class="bubble-element Group" style="box-sizing: border-box; z-index: 33; height: 30px; width: 333px; left: 0px; top: 0px; border-radius: 6px;">
-                                                <div class="bubble-r-line" style="margin-top: 0px; display: flex; height: 30px;">
-                                                    <div class="bubble-r-box" style="height: 30px; left: 0px; width: 117px;">
-                                                        <div class="bubble-element Text" style="
-                                                                box-sizing: border-box;
-                                                                z-index: 3;
-                                                                height: 30px;
-                                                                width: 117px;
-                                                                left: 0px;
-                                                                top: 0px;
-                                                                 
-                                                                overflow: visible;
-                                                                padding-bottom: 0px;
-                                                                font-family: 'Sorts Mill Goudy';
-                                                                font-size: 18px;
-                                                                color: rgb(0, 0, 0);
-                                                                text-align: center;
-                                                                line-height: 1.5;
-                                                                border-radius: 0px;
-                                                            ">
-                                                            <div class="content">Nationality</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="bubble-r-box" style="height: 25px; left: 124px; width: 209px;">
-                                                        <input type="input" class="bubble-element Input"  value="<%= currentUser.nationality %>"  name="user[nationality]" placeholder="Australian" maxlength="" tabindex="22" style="
-                                                                box-sizing: border-box;
-                                                                z-index: 10;
-                                                                height: 25px;
-                                                                width: 209px;
-                                                                left: 0px;
-                                                                top: 0px;
-                                                                border: none;
-                                                                background-color: rgb(255, 255, 255);
-                                                                border-radius: 6px;
-                                                                font-family: Quicksand;
-                                                                font-size: 14px;
-                                                                font-weight: 500;
-                                                                color: rgb(0, 0, 0);
-                                                                text-align: center;
-                                                                padding: 0px 10px;
-                                                            ">
-                                                    </div>
-                                                </div>
-                                                <div class="bubble-r-line" style="margin-top: 0px; height: 25px; display: none;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bubble-r-line" style="margin-top: 6px; height: 56px;">
-                                        <div class="bubble-r-box" style="height: 56px; left: 3px; width: 370px;">
-                                            <div class="bubble-element Group" style="float: left; box-sizing: border-box; z-index: 31; height: 37px; width: 132px; left: 0px; top: 0px; border-radius: 6px;">
-                                                <div class="bubble-r-line" style="margin-top: 0px; height: 37px;">
-                                                    <div class="bubble-r-box" style="height: 37px; left: 0px; width: 132px;">
-                                                        <div class="bubble-element Text" style="
-                                                                float: left;
-                                                                box-sizing: border-box;
-                                                                z-index: 13;
-                                                                height: 37px;
-                                                                left: 0px;
-                                                                padding-left: 10px;
-                                                                top: 0px;
-                                                                 
-                                                                overflow: visible;
-                                                                padding-bottom: 0px;
-                                                                font-family: Arial;
-                                                                font-size: 24px;
-                                                                color: rgb(252, 8, 8);
-                                                                text-align: center;
-                                                                line-height: 1.5;
-                                                                border-radius: 0px;
-                                                            ">
-                                                            <div class="content">*</div>
-                                                        </div>
-                                                        <div class="bubble-element Text" style="
-                                                                box-sizing: border-box;
-                                                                z-index: 8;
-                                                                height: 35px;
-                                                                width: 96px;
-                                                                left: 25px;
-                                                                top: 2px;
-                                                                 
-                                                                overflow: visible;
-                                                                padding-bottom: 2px;
-                                                                font-family: 'Sorts Mill Goudy';
-                                                                font-size: 18px;
-                                                                color: rgb(0, 0, 0);
-                                                                text-align: center;
-                                                                line-height: 1.5;
-                                                                padding-top: 2px;
-                                                                border-radius: 0px;
-                                                            ">
-                                                            <div class="content">Location</div>
-                                                        </div>
-                                                        <button class="fa fa-question-circle-o inner-element bubble-element clickable-element" tabindex="21" style="
-                                                                box-sizing: border-box;
-                                                                z-index: 16;
-                                                                height: 14px;
-                                                                width: 19px;
-                                                                left: 113px;
-                                                                top: 2px;
-                                                                padding: 0px;
-                                                                text-align: center;
-                                                                background: none;
-                                                                border: none;
-                                                                cursor: pointer;
-                                                                color: rgb(0, 0, 0);
-                                                                font-size: 14px;
-                                                                border-radius: 4px;
-                                                            " aria-hidden="true"></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <input type="input" class="bubble-element Input"  value="<%= currentUser.location %>"  name="user[location]" placeholder="Sydney " maxlength="" tabindex="30" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 12;
-                                                    height: 23px;
-                                                    width: 229px;
-                                                    left: 141px;
-                                                    top: 5px;
-                                                    border: none;
-                                                    background: none rgb(255, 255, 255);
-                                                    border-radius: 6px;
-                                                    font-family: Quicksand;
-                                                    font-size: 14px;
-                                                    font-weight: 500;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: center;
-                                                    padding: 0px 10px;
-                                                ">
-                                            <div class="bubble-element Text" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 17;
-                                                    height: 27px;
-                                                    width: 42px;
-                                                    margin-top: 15px;
-                                                    left: 29px;
-                                                    float: left;
-                                                    top: 29px;
-                                                     
-                                                    overflow: visible;
-                                                    padding-bottom: 2px;
-                                                    font-family: 'Sorts Mill Goudy';
-                                                    font-size: 14px;
-                                                    color: rgb(0, 0, 0);
-                                                    text-align: right;
-                                                    line-height: 1.5;
-                                                    padding-top: 2px;
-                                                    border-radius: 0px;
-                                                ">
-                                                <div class="content">Area:</div>
-                                            </div>
-                                            <input type="input" class="bubble-element Input"  value="<%= currentUser.area %>"  name="user[area]" placeholder="Darling Harbour,Cronulla etc." maxlength="" tabindex="31" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 18;
-                                                    height: 22px;
-                                                    float: right;
-                                                    width: 147px;
-                                                    left: 71px;
-                                                    margin-top: 20px;
-                                                    top: 29px;
-                                                    border: none;
-                                                    background-color: transparent;
-                                                    border-radius: 6px;
-                                                    font-family: 'Sorts Mill Goudy';
-                                                    font-size: 14px;
-                                                    color: rgb(0, 0, 0);
-                                                    padding: 0px 10px;
-                                                ">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="bubble-element Group" style="box-sizing: border-box; z-index: 3; height: 1179px; width: 445px; left: 5px; top: 428px; border-radius: 6px;">
-            <div class="bubble-r-line" style="margin-top: 0px; height: 392px;">
-                <div class="bubble-r-box" style="height: 392px; left: 0px; width: 445px;">
-                    <div class="bubble-element Text" style="
-                             
-                            display: none;
-                            box-sizing: border-box;
-                            z-index: 13;
-                            top: 0px;
-                            height: 48px;
-                            overflow: visible;
-                            padding-bottom: 5px;
-                            font-family: Arial;
-                            font-size: 12px;
-                            color: rgb(227, 227, 229);
-                            line-height: 1.5;
-                            padding-top: 5px;
-                            border-radius: 0px;
-                            border-bottom: 2px solid rgb(179, 7, 7);
-                            background-color: rgb(0, 0, 0);
-                            width: 445px;
-                            left: 0px;
-                        ">
-                        <div class="content"></div>
-                    </div>
-                    <div class="bubble-element Text" style="
-                            margin-top: 20px;
-                            box-sizing: border-box;
-                            z-index: 9;
-                            height: 36px;
-                            width: 444px;
-                            left: 1px;
-                            top: 1px;
-                             
-                            overflow: visible;
-                            padding-bottom: 0px;
-                            font-family: Arial;
-                            font-size: 12px;
-                            color: rgb(227, 227, 229);
-                            line-height: 1.5;
-                            border-radius: 0px;
-                        ">
-                        <div class="content">Page search filters are case sensitive.&nbsp; Using capitals will ensure your profile can be found when any filter is applied.</div>
-                    </div>
-                    <div class="bubble-element Group" style="box-sizing: border-box; z-index: 3; height: 355px; width: 403px; left: 0px; top: 37px; border-radius: 6px;">
-                        <div class="bubble-r-line" style="margin-top: 9px; height: 35px;">
-                            <div class="bubble-r-box" style="height: 35px; left: 0px; width: 64px;">
-                                <div class="bubble-element Text" style="
-                                        box-sizing: border-box;
-                                        z-index: 3;
-                                        height: 35px;
-                                        width: 64px;
-                                        left: 0px;
-                                        top: 0px;
-                                         
-                                        overflow: visible;
-                                        padding-bottom: 0px;
-                                        font-family: 'Sorts Mill Goudy';
-                                        font-size: 22px;
-                                        font-weight: bold;
-                                        color: rgb(229, 228, 226);
-                                        line-height: 1.5;
-                                        border-radius: 0px;
-                                    ">
-                                    <div class="content">Rates</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bubble-r-line" style="margin-top: 0px; height: 33px; display: flex; justify-content: space-around;">
-                            <div class="bubble-r-box" style="height: 33px; left: 44px; width: 97px;">
-                                <div class="bubble-element Text" style="
-                                        box-sizing: border-box;
-                                        z-index: 2;
-                                        height: 33px;
-                                        width: 97px;
-                                        left: 0px;
-                                        top: 0px;
-                                         
-                                        overflow: visible;
-                                        padding-bottom: 0px;
-                                        font-family: 'Sorts Mill Goudy';
-                                        font-size: 22px;
-                                        color: rgb(229, 228, 226);
-                                        text-align: center;
-                                        line-height: 1.5;
-                                        border-radius: 0px;
-                                    ">
-                                    <div class="content">Time</div>
-                                </div>
-                            </div>
-                            <div class="bubble-r-box" style="height: 33px; left: 150px; width: 97px;">
-                                <div class="bubble-element Text" style="
-                                        box-sizing: border-box;
-                                        z-index: 3;
-                                        height: 33px;
-                                        width: 97px;
-                                        left: 0px;
-                                        top: 0px;
-                                         
-                                        overflow: visible;
-                                        padding-bottom: 0px;
-                                        font-family: 'Sorts Mill Goudy';
-                                        font-size: 22px;
-                                        color: rgb(229, 228, 226);
-                                        text-align: center;
-                                        line-height: 1.5;
-                                        border-radius: 0px;
-                                    ">
-                                    <div class="content">OutCall</div>
-                                </div>
-                            </div>
-                            <div class="bubble-r-box" style="height: 33px; left: 269px; width: 97px;">
-                                <div class="bubble-element Text" style="
-                                        box-sizing: border-box;
-                                        z-index: 4;
-                                        height: 33px;
-                                        width: 97px;
-                                        left: 0px;
-                                        top: 0px;
-                                         
-                                        overflow: visible;
-                                        padding-bottom: 0px;
-                                        font-family: 'Sorts Mill Goudy';
-                                        font-size: 22px;
-                                        color: rgb(229, 228, 226);
-                                        text-align: center;
-                                        line-height: 1.5;
-                                        border-radius: 0px;
-                                    ">
-                                    <div class="content">In-Call</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bubble-r-line" style="margin-top: 8px; display: flex; height: 264px; justify-content: space-evenly;">
-                            <div class="bubble-r-box" style="height: 264px; left: 56px; width: 85px;">
-                                <textarea class="bubble-element MultiLineInput"   name="user[hour]" data-gramm_editor="false" placeholder="1/2 hour 
-
-1 hour
-
-2 hours
-
-N-Over
-" maxlength="" tabindex="11" style="
-                                        box-sizing: border-box;
-                                        z-index: 5;
-                                        height: 264px;
-                                        width: 85px;
-                                        left: 0px;
-                                        top: 0px;
-                                        border: 1px solid rgb(0, 0, 0);
-                                        background-color: rgb(242, 242, 242);
-                                        border-radius: 6px;
-                                        box-shadow: rgb(170, 170, 170) 2px 2px 4px 0px;
-                                        font-family: Spectral;
-                                        font-size: 15px;
-                                        font-weight: 500;
-                                        color: rgb(28, 28, 28);
-                                        line-height: 1;
-                                        padding: 10px;
-                                    "><%= currentUser.hour %></textarea>
-                            </div>
-                            <div class="bubble-r-box" style="height: 264px; left: 169px; width: 85px;">
-                                <textarea class="bubble-element MultiLineInput" name="user[outCall]" data-gramm_editor="false" placeholder="$180
-
-$500
-
-$900
-
-$2,000
-" maxlength="" tabindex="12" style="box-sizing: border-box;z-index: 6;height: 264px;width: 85px;left: 0px;top: 0px;border: 1px solid rgb(0, 0, 0);background-color: rgb(242, 242, 242);border-radius: 6px;box-shadow: rgb(170, 170, 170) 2px 2px 4px 0px;font-family: Quicksand;font-size: 14px;font-weight: 500;color: rgb(28, 28, 28);line-height: 1;padding: 10px;
-                                    "><%= currentUser.outCall %> </textarea>
-                            </div>
-                            <div class="bubble-r-box" style="height: 264px; left: 288px; width: 85px;">
-                                <textarea class="bubble-element MultiLineInput"  name="user[inCall]" data-gramm_editor="false" placeholder="$350
-
-$450
-
-$850
-
-None
-
-
-" maxlength="" tabindex="13" style="
-                                        box-sizing: border-box;
-                                        z-index: 7;
-                                        height: 264px;
-                                        width: 85px;
-                                        left: 0px;
-                                        top: 0px;
-                                        border: 1px solid rgb(0, 0, 0);
-                                        background-color: rgb(242, 242, 242);
-                                        border-radius: 6px;
-                                        box-shadow: rgb(170, 170, 170) 2px 2px 4px 0px;
-                                        font-family: Quicksand;
-                                        font-size: 14px;
-                                        font-weight: 500;
-                                        color: rgb(28, 28, 28);
-                                        line-height: 1;
-                                        padding: 10px;
-                                    "><%= currentUser.inCall %> </textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bubble-r-line" style="margin-top: 11px; height: 37px;">
-                <div class="bubble-r-box" style="height: 37px; left: 0px; width: 164px;">
-                    <div class="bubble-element Text" style="
-                            box-sizing: border-box;
-                            z-index: 7;
-                            height: 37px;
-                            width: 164px;
-                            left: 0px;
-                            top: 0px;
-                             
-                            overflow: visible;
-                            padding-bottom: 0px;
-                            font-family: 'Sorts Mill Goudy';
-                            font-size: 22px;
-                            font-weight: bold;
-                            color: rgb(229, 228, 226);
-                            line-height: 1.5;
-                            border-radius: 0px;
-                        ">
-                        <div class="content">Liaise with</div>
-                    </div>
-                </div>
-            </div>
-            <div class="bubble-r-line" style="margin-top: 13px; height: 66px;">
-                <div class="bubble-r-box" style="height: 66px; left: 5px; width: 415px;">
-      
-<div class="checkboxs" style="display: flex;">
-	<div class="c" style="
-		width: 100px;
-		margin: 0 auto;
-		">
-		<div class="bubble-element Text" style="box-sizing: border-box;z-index: 2;height: 28px;margin: 0 auto;width: 46px;left: 23px;top: 0px;text-align: center;overflow: visible;padding-bottom: 0px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 14px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1.5;border-radius: 0px;">
-			<div class="content">Men</div>
-		</div>
-		<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 26px;text-align: center;margin: 0 auto;width: 24px;left: 0px;top: 0px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(0, 0, 0);line-height: 1;">
-			<input type="checkbox" id="1617633048183x4330" style="background-color: white;" tabindex="14">
-			<label for="1617633048183x4330"></label>
-		</div>
-	</div>
-	<div class="c" style="
-		width: 100px;
-		margin: 0 auto;
-		">
-		<div class="bubble-element Text" style="box-sizing: border-box;z-index: 2;height: 28px;margin: 0 auto;width: 46px;left: 23px;top: 0px;text-align: center;overflow: visible;padding-bottom: 0px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 14px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1.5;border-radius: 0px;">
-			<div class="content">Woman</div>
-		</div>
-		<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 26px;text-align: center;margin: 0 auto;width: 24px;left: 0px;top: 0px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(0, 0, 0);line-height: 1;">
-			<input type="checkbox" id="1617633048183x4330" style="background-color: white;" tabindex="14">
-			<label for="1617633048183x4330"></label>
-		</div>
-	</div>
-	<div class="c" style="
-		width: 100px;
-		margin: 0 auto;
-		">
-		<div class="bubble-element Text" style="box-sizing: border-box;width: auto;z-index: 2;height: 28px;margin: 0 auto;left: 23px;top: 0px;text-align: center;overflow: visible;padding-bottom: 0px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 14px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1.5;border-radius: 0px;">
-			<div class="content">Group sex</div>
-		</div>
-		<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 26px;text-align: center;margin: 0 auto;width: 24px;left: 0px;top: 0px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(0, 0, 0);line-height: 1;">
-			<input type="checkbox" id="1617633048183x4330" style="background-color: white;" tabindex="14">
-			<label for="1617633048183x4330"></label>
-		</div>
-	</div>
-	<div class="c" style="
-		width: 100px;
-		margin: 0 auto;
-		">
-		<div class="bubble-element Text" style="box-sizing: border-box;z-index: 2;height: 28px;margin: 0 auto;width: 46px;left: 23px;top: 0px;text-align: center;overflow: visible;padding-bottom: 0px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 14px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1.5;border-radius: 0px;">
-			<div class="content">Pairs</div>
-		</div>
-		<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 26px;text-align: center;margin: 0 auto;width: 24px;left: 0px;top: 0px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(0, 0, 0);line-height: 1;">
-			<input type="checkbox" id="1617633048183x4330" style="background-color: white;" tabindex="14">
-			<label for="1617633048183x4330"></label>
-		</div>
-	</div>
-	<div class="c" style="
-		width: 135px;
-		margin: 0 auto;
-		">
-		<div class="bubble-element Text" style="box-sizing: border-box;z-index: 2;height: 28px;margin: 0 auto;left: 23px;top: 0px;text-align: center;overflow: visible;padding-bottom: 0px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 14px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1.5;border-radius: 0px;">
-			<div class="content">Men and Woman</div>
-		</div>
-		<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 26px;text-align: center;margin: 0 auto;width: 24px;left: 0px;top: 0px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(0, 0, 0);line-height: 1;">
-			<input type="checkbox" id="1617633048183x4330" style="background-color: white;" tabindex="14">
-			<label for="1617633048183x4330"></label>
+			</div>
 		</div>
 	</div>
 </div>
-                </div>
-            </div>
-
-            <div class="bubble-r-line" style="margin-top: 70px; height: 38px;">
-                <div class="bubble-r-box" style="height: 38px; left: 0px; width: 188px;">
-                    <div class="bubble-element Text" style="
-                            box-sizing: border-box;
-                            z-index: 5;
-                            height: 38px;
-                            width: 188px;
-                            left: 0px;
-                            top: 0px;
-                            overflow: visible;
-                            padding-bottom: 0px;
-                            font-family: 'Sorts Mill Goudy';
-                            font-size: 22px;
-                            font-weight: bold;
-                            color: rgb(229, 228, 226);
-                            line-height: 1.5;
-                            border-radius: 0px;
-                        ">
-                        <div class="content">Things we can do</div>
-                    </div>
-                </div>
-            </div>
-            <div class="bubble-r-line" style="margin-top: 8px; height: 238px;">
-                <div class="bubble-r-box" style="height: 238px; left: 0px; width: 420px;">
-                    <div class="bubble-element Group" style="box-sizing: border-box; z-index: 6; height: 238px; width: 420px; left: 0px; top: 0px; border-radius: 6px;">
-                        <div class="bubble-r-line" style="margin-top: 0px; height: 233px;">
-                            <div class="bubble-r-box" style="height: 233px; left: 0px; width: 416px;">
-                                <textarea class="bubble-element MultiLineInput" data-gramm_editor="false" name="user[thingCan]" placeholder="Type here..." maxlength="" tabindex="19" style="
-                                        box-sizing: border-box;
-                                        z-index: 2;
-                                        height: 233px;
-                                        width: 416px;
-                                        left: 0px;
-                                        top: 0px;
-                                        border: 1px solid rgb(235, 235, 235);
-                                        background-color: transparent;
-                                        border-radius: 6px;
-                                        font-family: 'Sorts Mill Goudy';
-                                        font-size: 14px;
-                                        font-weight: bold;
-                                        color: rgb(229, 228, 226);
-                                        line-height: 1;
-                                        padding: 10px;
-                                    "><%= currentUser.thingCan %></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bubble-r-line" style="margin-top: 37px; height: 33px;">
-                <div class="bubble-r-box" style="height: 33px; left: 129px; width: 137px;">
-                    <div class="bubble-element Text" style="
-                            box-sizing: border-box;
-                            z-index: 4;
-                            height: 33px;
-                            width: 137px;
-                            left: 0px;
-                            top: 0px;
-                             
-                            overflow: visible;
-                            padding-bottom: 0px;
-                            font-family: 'Sorts Mill Goudy';
-                            font-size: 22px;
-                            font-weight: bold;
-                            color: rgb(229, 228, 226);
-                            line-height: 1.5;
-                            border-radius: 0px;
-                        ">
-                        <div class="content">Contact me</div>
-                    </div>
-                </div>
-            </div>
-            <div class="bubble-r-line" style="margin-top: 7px; height: 282px;">
-                <div class="bubble-r-box" style="height: 282px; left: 0px; width: 416px;">
-                    <div class="bubble-element Group" style="box-sizing: border-box; z-index: 2; height: 282px; width: 416px; left: 0px; top: 0px; border-radius: 6px;">
-                        <div class="bubble-r-line" style="margin-top: 22px; height: 37px;">
-                            <div class="bubble-r-box" style="height: 37px; left: 42px; width: 40px;">
-                                
-                            </div>
-                            <div class="bubble-r-box" style="height: 37px; left: 82px; width: 262px;">
-                                
-                                <input type="input" class="bubble-element Input" name="user[phoneNumber]" value="<%= currentUser.phoneNumber %>" placeholder="Phone number" maxlength="" tabindex="8" style="
-                                        box-sizing: border-box;
-                                        z-index: 9;
-                                        height: 18px;
-                                        width: 232px;
-                                        left: 0px;
-                                        top: 11px;
-                                        border-top: none;
-                                        border-right: none;
-                                        border-bottom: 1px solid rgb(0, 0, 0);
-                                        border-left: none;
-                                        border-image: initial;
-                                        background-color: transparent;
-                                        border-radius: 3px;
-                                        font-family: Spectral;
-                                        font-size: 16px;
-                                        font-weight: bold;
-                                        color: rgb(229, 228, 226);
-                                        padding: 0px 10px;
-                                    ">
-                            </div>
-                        </div>
-                        <div class="bubble-r-line" style="margin-top: 19px; height: 135px;">
-                            
-                        </div>
-                        <div class="bubble-r-line" style="margin-top: -44px;height: 20px;">
-                            <div class="bubble-r-box" style="height: 20px; left: 28px; width: 305px;">
-                                <div class="bubble-element Group" style="box-sizing: border-box; z-index: 8; height: 20px; width: 305px; left: 0px; top: 0px; border-radius: 6px;">
-                                    <div class="bubble-r-line" style="margin-top: 0px; height: 20px;">
-                                        <div class="bubble-r-box" style="height: 20px;left: 0px;justify-content: space-around;display: flex;width: 305px;">
-                                            <div class="bubble-element Text" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 11;
-                                                    height: 20px;
-                                                    width: 168px;
-                                                    left: 0px;
-                                                    top: 0px;
-                                                     
-                                                    overflow: visible;
-                                                    padding-bottom: 0px;
-                                                    font-family: 'Sorts Mill Goudy';
-                                                    font-size: 12px;
-                                                    font-weight: bold;
-                                                    color: rgb(229, 228, 226);
-                                                    line-height: 1.5;
-                                                    border-radius: 0px;
-                                                ">
-                                                <div class="content">Preferred Contact Method</div>
-                                            </div>
-                                            <input type="input" class="bubble-element Input" name="user[PreferredContactMethod]"  value="<%= currentUser.PreferredContactMethod %>" placeholder="Type here..." maxlength="" tabindex="5" style="
-                                                    box-sizing: border-box;
-                                                    z-index: 15;
-                                                    height: 14px;
-                                                    width: 165px;
-                                                    left: 140px;
-                                                    top: 0px;
-                                                    border: 1px solid rgb(0, 0, 0);
-                                                    background-color: transparent;
-                                                    border-radius: 6px;
-                                                    font-family: Quicksand;
-                                                    font-size: 12px;
-                                                    color: rgb(229, 228, 226);
-                                                    padding: 0px 10px;
-                                                ">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bubble-r-line" style="margin-top: 26px; height: 20px; display: none;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
-
-
-
-
-
-
-
-
-
+</div>
+<div class="bubble-element Group" style="box-sizing: border-box; z-index: 3; height: 1179px; width: 445px; left: 5px; top: 428px; border-radius: 6px;">
+<div class="bubble-r-line" style="margin-top: 0px; height: 392px;">
+<div class="bubble-r-box" style="height: 392px; left: 0px; width: 445px;">
+	<div class="bubble-element Text" style="
+		
+		display: none;
+		box-sizing: border-box;
+		z-index: 13;
+		top: 0px;
+		height: 48px;
+		overflow: visible;
+		padding-bottom: 5px;
+		font-family: Arial;
+		font-size: 12px;
+		color: rgb(227, 227, 229);
+		line-height: 1.5;
+		padding-top: 5px;
+		border-radius: 0px;
+		border-bottom: 2px solid rgb(179, 7, 7);
+		background-color: rgb(0, 0, 0);
+		width: 445px;
+		left: 0px;
+		">
+		<div class="content"></div>
+	</div>
+	<div class="bubble-element Text" style="
+		margin-top: 20px;
+		box-sizing: border-box;
+		z-index: 9;
+		height: 36px;
+		width: 444px;
+		left: 1px;
+		top: 1px;
+		
+		overflow: visible;
+		padding-bottom: 0px;
+		font-family: Arial;
+		font-size: 12px;
+		color: rgb(227, 227, 229);
+		line-height: 1.5;
+		border-radius: 0px;
+		">
+		<div class="content">Page search filters are case sensitive.&nbsp; Using capitals will ensure your profile can be found when any filter is applied.</div>
+	</div>
+	<div class="bubble-element Group" style="box-sizing: border-box; z-index: 3; height: 355px; width: 403px; left: 0px; top: 37px; border-radius: 6px;">
+		<div class="bubble-r-line" style="margin-top: 9px; height: 35px;">
+			<div class="bubble-r-box" style="height: 35px; left: 0px; width: 64px;">
+				<div class="bubble-element Text" style="
+					box-sizing: border-box;
+					z-index: 3;
+					height: 35px;
+					width: 64px;
+					left: 0px;
+					top: 0px;
+					
+					overflow: visible;
+					padding-bottom: 0px;
+					font-family: 'Sorts Mill Goudy';
+					font-size: 22px;
+					font-weight: bold;
+					color: rgb(229, 228, 226);
+					line-height: 1.5;
+					border-radius: 0px;
+					">
+					<div class="content">Rates</div>
+				</div>
+			</div>
+		</div>
+		<div class="bubble-r-line" style="margin-top: 0px; height: 33px; display: flex; justify-content: space-around;">
+			<div class="bubble-r-box" style="height: 33px; left: 44px; width: 97px;">
+				<div class="bubble-element Text" style="
+					box-sizing: border-box;
+					z-index: 2;
+					height: 33px;
+					width: 97px;
+					left: 0px;
+					top: 0px;
+					
+					overflow: visible;
+					padding-bottom: 0px;
+					font-family: 'Sorts Mill Goudy';
+					font-size: 22px;
+					color: rgb(229, 228, 226);
+					text-align: center;
+					line-height: 1.5;
+					border-radius: 0px;
+					">
+					<div class="content">Time</div>
+				</div>
+			</div>
+			<div class="bubble-r-box" style="height: 33px; left: 150px; width: 97px;">
+				<div class="bubble-element Text" style="
+					box-sizing: border-box;
+					z-index: 3;
+					height: 33px;
+					width: 97px;
+					left: 0px;
+					top: 0px;
+					
+					overflow: visible;
+					padding-bottom: 0px;
+					font-family: 'Sorts Mill Goudy';
+					font-size: 22px;
+					color: rgb(229, 228, 226);
+					text-align: center;
+					line-height: 1.5;
+					border-radius: 0px;
+					">
+					<div class="content">OutCall</div>
+				</div>
+			</div>
+			<div class="bubble-r-box" style="height: 33px; left: 269px; width: 97px;">
+				<div class="bubble-element Text" style="
+					box-sizing: border-box;
+					z-index: 4;
+					height: 33px;
+					width: 97px;
+					left: 0px;
+					top: 0px;
+					
+					overflow: visible;
+					padding-bottom: 0px;
+					font-family: 'Sorts Mill Goudy';
+					font-size: 22px;
+					color: rgb(229, 228, 226);
+					text-align: center;
+					line-height: 1.5;
+					border-radius: 0px;
+					">
+					<div class="content">In-Call</div>
+				</div>
+			</div>
+		</div>
+		<div class="bubble-r-line" style="margin-top: 8px; display: flex; height: 264px; justify-content: space-evenly;">
+			<div class="bubble-r-box" style="height: 264px; left: 56px; width: 85px;">
+				<textarea class="bubble-element MultiLineInput"   name="user[hour]" data-gramm_editor="false" placeholder="1/2 hour
+				1 hour
+				2 hours
+				N-Over
+				" maxlength="" tabindex="11" style="
+				box-sizing: border-box;
+				z-index: 5;
+				height: 264px;
+				width: 85px;
+				left: 0px;
+				top: 0px;
+				border: 1px solid rgb(0, 0, 0);
+				background-color: rgb(242, 242, 242);
+				border-radius: 6px;
+				box-shadow: rgb(170, 170, 170) 2px 2px 4px 0px;
+				font-family: Spectral;
+				font-size: 15px;
+				font-weight: 500;
+				color: rgb(28, 28, 28);
+				line-height: 1;
+				padding: 10px;
+				"><%= currentUser.hour %></textarea>
+			</div>
+			<div class="bubble-r-box" style="height: 264px; left: 169px; width: 85px;">
+				<textarea class="bubble-element MultiLineInput" name="user[outCall]" data-gramm_editor="false" placeholder="$180
+				$500
+				$900
+				$2,000
+				" maxlength="" tabindex="12" style="box-sizing: border-box;z-index: 6;height: 264px;width: 85px;left: 0px;top: 0px;border: 1px solid rgb(0, 0, 0);background-color: rgb(242, 242, 242);border-radius: 6px;box-shadow: rgb(170, 170, 170) 2px 2px 4px 0px;font-family: Quicksand;font-size: 14px;font-weight: 500;color: rgb(28, 28, 28);line-height: 1;padding: 10px;
+				"><%= currentUser.outCall %> </textarea>
+			</div>
+			<div class="bubble-r-box" style="height: 264px; left: 288px; width: 85px;">
+				<textarea class="bubble-element MultiLineInput"  name="user[inCall]" data-gramm_editor="false" placeholder="$350
+				$450
+				$850
+				None
+				" maxlength="" tabindex="13" style="
+				box-sizing: border-box;
+				z-index: 7;
+				height: 264px;
+				width: 85px;
+				left: 0px;
+				top: 0px;
+				border: 1px solid rgb(0, 0, 0);
+				background-color: rgb(242, 242, 242);
+				border-radius: 6px;
+				box-shadow: rgb(170, 170, 170) 2px 2px 4px 0px;
+				font-family: Quicksand;
+				font-size: 14px;
+				font-weight: 500;
+				color: rgb(28, 28, 28);
+				line-height: 1;
+				padding: 10px;
+				"><%= currentUser.inCall %> </textarea>
+			</div>
+		</div>
 	</div>
 </div>
+</div>
+<div class="bubble-r-line" style="margin-top: 11px; height: 37px;">
+<div class="bubble-r-box" style="height: 37px; left: 0px; width: 164px;">
+	<div class="bubble-element Text" style="
+		box-sizing: border-box;
+		z-index: 7;
+		height: 37px;
+		width: 164px;
+		left: 0px;
+		top: 0px;
+		
+		overflow: visible;
+		padding-bottom: 0px;
+		font-family: 'Sorts Mill Goudy';
+		font-size: 22px;
+		font-weight: bold;
+		color: rgb(229, 228, 226);
+		line-height: 1.5;
+		border-radius: 0px;
+		">
+		<div class="content">Liaise with</div>
+	</div>
+</div>
+</div>
+<div class="bubble-r-line" style="margin-top: 13px; height: 66px;">
+<div class="bubble-r-box" style="height: 66px; left: 5px; width: 415px;">
+	
+	<div class="checkboxs" style="display: flex;">
+		<div class="c" style="
+			width: 100px;
+			margin: 0 auto;
+			">
+			<div class="bubble-element Text" style="box-sizing: border-box;z-index: 2;height: 28px;margin: 0 auto;width: 46px;left: 23px;top: 0px;text-align: center;overflow: visible;padding-bottom: 0px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 14px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1.5;border-radius: 0px;">
+				<div class="content">Men</div>
+			</div>
+			<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 26px;text-align: center;margin: 0 auto;width: 24px;left: 0px;top: 0px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(0, 0, 0);line-height: 1;">
+				<input type="checkbox" id="1617633048183x4330" name="laisWith[man]" style="background-color: white;" tabindex="14" <% if(currentUser.liaiseWith.man == 'on'){ %>
+				checked="checked"
+				<% } %> >
+				<label for="1617633048183x4330"></label>
+			</div>
+		</div>
+		<div class="c" style="
+			width: 100px;
+			margin: 0 auto;
+			">
+			<div class="bubble-element Text" style="box-sizing: border-box;z-index: 2;height: 28px;margin: 0 auto;width: 46px;left: 23px;top: 0px;text-align: center;overflow: visible;padding-bottom: 0px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 14px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1.5;border-radius: 0px;">
+				<div class="content">Woman</div>
+			</div>
+			<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 26px;text-align: center;margin: 0 auto;width: 24px;left: 0px;top: 0px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(0, 0, 0);line-height: 1;">
+				<input type="checkbox" id="1617633048183x4330" name="laisWith[woman]" style="background-color: white;" tabindex="14" <% if(currentUser.liaiseWith.woman == 'on'){ %>
+				checked="checked"
+				<% } %> >
+				<label for="1617633048183x4330"></label>
+			</div>
+		</div>
+		<div class="c" style="
+			width: 100px;
+			margin: 0 auto;
+			">
+			<div class="bubble-element Text" style="box-sizing: border-box;width: auto;z-index: 2;height: 28px;margin: 0 auto;left: 23px;top: 0px;text-align: center;overflow: visible;padding-bottom: 0px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 14px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1.5;border-radius: 0px;">
+				<div class="content">Group sex</div>
+			</div>
+			<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 26px;text-align: center;margin: 0 auto;width: 24px;left: 0px;top: 0px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(0, 0, 0);line-height: 1;">
+				<input type="checkbox" id="1617633048183x4330" name="laisWith[group_sex]" style="background-color: white;" tabindex="14" <% if(currentUser.liaiseWith.group_sex == 'on'){ %>
+				checked="checked"
+				<% } %>>
+				<label for="1617633048183x4330"></label>
+			</div>
+		</div>
+		<div class="c" style="
+			width: 100px;
+			margin: 0 auto;
+			">
+			<div class="bubble-element Text" style="box-sizing: border-box;z-index: 2;height: 28px;margin: 0 auto;width: 46px;left: 23px;top: 0px;text-align: center;overflow: visible;padding-bottom: 0px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 14px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1.5;border-radius: 0px;">
+				<div class="content">Pairs</div>
+			</div>
+			<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 26px;text-align: center;margin: 0 auto;width: 24px;left: 0px;top: 0px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(0, 0, 0);line-height: 1;">
+				<input type="checkbox" id="1617633048183x4330" name="laisWith[pairs]" style="background-color: white;" tabindex="14" <% if(currentUser.liaiseWith.pairs == 'on'){ %>
+				checked="checked"
+				<% } %>>
+				<label for="1617633048183x4330"></label>
+			</div>
+		</div>
+		<div class="c" style="
+			width: 135px;
+			margin: 0 auto;
+			">
+			<div class="bubble-element Text" style="box-sizing: border-box;z-index: 2;height: 28px;margin: 0 auto;left: 23px;top: 0px;text-align: center;overflow: visible;padding-bottom: 0px;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 14px;font-weight: bold;color: rgb(229, 228, 226);line-height: 1.5;border-radius: 0px;">
+				<div class="content">Men and Woman</div>
+			</div>
+			<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 26px;text-align: center;margin: 0 auto;width: 24px;left: 0px;top: 0px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(0, 0, 0);line-height: 1;">
+				<input type="checkbox" id="1617633048183x4330" name="laisWith[men_woman]" style="background-color: white;" tabindex="14" <% if(currentUser.liaiseWith.men_woman == 'on'){ %>
+				checked="checked"
+				<% } %>>
+				<label for="1617633048183x4330"></label>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div class="bubble-r-line" style="margin-top: 70px; height: 38px;">
+<div class="bubble-r-box" style="height: 38px; left: 0px; width: 188px;">
+	<div class="bubble-element Text" style="
+		box-sizing: border-box;
+		z-index: 5;
+		height: 38px;
+		width: 188px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+		padding-bottom: 0px;
+		font-family: 'Sorts Mill Goudy';
+		font-size: 22px;
+		font-weight: bold;
+		color: rgb(229, 228, 226);
+		line-height: 1.5;
+		border-radius: 0px;
+		">
+		<div class="content">Things we can do</div>
+	</div>
+</div>
+</div>
+<div class="bubble-r-line" style="margin-top: 8px; height: 238px;">
+<div class="bubble-r-box" style="height: 238px; left: 0px; width: 420px;">
+	<div class="bubble-element Group" style="box-sizing: border-box; z-index: 6; height: 238px; width: 420px; left: 0px; top: 0px; border-radius: 6px;">
+		<div class="bubble-r-line" style="margin-top: 0px; height: 233px;">
+			<div class="bubble-r-box" style="height: 233px; left: 0px; width: 416px;">
+				<textarea class="bubble-element MultiLineInput" data-gramm_editor="false" name="user[thingCan]" placeholder="Type here..." maxlength="" tabindex="19" style="
+				box-sizing: border-box;
+				z-index: 2;
+				height: 233px;
+				width: 416px;
+				left: 0px;
+				top: 0px;
+				border: 1px solid rgb(235, 235, 235);
+				background-color: transparent;
+				border-radius: 6px;
+				font-family: 'Sorts Mill Goudy';
+				font-size: 14px;
+				font-weight: bold;
+				color: rgb(229, 228, 226);
+				line-height: 1;
+				padding: 10px;
+				"><%= currentUser.thingCan %></textarea>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div class="bubble-r-line" style="margin-top: 37px; height: 33px;">
+<div class="bubble-r-box" style="height: 33px; left: 129px; width: 137px;">
+	<div class="bubble-element Text" style="
+		box-sizing: border-box;
+		z-index: 4;
+		height: 33px;
+		width: 137px;
+		left: 0px;
+		top: 0px;
+		
+		overflow: visible;
+		padding-bottom: 0px;
+		font-family: 'Sorts Mill Goudy';
+		font-size: 22px;
+		font-weight: bold;
+		color: rgb(229, 228, 226);
+		line-height: 1.5;
+		border-radius: 0px;
+		">
+		<div class="content">Contact me</div>
+	</div>
+</div>
+</div>
+<div class="bubble-r-line" style="margin-top: 7px; height: 282px;">
+<div class="bubble-r-box" style="height: 282px; left: 0px; width: 416px;">
+	<div class="bubble-element Group" style="box-sizing: border-box; z-index: 2; height: 282px; width: 416px; left: 0px; top: 0px; border-radius: 6px;">
+		<div class="bubble-r-line" style="margin-top: 22px;height: 140px;justify-content: space-between;display: flex;flex-direction: column;">
+			
+			<div class="bubble-r-box" style="height: 37px;margin: 15px 0;width: 262px;display: flex;">
+				
+				<i class="fas fa-mobile-alt" aria-hidden="true" style="
+				color: white;
+				box-sizing: border-box;
+				z-index: 2;
+				height: 37px;
+				width: 40px;
+				left: 0px;
+				top: 0px;
+				padding: 0px;
+				text-align: center;
+				background: none;
+				border: none;
+				cursor: inherit;
+				font-size: 37px;
+				border-radius: 4px;
+				"></i>
+				<input type="input" class="bubble-element Input" name="user[phoneNumber]" value="<%= currentUser.phoneNumber %>" placeholder="Phone number" maxlength="" tabindex="8" style="box-sizing: border-box;z-index: 9;height: 18px;width: 232px;margin: auto;left: 0px;top: 11px;border-top: none;border-right: none;border-bottom: 1px solid rgb(0, 0, 0);border-left: none;border-image: initial;background-color: transparent;border-radius: 3px;font-family: Spectral;font-size: 16px;font-weight: bold;color: rgb(229, 228, 226);padding: 0px 10px;">
+			</div>
+			<div class="bubble-r-box" style="margin: 15px 0;height: 37px;left: 82px;display: flex;width: 262px;">
+				
+				<i class="fas fa-laptop" aria-hidden="true" style="
+				box-sizing: border-box;
+				z-index: 2;
+				height: 37px;
+				width: 40px;
+				padding: 0px;
+				text-align: center;
+				background: none;
+				border: none;
+				cursor: inherit;
+				color: rgb(229, 228, 226);
+				font-size: 30px;
+				border-radius: 4px;
+				"></i>
+				<input type="input" class="bubble-element Input" name="user[websiteUrl]" value="<%= currentUser.websiteUrl %>" placeholder="website url" maxlength="" tabindex="8" style="margin:auto;box-sizing: border-box;z-index: 9;height: 18px;width: 232px;left: 0px;top: 11px;border-top: none;border-right: none;border-bottom: 1px solid rgb(0, 0, 0);border-left: none;border-image: initial;background-color: transparent;border-radius: 3px;font-family: Spectral;font-size: 16px;font-weight: bold;color: rgb(229, 228, 226);padding: 0px 10px;">
+			</div>
+			<div class="bubble-r-box" style="height: 37px;left: 82px;margin: 15px 0;display: flex;width: 262px;">
+				
+				<i class="far fa-envelope" aria-hidden="true" style="
+				box-sizing: border-box;
+				z-index: 2;
+				height: 37px;
+				width: 40px;
+				padding: 0px;
+				text-align: center;
+				background: none;
+				border: none;
+				cursor: inherit;
+				color: rgb(229, 228, 226);
+				font-size: 30px;
+				border-radius: 4px;
+				"></i>
+				<input type="input" class="bubble-element Input" name="user[email]" value="<%= currentUser.username %>" placeholder="email" maxlength="" tabindex="8" style="margin:auto;box-sizing: border-box;z-index: 9;height: 18px;width: 232px;left: 0px;top: 11px;border-top: none;border-right: none;border-bottom: 1px solid rgb(0, 0, 0);border-left: none;border-image: initial;background-color: transparent;border-radius: 3px;font-family: Spectral;font-size: 16px;font-weight: bold;color: rgb(229, 228, 226);padding: 0px 10px;">
+			</div>
+		</div>
+		<div class="bubble-r-line" style="margin-top: 30px;height: 90px;">
+			
+		</div>
+		<div class="bubble-r-line" style="margin-top: -44px;height: 20px;">
+			<div class="bubble-r-box" style="height: 20px; left: 28px; width: 305px;">
+				<div class="bubble-element Group" style="box-sizing: border-box; z-index: 8; height: 20px; width: 305px; left: 0px; top: 0px; border-radius: 6px;">
+					<div class="bubble-r-line" style="margin-top: 0px; height: 20px;">
+						<div class="bubble-r-box" style="height: 20px;left: 0px;justify-content: space-around;display: flex;width: 305px;">
+							<div class="bubble-element Text" style="
+								box-sizing: border-box;
+								z-index: 11;
+								height: 20px;
+								width: 168px;
+								left: 0px;
+								top: 0px;
+								
+								overflow: visible;
+								padding-bottom: 0px;
+								font-family: 'Sorts Mill Goudy';
+								font-size: 12px;
+								font-weight: bold;
+								color: rgb(229, 228, 226);
+								line-height: 1.5;
+								border-radius: 0px;
+								">
+								<div class="content">Preferred Contact Method</div>
+							</div>
+							<input type="input" class="bubble-element Input" name="user[PreferredContactMethod]" value="" placeholder="Type here..." maxlength="" tabindex="5" style="
+							box-sizing: border-box;
+							z-index: 15;
+							height: 14px;
+							width: 165px;
+							left: 140px;
+							top: 0px;
+							border: 1px solid rgb(0, 0, 0);
+							background-color: transparent;
+							border-radius: 6px;
+							font-family: Quicksand;
+							font-size: 12px;
+							color: rgb(229, 228, 226);
+							padding: 0px 10px;
+							">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bubble-r-line" style="margin-top: 26px; height: 20px; display: none;"></div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 
 <div class="container">
-	<div class="row">
-		<div class="col-md-6 m-auto">
-			
+<div class="row">
+<div class="col-md-6 m-auto">
 <div class="bubble-r-line" style="margin-top: 11px;text-align: center;height: 99px;">
-	<div class="bubble-r-box" style="height: 99px;left: 127.552px;width: 213px;margin: 0 auto;text-align: center;">
-		<button class="bubble-element Button clickable-element" type="submit" style="box-sizing: border-box;z-index: 5;height: 68px;width: 70px;left: 72px;top: 0px;padding: 0px;cursor: pointer;background: none rgb(214, 3, 3);border: none;text-align: center;font-family: &quot;Spectral SC&quot;;font-size: 20px;font-weight: bold;color: rgb(255, 255, 255);line-height: 1;border-radius: 100px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;" tabindex="39">SAVE</button>
-		<div class="bubble-element Alert" style="display: none;">Done</div>
-		<div class="bubble-element Alert" style="display: none;">All your info has been saved</div>
-	</div>
+<div class="bubble-r-box" style="height: 99px;left: 127.552px;width: 213px;margin: 65px auto 0 auto;text-align: center;">
+<button class="bubble-element Button clickable-element" type="submit" style="box-sizing: border-box;z-index: 5;height: 68px;width: 70px;left: 72px;margin: auto;top: 0px;padding: 0px;cursor: pointer;background: none rgb(214, 3, 3);border: none;text-align: center;font-family: &quot;Spectral SC&quot;;font-size: 20px;font-weight: bold;color: rgb(255, 255, 255);line-height: 1;border-radius: 100px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;" tabindex="39">SAVE</button>
+<div class="bubble-element Alert" style="display: none;">Done</div>
+<div class="bubble-element Alert" style="display: none;">All your info has been saved</div>
 </div>
-
-		</div>
-		<div class="col-md-6 m-auto">
+</div>
+</div>
+<div class="col-md-6 m-auto">
 <div class="bubble-r-line" style="margin-top: 10px;height: 164px;">
-	<div class="bubble-r-box" style="margin: 0 auto;height: 164px;width: 200px;">
-		<div class="bubble-element Group" style="box-sizing: border-box;z-index: 2;height: 139px;width: 200px;text-align: center;border-radius: 6px;">
-			<div class="bubble-r-line" style="margin-top: 7px;margin-bottom: 10px;height: 18px;">
-				<div class="bubble-r-box" style="margin: 0 auto;height: 18px;width: 91px;"><input type="input" class="bubble-element Input" name="user[followMe]" value="<%= currentUser.followMe %>" placeholder="Follow me" maxlength="" tabindex="35" style="box-sizing: border-box;z-index: 20;height: 18px;width: 91px;border: none;background: none transparent;border-radius: 6px;font-family: Spectral;font-size: 13px;font-weight: bold;color: rgb(227, 227, 229);text-align: center;padding: 0px 10px;">
-			</div>
-		</div>
-		<div class="bubble-r-line" style="margin-top: 0px; height: 57px;">
-			<div class="bubble-r-box" style="height: 57px;left: 65px;width: 70px;margin: 0 auto;">
-				<div class="bubble-element Image clickable-element" tabindex="36" style="box-sizing: border-box;z-index: 18;height: 57px;width: 70px;border-radius: 0px;cursor: pointer;"><img alt="" src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1593917087665x691149002125712700%2F17760a6daad2edf7f4d9b837b5437246.jpg?w=96&amp;h=78&amp;auto=compress&amp;fit=crop&amp;dpr=1" style="display: block; margin: 0px; width: 100%; height: 100%; border-radius: 0px;">
-				</div>
-			</div>
-		</div>
-		<div class="bubble-r-line" style="margin-top: 0px; height: 18px;">
-			<div class="bubble-r-box" style="height: 18px;width: 200px;margin: 0 auto;">
-				<input type="input" class="bubble-element Input" name="user[instagramUrl]" value="<%= currentUser.instagramUrl %>" placeholder="Your own insta link" maxlength="" tabindex="34" style="box-sizing: border-box;z-index: 19;height: 18px;width: 200px;border: none;background: none transparent;border-radius: 6px;font-family: Spectral;font-size: 13px;font-weight: bold;color: rgb(227, 227, 229);text-align: center;padding: 0px 10px;">
-			</div>
-		</div>
-		<div class="bubble-r-line" style="margin-top: 11px; height: 23px;">
-			<div class="bubble-r-box" style="height: 23px;margin: 0 auto;width: 124px;">
-				<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 23px;width: 124px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(227, 227, 229);text-align: center;line-height: 1;">
-					<input type="checkbox" id="1617101588176x8779" style="background-color: white;" tabindex="37">
-					<label for="1617101588176x8779">Disable </label>
-				</div>
-			</div>
-		</div>
+<div class="bubble-r-box" style="margin: 0 auto;height: 164px;width: 200px;">
+<div class="bubble-element Group" style="box-sizing: border-box;z-index: 2;height: 139px;width: 200px;text-align: center;border-radius: 6px;">
+<div class="bubble-r-line" style="margin-top: 7px;margin-bottom: 10px;height: 18px;">
+	<div class="bubble-r-box" style="margin: 0 auto;height: 18px;width: 91px;"><input type="input" class="bubble-element Input" name="user[followMe]" value="Follow Me" placeholder="Follow me" maxlength="" tabindex="35" style="box-sizing: border-box;z-index: 20;height: 18px;width: 91px;border: none;background: none transparent;border-radius: 6px;font-family: Spectral;font-size: 13px;font-weight: bold;color: rgb(227, 227, 229);text-align: center;padding: 0px 10px;">
+</div>
+</div>
+<div class="bubble-r-line" style="margin-top: 0px; height: 57px;">
+<div class="bubble-r-box" style="height: 57px;left: 65px;width: 70px;margin: 0 auto;">
+	<div class="bubble-element Image clickable-element" tabindex="36" style="box-sizing: border-box;z-index: 18;height: 57px;width: 70px;border-radius: 0px;cursor: pointer;"><img alt="" src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1593917087665x691149002125712700%2F17760a6daad2edf7f4d9b837b5437246.jpg?w=96&amp;h=78&amp;auto=compress&amp;fit=crop&amp;dpr=1" style="display: block; margin: 0px; width: 100%; height: 100%; border-radius: 0px;">
 	</div>
 </div>
 </div>
-		</div>
+<div class="bubble-r-line" style="margin-top: 0px; height: 18px;">
+<div class="bubble-r-box" style="height: 18px;width: 200px;margin: 0 auto;">
+	<input type="input" class="bubble-element Input" name="user[instagramUrl]" value="https://sdfdgfdg.fgf/dfgdfsgf" placeholder="Your own insta link" maxlength="" tabindex="34" style="box-sizing: border-box;z-index: 19;height: 18px;width: 200px;border: none;background: none transparent;border-radius: 6px;font-family: Spectral;font-size: 13px;font-weight: bold;color: rgb(227, 227, 229);text-align: center;padding: 0px 10px;">
+</div>
+</div>
+<div class="bubble-r-line" style="margin-top: 11px; height: 23px;">
+<div class="bubble-r-box" style="height: 23px;margin: 0 auto;width: 124px;">
+	<div class="bubble-element Checkbox clickable-element" style="box-sizing: border-box;z-index: 11;height: 23px;width: 124px;overflow: visible;font-family: Arial;font-size: 12px;color: rgb(227, 227, 229);text-align: center;line-height: 1;">
+		<input type="checkbox" id="1617101588176x8779" style="background-color: white;" tabindex="37">
+		<label for="1617101588176x8779">Disable </label>
 	</div>
+</div>
 </div>
 
 
-
+</div>
+</div>
+</div>
+</div>
+    
+    
+    <div class="bubble-r-box" style="height: 29px;left: 0px;margin: 0 auto;width: 100%;">
+	<div class="bubble-element Text" style="box-sizing: border-box;z-index: 41;height: 29px;width: 100%;left: 0px;top: 0px;margin: 0 auto;overflow: visible;padding-bottom: 2px;font-family: Arial;font-size: 10px;color: rgb(229, 228, 226);text-align: center;line-height: 1.5;padding-top: 2px;border-radius: 0px;">
+		<div class="content">
+			<strong>Note:</strong> Your profile is found in the city you have saved under 'location'. Remember to update your location if you are travelling around or have moved since your profile was last active online. 
+		</div>
+	</div>
+</div>
+    
+</div>
+</div>
 
 </form>
 
-
-<!-- <form>
-  <input type='file' id="imgInp" />
-  <img id="blah" src="#" alt="your image" />
-</form> -->
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-
-
-
-
-
-
 
 <!-- form auto submit -->
 <script>
-	//
 $('.upload-photos input').change(function() {
-  $('.upload-photos').submit();
+$('.upload-photos').submit();
 });
 
-// $('#imgInp').change(function() {
-//   $('.upload-photos').submit();
-// });
-// $('#imgInp').change(function() {
-//   $('.upload-photos').submit();
-// });
-// $('#imgInp').change(function() {
-//   $('.upload-photos').submit();
-// });
 </script>
-
-
-
 <script>
 $(document).ready(function(){
 $(".widget-bar-btn").click(function(){
 $(".widget-bar").addClass("on") && $(".widget-bar").removeClass("off") && $("#pop-up-overlay").addClass("overlay");
-
 });
 });
-
-
 $(document).ready(function(){
-  $(".close-widget-bar").click(function(){
-    $(".widget-bar").addClass("off") && $(".widget-bar").removeClass("on") && $("#pop-up-overlay").removeClass("overlay"); 
-  
-    
-  });
+$(".close-widget-bar").click(function(){
+$(".widget-bar").addClass("off") && $(".widget-bar").removeClass("on") && $("#pop-up-overlay").removeClass("overlay");
 });
-
-
-
-
+});
 $( "body" ).click(function( event ) {
 var i = event.target.className;
 console.log(i);
@@ -1418,93 +1354,69 @@ if(i == "overlay"){
 $("#pop-up-overlay").removeClass("overlay") && $(".Sign-up-popup").css("display", "none") && $(".widget-bar").addClass("off") && $(".widget-bar").removeClass("on");
 }
 });
-        </script>
-
-
+</script>
 <script>
-
 function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    
-    reader.onload = function(e) {
-      $('#blah').attr('src',e.target.result);
-      $('#profile-picture').attr('src',e.target.result);
-
-    }
-
-    console.log("gfsdgfsdg")
-    reader.readAsDataURL(input.files[0]); // convert to base64 string
-  }
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+reader.onload = function(e) {
+$('#blah').attr('src',e.target.result);
+$('#profile-picture').attr('src',e.target.result);
 }
-
+console.log("gfsdgfsdg")
+reader.readAsDataURL(input.files[0]); // convert to base64 string
+}
+}
 $("#imgInp").change(function() {
-  readURL(this);
+readURL(this);
 });
-
-
 </script>
 <script>
-    function readURL1(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    
-    reader.onload = function(e) {
-      $('#blah').attr('src',e.target.result);
-      $('#gallary-1').attr('src',e.target.result);
-
-    }
-
-    console.log("gfsdgfsdg")
-    reader.readAsDataURL(input.files[0]); // convert to base64 string
-  }
+function readURL1(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+reader.onload = function(e) {
+$('#blah').attr('src',e.target.result);
+$('#gallary-1').attr('src',e.target.result);
 }
-
+console.log("gfsdgfsdg")
+reader.readAsDataURL(input.files[0]); // convert to base64 string
+}
+}
 $("#up-gallary-1").change(function() {
-  readURL1(this);
+readURL1(this);
 });
 </script>
 <script>
-    function readURL2(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    
-    reader.onload = function(e) {
-      $('#gallary-2').attr('src',e.target.result);
-    }
-
-    console.log("gfsdgfsdg")
-    reader.readAsDataURL(input.files[0]); // convert to base64 string
-  }
+function readURL2(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+reader.onload = function(e) {
+$('#gallary-2').attr('src',e.target.result);
 }
-
+console.log("gfsdgfsdg")
+reader.readAsDataURL(input.files[0]); // convert to base64 string
+}
+}
 $("#up-gallary-2").change(function() {
-  readURL2(this);
+readURL2(this);
 });
 </script>
 <script>
-    function readURL3(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    
-    reader.onload = function(e) {
-      $('#blah').attr('src',e.target.result);
-      $('#gallary-3').attr('src',e.target.result);
-
-    }
-
-    console.log("gfsdgfsdg")
-    reader.readAsDataURL(input.files[0]); // convert to base64 string
-  }
+function readURL3(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+reader.onload = function(e) {
+$('#blah').attr('src',e.target.result);
+$('#gallary-3').attr('src',e.target.result);
 }
-
+console.log("gfsdgfsdg")
+reader.readAsDataURL(input.files[0]); // convert to base64 string
+}
+}
 $("#up-gallary-3").change(function() {
-  readURL3(this);
+readURL3(this);
 });
 </script>
-
-
-
-
 </body>
 </html>
