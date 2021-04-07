@@ -50,7 +50,25 @@ var userSchema = new mongoose.Schema({
         birthDate:{type: Date},
         
     },
-    advertiseForDays:[Number]
+    advertiseForDays:[Number],
+    platinumPack:{
+        oneDay: { type: Boolean, default: false },
+        twoDay: { type: Boolean, default: false },
+        threeDay: { type: Boolean, default: false },
+        fourDay: { type: Boolean, default: false },
+        fiveDay: { type: Boolean, default: false },
+        sixDay: { type: Boolean, default: false },
+        sevenDay: { type: Boolean, default: false }
+    },
+    bronzePack:{
+        oneDay: { type: Boolean, default: false },
+        twoDay: { type: Boolean, default: false },
+        threeDay: { type: Boolean, default: false },
+        fourDay: { type: Boolean, default: false },
+        fiveDay: { type: Boolean, default: false },
+        sixDay: { type: Boolean, default: false },
+        sevenDay: { type: Boolean, default: false }
+    }
 });
 
 userSchema.plugin(passportLocalMongoose);

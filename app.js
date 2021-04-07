@@ -18,21 +18,16 @@ var ejs           = require("ejs");
 var port          = process.env.PORT || 5000; 
 
 // Schedule tasks to be run on the server.
-cron.schedule('* * * * *', function() {
-  console.log('running a task every minute');
+// cron.schedule('* * * * *', function() {
+//   console.log('running a task every minute');
 
- // fs.unlink('./tmp', err => {
- //    if (err){
- //   console.log(err);
- //    }
- //    
- //  });
+ 
 
- fs.rmdirSync("./tmp", { recursive: true },function(){
-  console.log('temp file successfully deleted');
- });
+//  fs.rmdirSync("./tmp", { recursive: true },function(){
+//   console.log('temp file successfully deleted');
+//  });
 
-});
+// });
 
 
 
@@ -419,11 +414,12 @@ app.get("/change-location",function(req,res){
 
 // elite escorts only rout
 app.get("/elite-escorts-only",function(req,res){
+  var title = "EOD | Elite Escorts Only"
 	User.find({},function(err,users){
         if(err){
         	console.log(err);
         }else {
-        	res.render("elite-escorts-only",{users: users});
+        	res.render("elite-escorts-only",{users: users,title: title});
         }
 	});
 });
@@ -595,6 +591,14 @@ app.post('/charge/:id', (req, res) => {
  
   })
 });
+
+
+// all packeages route
+app.get("/platinum/:id",function(req,res){
+  var id = req.params.id;
+  
+})
+
 
 
 app.listen(port,function(){

@@ -320,3 +320,15 @@ section , header{
 {
 	background-color: #e4dfdf !important;
 }
+
+
+
+
+/*===================================*/
+
+.show-details{
+    opacity: 0;
+}
+.profile-image:hover .show-details{
+    opacity: 1 !important;
+}
