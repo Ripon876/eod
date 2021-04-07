@@ -1,5 +1,6 @@
 var dotenv        = require('dotenv').config();
 var express       = require("express");
+var cron          = require('node-cron');
 var passport      = require("passport");
 var mongoose      = require("mongoose");
 var flash         = require("connect-flash");
@@ -8,13 +9,27 @@ var CSF           = require("./customFuctions/copysamplefiles");
 var localStrategy = require("passport-local");
 var bodyParser    = require("body-parser");
 var nodeMailer    = require("nodemailer");
-const crypto      = require('crypto');
+var crypto        = require('crypto');
 var fileUpload    = require('express-fileupload');
 var stripe        = require("stripe")("sk_test_51IT6NiI7ttdO5TTg8MKrPjljs8s0U0AwoibgwXRaoEKlK2npxTpBvZuYS6lhQnoRhmWw0eDtovrlHr3TcyWjLSsA00aBEu8f2W");
 var fs            = require('fs');
 var path          = require('path');
 var ejs           = require("ejs");
 var port          = process.env.PORT || 5000; 
+
+// Schedule tasks to be run on the server.
+cron.schedule('* * * * *', function() {
+  console.log('running a task every minute');
+
+ fs.unlink('./tmp', err => {
+    if (err){
+   console.log(err);
+    }
+    console.log('temp file successfully deleted');
+  });
+
+});
+
 
 
 // database - configuration
@@ -505,7 +520,12 @@ app.get("/profile/:id",function(req,res){
 
 
   User.findById(req.params.id,function(err,user){
-  var title ="EOD | " + user.name;
+
+var title = "EOD | " + user.name;
+
+
+    
+
 
     if (err) {
       console.log(err);
@@ -537,13 +557,19 @@ app.get("/location/:location",function(req,res){
 
 
 // stripe route
-app.get("/s",function(req,res){
-
-   res.render("stripe");
+app.get("/s/:id",function(req,res){
+   var id = req.params.id;
+   res.render("stripe",{id: id});
 
 });
 // Charge Route
-app.post('/charge', (req, res) => {
+app.post('/charge/:id', (req, res) => {
+   
+   var id = req.params.id;
+   // var days = Number(req.body.days);
+   var days = req.body.days;
+   console.log(days);
+
   console.log(req.body);
   const amount = 2500;
   
@@ -558,10 +584,11 @@ app.post('/charge', (req, res) => {
     customer: customer.id
   }))
   .then(function(charge){
-    var d = addNewDays(2);
-    if (d){
-      res.render('success')
-    }
+
+    addNewDays(days,id);
+
+    res.render('success')
+ 
   })
 });
 
@@ -597,17 +624,17 @@ function moveFile(img,user,p){
 }
 
 
-Object.prototype.isEmpty = function() {
-    for(var key in this) {
-        if(this.hasOwnProperty(key))
-            return false;
-    }
-    return true;
-};
+// Object.prototype.isEmpty = function() {
+//     for(var key in this) {
+//         if(this.hasOwnProperty(key))
+//             return false;
+//     }
+//     return true;
+// };
 
 
-function addNewDays(days){
-var userID = req.user._id;
+async function addNewDays(days,id){
+var userID = id;
 User.findById(userID,function(err,user){
 if (err) {
   console.log(err);

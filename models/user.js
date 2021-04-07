@@ -50,7 +50,7 @@ var userSchema = new mongoose.Schema({
         birthDate:{type: Date},
         
     },
-    advertiseForDays:[]
+    advertiseForDays:[Number]
 });
 
 userSchema.plugin(passportLocalMongoose);

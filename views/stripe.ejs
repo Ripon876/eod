@@ -6,38 +6,38 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<form action="/charge" method="POST">
+		<form action="/charge/606d6dcd79ab7e10acb76c67" method="POST">
 			<script
 			src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 			data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV"
 			data-amount="2500"
 			data-name="Premium Membership For 1 days"
 			data-description=""
-			data-image="./img/marketplace.png"
+			data-image="../img/marketplace.png"
 			data-locale="auto">
 			</script>
 			<script>
 			// Hide default stripe button
 			document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
 			</script>
-			<input type="text" value="1" name="days" style="display:none;">
+			<input type="text" value="10" name="days" style="display:none;">
 			<button type="submit" class="btn btn-outline-dark text-white btn-lg">Purchase For $15</button>
 		</form>
-		<form action="/charge" method="POST">
+		<form action="/charge/606d6dcd79ab7e10acb76c67" method="POST">
 			<script
 			src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 			data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV"
 			data-amount="3000"
 			data-name="Premium Membership For 2 days"
 			data-description=""
-			data-image="./img/marketplace.png"
+			data-image="../img/marketplace.png"
 			data-locale="auto">
 			</script>
 			<script>
 			// Hide default stripe button
 			document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
 			</script>
-			<input type="text" value="1" name="days" style="display:none;">
+			<input type="text" value="5" name="days" style="display:none;">
 			<button type="submit" class="btn btn-outline-dark text-white btn-lg">Purchase For $30</button>
 		</form>
 	</body>
