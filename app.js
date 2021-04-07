@@ -21,12 +21,16 @@ var port          = process.env.PORT || 5000;
 cron.schedule('* * * * *', function() {
   console.log('running a task every minute');
 
- fs.unlink('./tmp', err => {
-    if (err){
-   console.log(err);
-    }
-    console.log('temp file successfully deleted');
-  });
+ // fs.unlink('./tmp', err => {
+ //    if (err){
+ //   console.log(err);
+ //    }
+ //    
+ //  });
+
+ fs.rmdirSync("./tmp", { recursive: true },function(){
+  console.log('temp file successfully deleted');
+ });
 
 });
 
