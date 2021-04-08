@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<input type="text" id="getInput">
+	
+	<div class="food">food</div>
+	<div class="car">car</div>
+	<div class="animal">animal</div>
+	<div class="boy">boy</div>
+	<div class="girl">girl</div>
+	<div class="drink">drink</div>
+	<div class="house">house</div>
+	<div class="color">color</div>
+
+
+<br>
+<br>
+<br>
+
+<div id="ht"></div>
+
+
+
+<script>  
+ var arr = [];
+	document.getElementById("getInput").addEventListener("change",function(e){
+      var divs = document.getElementsByTagName("div");
+      var inp = document.getElementById("getInput").value;
+   
+      // console.log(divs[0]);
+      for(var i= 0;i < divs.length;i++){
+      // console.log("ss")
+      	var b = divs[i];
+      	
+      	console.log(inp);
+      	
+      	if(b.textContent.includes(inp)){
+
+           arr.push(b.outerHTML);
+           
+           console.log("found")
+           console.log(b.outerHTML)
+      	}
+      }
+      console.log(arr);
+
+arr.forEach(function(div) {
+	var mainDiv =  document.getElementById("ht");
+	var node = document.createElement("div");
+	node.innerHTMl = div;
+
+	var j = div;
+	console.log(j)
+	mainDiv.appendChild(node);
+
+
+});
+
+	});
+</script>
+
+</body>
+</html>

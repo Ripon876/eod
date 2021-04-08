@@ -27,7 +27,7 @@ var port          = process.env.PORT || 5000;
 //   console.log('temp file successfully deleted');
 //  });
 
-// });
+// }); 
 
 
 
@@ -594,12 +594,18 @@ app.post('/charge/:id', (req, res) => {
 
 
 // all packeages route
-app.get("/platinum/:id",function(req,res){
+app.get("/platinum/:id",isLoggedIn,function(req,res){
   var id = req.params.id;
   var title = "EOD | Platinum Memberships"
   res.render("platinum",{title: title})
   
-})
+});
+app.get("/bronze/:id",isLoggedIn,function(req,res){
+  var id = req.params.id;
+  var title = "EOD | Bronze Memberships"
+  res.render("bronze",{title: title})
+  
+});
 
 
 
