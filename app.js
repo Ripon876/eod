@@ -596,6 +596,8 @@ app.post('/charge/:id', (req, res) => {
 // all packeages route
 app.get("/platinum/:id",function(req,res){
   var id = req.params.id;
+  var title = "EOD | Platinum Memberships"
+  res.render("platinum",{title: title})
   
 })
 
