@@ -329,7 +329,7 @@ section , header{
 .show-details{
     opacity: 0;
 }
-.profile-image:hover .show-details{
+.profile_grid:hover .show-details{
     opacity: 1 !important;
 }
 /*===========================*/
@@ -495,4 +495,16 @@ body{
     text-decoration: none;
     font-style: normal;
     padding-top: 10px !important;
+}
+/*=============================*/
+
+.profile_grids{
+    margin: 0 auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: auto;
+    gap: 20px;
+    font-family: sans-serif;
+    padding-top: 30px;
 }

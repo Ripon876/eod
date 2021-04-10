@@ -18,7 +18,7 @@ var ejs           = require("ejs");
 var port          = process.env.PORT || 5000; 
 
 // Schedule tasks to be run on the server.
-// cron.schedule('* * * * *', function() {
+// cron.schedule('59 23 * * *', function() {
 //   console.log('running a task every minute');
 
  
@@ -419,7 +419,16 @@ app.get("/elite-escorts-only",function(req,res){
         if(err){
         	console.log(err);
         }else {
-        	res.render("elite-escorts-only",{users: users,title: title});
+        
+        if (users.length < 1) {
+          console.log("no user");
+          res.render("elite-escorts-only",{users: users,title: title});
+        }else {
+          res.render("elite-escorts-only",{users: users,title: title});
+        }
+
+
+        	
         }
 	});
 });
@@ -524,16 +533,11 @@ app.get("/profile/:id",function(req,res){
 var title = "EOD | " + user.name;
 
 
-    
-
-
     if (err) {
       console.log(err);
       res.send("we couldn't find any user with the user id")
     }
    console.log(user);
-
- 
 
  res.render("public-profile",{currentUser: user,title: title});
    
@@ -564,7 +568,7 @@ app.get("/s/:id",function(req,res){
 });
 // Charge Route
 app.post('/charge/:id', (req, res) => {
-   
+   var boughtPack = req.body.platinumPack;
    var id = req.params.id;
    // var days = Number(req.body.days);
    var days = req.body.days;
@@ -586,6 +590,7 @@ app.post('/charge/:id', (req, res) => {
   .then(function(charge){
 
     addNewDays(days,id);
+    turnPackOn(boughtPack,id)
 
     res.render('success')
  
@@ -593,7 +598,8 @@ app.post('/charge/:id', (req, res) => {
 });
 
 
-// all packeages route
+// all packeages route 
+
 app.get("/platinum/:id",isLoggedIn,function(req,res){
   var id = req.params.id;
   var title = "EOD | Platinum Memberships"
@@ -640,13 +646,7 @@ function moveFile(img,user,p){
 }
 
 
-// Object.prototype.isEmpty = function() {
-//     for(var key in this) {
-//         if(this.hasOwnProperty(key))
-//             return false;
-//     }
-//     return true;
-// };
+
 
 
 async function addNewDays(days,id){
@@ -670,4 +670,23 @@ return true;
 });
 
 
+}
+
+async function turnPackOn(packname,id){
+  var packName = packname;
+  var id = id;
+  User.findById(id,function(err,user){
+    if(err){
+      console.log(err);
+    }
+
+user.platinumPack =  packname;
+user.save(function(err){
+  if(err){
+    console.log(err);
+  }
+  return true
+})
+
+  })
 }

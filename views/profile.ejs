@@ -16,7 +16,22 @@
 				<div class="content">Welcome </br>"<%= currentUser.name %>"</div>
 			</div>
 		</div>
-		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			
+			<div class="bubble-r-box" style="height: 25px;left: 16px;width: 247px;margin-top: 15px;">
+				<div class="bubble-element Group" style="box-sizing: border-box;   z-index: 6; height: 25px; top: 0px; border-radius: 6px; width: 247px; left: 0px;">
+					<div class="bubble-r-line" style="margin-top: 0px;height: 25px;display: flex;justify-content: space-around;">
+						<div class="bubble-r-box" style="height: 25px; left: 0px; width: 114px;">
+							<button class="bubble-element Button clickable-element" tabindex="11" style="padding: 0px;cursor: pointer;background-size: cover;background-repeat: no-repeat;background-attachment: initial;background-origin: initial;background-clip: initial;background-color: rgb(185 151 79);border: none;text-align: center; box-sizing: border-box;z-index: 3;height: 25px;top: 0px;font-family: Arial;font-size: 14px;font-weight: bold;color: rgb(255, 255, 255);line-height: 1;border-radius: 3px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;width: 114px;left: 0px;">I'm Booked.</button>
+						</div>
+						<div class="bubble-r-box" style="height: 25px; left: 134px; width: 113px;">
+							<button class="bubble-element Button clickable-element" tabindex="12" style="padding: 0px; cursor: pointer; background-image: url(&quot;https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1609828823450x691924339211925200%2Fgold-background-in-frame-light-realistic-vector-15792628.jpg?w=128&amp;h=28&amp;auto=compress&amp;fit=crop&amp;dpr=1&quot;); background-size: cover; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgba(255, 255, 255, 0); border: none; text-align: center;   box-sizing: border-box; z-index: 4; height: 25px; top: 0px; font-family: Arial; font-size: 14px; font-weight: bold; color: rgb(255, 255, 255); line-height: 1; border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px; transition: box-shadow 100ms ease 0s; width: 113px; left: 0px;">I'm Free.</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
 	</div>
 </div>
 
@@ -24,7 +39,7 @@
 	<div class="row">
 		<div class="col-md-4 m-auto">
 			<div class="profile-img" style="text-align: center;">
-				<img src="../uploads/ripon/profile_pic.png" alt="<%= currentUser.name %>" title="<%=currentUser.name %>" class="img-fluid" style="border-radius: 50%;max-width: 50%">
+				<img src="../uploads/<%= currentUser.sortName %>/profile_pic.png" alt="<%= currentUser.name %>" title="<%=currentUser.name %>" class="img-fluid" style="border-radius: 50%;max-width: 50%">
 			</div>
 		</div>
 	</div>
