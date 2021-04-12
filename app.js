@@ -11,32 +11,53 @@ var bodyParser    = require("body-parser");
 var nodeMailer    = require("nodemailer");
 var crypto        = require('crypto');
 var fileUpload    = require('express-fileupload');
-var stripe        = require("stripe")("sk_test_51IT6NiI7ttdO5TTg8MKrPjljs8s0U0AwoibgwXRaoEKlK2npxTpBvZuYS6lhQnoRhmWw0eDtovrlHr3TcyWjLSsA00aBEu8f2W");
+var stripe        = require("stripe")(process.env.STRIPE_SECREATE_KEY);
 var fs            = require('fs');
 var path          = require('path');
 var ejs           = require("ejs");
 var port          = process.env.PORT || 5000; 
 
 // Schedule tasks to be run on the server.
-// cron.schedule('59 23 * * *', function() {
+// cron.schedule('* * * * *', function() {
 //   console.log('running a task every minute');
-
- 
 
 //  fs.rmdirSync("./tmp", { recursive: true },function(){
 //   console.log('temp file successfully deleted');
 //  });
 
+
+//  User.find({},function(err,users){
+//   if(err){
+//     console.log(err)
+//   }else {
+    
+
+// users.forEach( function(user) {
+ 
+
+
+// });
+
+
+//   }
+//  })
+ 
+
 // }); 
 
 
 
+
+// =============================
 // database - configuration
+// =============================
 mongoose.connect("mongodb://localhost:27017/eod", {useUnifiedTopology: true, useNewUrlParser: true});
 mongoose.set('useFindAndModify', false);
 
-// main - configuration
 
+// =============================
+// main - configurationt
+// =============================
 var app = express();
 app.set("view engine","ejs");
 app.use(express.static("public"));
@@ -48,8 +69,10 @@ app.use(fileUpload({
     tempFileDir : path.join(__dirname,'tmp'),
 }));
 
-
+// =============================
 // passport / authentication - configuration
+// =============================
+
 app.use(require('express-session')({ secret: "My nafdgdfgfsd dfsh gdgh gfhfghon Islam",resave: false,saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -68,22 +91,14 @@ app.use(function(req,res,next){
 	next();
 })
 
-
+// =============================
+//        routs start here
+// =============================
 
 
 app.get("/",function(req,res){
 	res.render("index",{message: req.flash("success"),c_email: req.flash("mes-send")});
 	
-});
-
-app.get("/terms_conditions",function(req,res){
-
-  
-  res.render("term-conditions");
-});
-app.get("/advertise-with-us",function(req,res){
-  var title = "EOD | Advertise With Us"
-  res.render("advertise-with-us",{title: title});
 });
 
 
@@ -239,25 +254,24 @@ User.findOneAndUpdate({verificationId: oneTimeId},update, {new: true}, function 
 });
 });
 
-app.get("/user-profile",isLoggedIn,function(req,res){
+app.get("/user-profile",isLoggedIn,function(req,res){ 
   var title = "EOD| Member Profile";
-	res.render('profile',{title: title});
+  var id = req.user._id;
+  // console.log(user);
+
+User.findById(id,function(err,user){
+  if(err){
+    console.log(err);
+    res.redirect("/");
+  }else {
+      res.render('profile',{currentUser: user,title: title});
+  }
+})
+
 });
 
 
-app.get("/m",function(req,res){
-  var arr = [5,5,5,5,5,5,5,5];
-  var days = 0;
-  arr.forEach( function(i) {
-      
-      days = days + i;
 
-
-  });
- 
- console.log(days);
-
-})
 
 app.get("/edit-profile/:id",isLoggedIn,function(req,res){
 
@@ -324,7 +338,11 @@ User.findByIdAndUpdate(id,user,{new:true},function(err,user){
 });
 });
 
-// contact us routs
+
+// =============================
+//    contact us routs
+// =============================
+
 app.get("/contact-us",function(req,res){
    res.render("contact-us");
 });
@@ -345,7 +363,10 @@ var message = {
 
 console.log(email, sub, mes)
 
-// node mailer
+// =============================
+//         node mailer
+// =============================
+
 
 var transporter = nodeMailer.createTransport({
   service: 'gmail',
@@ -368,7 +389,6 @@ if (err) {
   html: data
 };
 
-
 transporter.sendMail(mailOptions, function(error, info){
 
   if (error) {
@@ -382,19 +402,16 @@ transporter.sendMail(mailOptions, function(error, info){
   };
 });
 
-
 };
 
 });
 
-
-
-
-
-
 });
 
-// term and condition rout
+// =============================
+//   term and condition rout
+// =============================
+
 app.get("/term-conditions",function(req,res){
    res.render("term-conditions");
 });
@@ -412,7 +429,11 @@ app.get("/change-location",function(req,res){
 
 });
 
-// elite escorts only rout
+
+// =============================
+//    elite escorts only rout
+// =============================
+
 app.get("/elite-escorts-only",function(req,res){
   var title = "EOD | Elite Escorts Only"
 	User.find({},function(err,users){
@@ -426,9 +447,7 @@ app.get("/elite-escorts-only",function(req,res){
         }else {
           res.render("elite-escorts-only",{users: users,title: title});
         }
-
-
-        	
+	
         }
 	});
 });
@@ -443,16 +462,12 @@ app.post('/edit-profile/photos/:id',isLoggedIn,(req, res) => {
       var email = user.username;
       var folderName = email.substring(0,email.indexOf('@'))
 
-
       if (err) {
       	console.log(err);
       	res.redirect('/user-profile');
       }else {
       	
 if(req.files !== null){
-
-
-
 
 
       if(req.files.profilePic){
@@ -486,19 +501,16 @@ if(req.files !== null){
       
    }
 
-
-
    res.redirect("/edit-profile/" + id);
       };
-   
 
 	});
 
-
-
 });
 
-// update info rout
+// =============================
+//       update info rout
+// =============================
 app.post("/update-info/:id",function(req,res){
   var id = req.params.id;
   var personalInformation = req.body.personalInformation;
@@ -545,6 +557,76 @@ var title = "EOD | " + user.name;
   });
 });
 
+app.post("/user/avilability/:id",function(req,res){
+  var title = "EOD| Member Profile";
+  var av = req.body.avilability;
+  console.log(av)
+  console.log("============================")
+  var id = req.params.id;
+  User.findById(id,function(err,user){
+
+if(err){
+  console.log(err);
+  res.send("something went wrong");
+}
+  console.log(user.avilable);
+
+if(av == "true"){
+  user.avilable = av;
+user.save(function(err){
+  if(err){
+    console.log(err)
+  }else {
+      res.redirect("/user-profile");
+  }
+
+});
+}
+
+
+if(av == "false"){
+    user.avilable = av;
+user.save(function(err){
+  if(err){
+    console.log(err)
+  }else {
+    res.redirect("/user-profile");
+  }
+ 
+});
+}
+
+
+ console.log("============================")
+  console.log(user.avilable);
+  // console.log(user);
+
+  });
+
+});
+
+
+// =============================
+//   term and condition rout
+// =============================
+
+app.get("/terms_conditions",function(req,res){
+
+  var title = "EOD | Term And Conditions"
+  
+  res.render("term-conditions",{title: title});
+});
+// =============================
+//   advirtiser route
+// =============================
+app.get("/advertise-with-us",function(req,res){
+  var title = "EOD | Advertise With Us"
+  res.render("advertise-with-us",{title: title});
+});
+
+// =============================
+//   location route
+// =============================
 app.get("/location/:location",function(req,res){
   var location = req.params.location;
   var title = "EOD | " + location.toUpperCase();
@@ -560,22 +642,27 @@ app.get("/location/:location",function(req,res){
 });
 
 
+
+// =============================
 // stripe route
+// =============================
 app.get("/s/:id",function(req,res){
    var id = req.params.id;
    res.render("stripe",{id: id});
 
 });
+
+// =============================
 // Charge Route
+// =============================
 app.post('/charge/:id', (req, res) => {
    var boughtPack = req.body.platinumPack;
    var id = req.params.id;
-   // var days = Number(req.body.days);
    var days = req.body.days;
    console.log(days);
 
   console.log(req.body);
-  const amount = 2500;
+  const amount = req.body.ammount;
   
   stripe.customers.create({
     email: req.body.stripeEmail,
@@ -690,3 +777,29 @@ user.save(function(err){
 
   })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+console.log("========= </> =========");
+console.log("    Got 50 likes");
+console.log("========= </> =========");
+
+
+
+
+
+
+
+
+
+
+
