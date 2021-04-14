@@ -657,10 +657,20 @@ app.get("/s/:id",function(req,res){
 // =============================
 app.post('/charge/:id', (req, res) => {
    var boughtPack = req.body.platinumPack;
+   console.log(boughtPack);
+   var pack;
+      for (var k in boughtPack) {
+
+                pack = k;
+             
+            }
+
+
+
    var id = req.params.id;
    var days = req.body.days;
-   console.log(days);
-
+   // console.log(days);
+   // console.log(pack)
   console.log(req.body);
   const amount = req.body.ammount;
   
@@ -677,7 +687,7 @@ app.post('/charge/:id', (req, res) => {
   .then(function(charge){
 
     addNewDays(days,id);
-    turnPackOn(boughtPack,id)
+    turnPackOn(pack,id)
 
     res.render('success')
  
@@ -751,7 +761,6 @@ user.save(function(err){
 
 return true;
 
-
 });
 
 });
@@ -767,7 +776,7 @@ async function turnPackOn(packname,id){
       console.log(err);
     }
 
-user.platinumPack =  packname;
+user.platinumPack[packName] =  true;
 user.save(function(err){
   if(err){
     console.log(err);
@@ -776,22 +785,9 @@ user.save(function(err){
 })
 
   })
-}
+};
 
 
-
-
-
-
-
-
-
-
-
-
-console.log("========= </> =========");
-console.log("    Got 50 likes");
-console.log("========= </> =========");
 
 
 

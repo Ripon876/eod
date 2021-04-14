@@ -508,3 +508,7 @@ body{
     font-family: sans-serif;
     padding-top: 30px;
 }
+/*==================*/
+.stripe-button-el{
+    display: none !important; 
+}
