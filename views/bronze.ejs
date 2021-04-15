@@ -74,13 +74,16 @@
 					<h4>1 Day</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
+					<h4 style="<% if (currentUser.bronzePack.oneDay === true || currentUser.bronzePack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
 <form action="/charge/<%= currentUser._id %>" method="POST">
 	<script src="https://checkout.stripe.com/checkout.js" 
 	class="stripe-button" 
-	data-key="<%= process.env.STRIPE_PUBLISHABLE_KEY %>" 
+	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
 	data-amount="1500" 
-	data-name="Premium Membership For 1 days" 
+	data-name="Bronze Membership For 1 days" 
 	data-description="" 
 	data-image="../img/marketplace.png" data-locale="auto">
 	</script>
@@ -90,9 +93,9 @@
 	</script>
 	<input type="text" value="1" name="days" style="display:none;">
 	<input type="text" value="1500" name="ammount" style="display:none;">
-	<input type="text" value="true" name="bronzePack[oneDay]" style="display:none;">
+	<input type="text" value="true" name="[pack][bronzePack][oneDay]" style="display:none;">
 	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$15</button>
-</form>
+</form>	
 					</h4>
 				</div>
 			</div>
@@ -102,25 +105,28 @@
 					<h4>2 Days</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
+					<h4 style="<% if (currentUser.bronzePack.twoDay === true || currentUser.bronzePack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
 <form action="/charge/<%= currentUser._id %>" method="POST">
 	<script src="https://checkout.stripe.com/checkout.js" 
 	class="stripe-button" 
-	data-key="<%= process.env.STRIPE_PUBLISHABLE_KEY %>" 
+	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
 	data-amount="3000" 
-	data-name="Premium Membership For 1 days" 
+	data-name="Bronze Membership For 2 days" 
 	data-description="" 
 	data-image="../img/marketplace.png" data-locale="auto">
 	</script>
 	<script>
 	// Hide default stripe button
-	document.getElementsByClassName('stripe-button-el')[0].style.display = 'none !important';
+	document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
 	</script>
 	<input type="text" value="2" name="days" style="display:none;">
-		<input type="text" value="3000" name="ammount" style="display:none;">
-	<input type="text" value="true" name="bronzePack[twoDay]" style="display:none;">
+	<input type="text" value="3000" name="ammount" style="display:none;">
+	<input type="text" value="true" name="[pack][bronzePack][twoDay]" style="display:none;">
 	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$30</button>
-</form>
+</form>	
 					</h4>
 				</div>
 			</div>
@@ -130,26 +136,28 @@
 					<h4>3 Days</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
+					<h4 style="<% if (currentUser.bronzePack.threeDay === true || currentUser.bronzePack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
 <form action="/charge/<%= currentUser._id %>" method="POST">
 	<script src="https://checkout.stripe.com/checkout.js" 
 	class="stripe-button" 
-	data-key="<%= process.env.STRIPE_PUBLISHABLE_KEY %>" 
+	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
 	data-amount="4500" 
-	data-name="Premium Membership For 1 days" 
+	data-name="Bronze Membership For 3 days" 
 	data-description="" 
-	data-image="../img/marketplace.png" 
-	data-locale="auto">
+	data-image="../img/marketplace.png" data-locale="auto">
 	</script>
 	<script>
 	// Hide default stripe button
 	document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
 	</script>
 	<input type="text" value="3" name="days" style="display:none;">
-    <input type="text" value="4500" name="ammount" style="display:none;">
-    <input type="text" value="true" name="bronzePack[threeDay]" style="display:none;">
-	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$45</button>
-</form>
+	<input type="text" value="4500" name="ammount" style="display:none;">
+	<input type="text" value="true" name="[pack][bronzePack][threeDay]" style="display:none;">
+	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$30</button>
+</form>	
 					</h4>
 				</div>
 			</div>
@@ -159,19 +167,29 @@
 					<h4>4 Days</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
-<form action="/charge/606d6dcd79ab7e10acb76c67" method="POST">
-	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button active" data-key="<%= process.env.STRIPE_PUBLISHABLE_KEY %>" data-amount="6000" data-name="Premium Membership For 1 days" data-description="" data-image="../img/marketplace.png" data-locale="auto">
-	</script><button type="submit" class="stripe-button-el" style="visibility: visible; display: none;"><span style="display: none; min-height: 30px;">Pay with Card</span></button>
+					<h4 style="<% if (currentUser.bronzePack.fourDay === true || currentUser.bronzePack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
+<form action="/charge/<%= currentUser._id %>" method="POST">
+	<script src="https://checkout.stripe.com/checkout.js" 
+	class="stripe-button" 
+	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
+	data-amount="6000" 
+	data-name="Bronze Membership For 4 days" 
+	data-description="" 
+	data-image="../img/marketplace.png" data-locale="auto">
+	</script>
 	<script>
 	// Hide default stripe button
 	document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
 	</script>
 	<input type="text" value="4" name="days" style="display:none;">
 	<input type="text" value="6000" name="ammount" style="display:none;">
-	<input type="text" value="true" name="bronzePack[fourDay]" style="display:none;">
-	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$60</button>
-</form>			</h4>
+	<input type="text" value="true" name="[pack][bronzePack][fourDay]" style="display:none;">
+	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$30</button>
+</form>	
+					</h4>
 				</div>
 			</div>
 			
@@ -180,20 +198,28 @@
 					<h4>5 Days</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
-<form action="/charge/606d6dcd79ab7e10acb76c67" method="POST">
-	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button active" data-key="<%= process.env.STRIPE_PUBLISHABLE_KEY %>" data-amount="7500" data-name="Premium Membership For 1 days" data-description="" data-image="../img/marketplace.png" data-locale="auto">
+					<h4 style="<% if (currentUser.bronzePack.fiveDay === true || currentUser.bronzePack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
+<form action="/charge/<%= currentUser._id %>" method="POST">
+	<script src="https://checkout.stripe.com/checkout.js" 
+	class="stripe-button" 
+	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
+	data-amount="7500" 
+	data-name="Bronze Membership For 5 days" 
+	data-description="" 
+	data-image="../img/marketplace.png" data-locale="auto">
 	</script>
-	<button type="submit" class="stripe-button-el" style="visibility: visible; display: none;"><span style="display: block; min-height: 30px;">Pay with Card</span></button>
 	<script>
 	// Hide default stripe button
 	document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
 	</script>
 	<input type="text" value="5" name="days" style="display:none;">
 	<input type="text" value="7500" name="ammount" style="display:none;">
-	<input type="text" value="true" name="bronzePack[fiveDay]" style="display:none;">
+	<input type="text" value="true" name="[pack][bronzePack][fiveDay]" style="display:none;">
 	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$75</button>
-</form>
+</form>	
 					</h4>
 				</div>
 			</div>
@@ -203,19 +229,28 @@
 					<h4>6 Days</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
-<form action="/charge/606d6dcd79ab7e10acb76c67" method="POST">
-	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button active" data-key="<%= process.env.STRIPE_PUBLISHABLE_KEY %>" data-amount="9000" data-name="Premium Membership For 1 days" data-description="" data-image="../img/marketplace.png" data-locale="auto">
-	</script><button type="submit" class="stripe-button-el" style="visibility: visible; display: none;"><span style="display: block; min-height: 30px;">Pay with Card</span></button>
+					<h4 style="<% if (currentUser.bronzePack.sixDay === true || currentUser.bronzePack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
+<form action="/charge/<%= currentUser._id %>" method="POST">
+	<script src="https://checkout.stripe.com/checkout.js" 
+	class="stripe-button" 
+	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
+	data-amount="9000" 
+	data-name="Bronze Membership For 6 days" 
+	data-description="" 
+	data-image="../img/marketplace.png" data-locale="auto">
+	</script>
 	<script>
 	// Hide default stripe button
 	document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
 	</script>
 	<input type="text" value="6" name="days" style="display:none;">
 	<input type="text" value="9000" name="ammount" style="display:none;">
-	<input type="text" value="true" name="bronzePack[sixDay]" style="display:none;">
+	<input type="text" value="true" name="[pack][bronzePack][sixDay]" style="display:none;">
 	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$90</button>
-</form>
+</form>	
 					</h4>
 				</div>
 			</div>
@@ -229,19 +264,28 @@
 					<h4>7 Days</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
-<form action="/charge/606d6dcd79ab7e10acb76c67" method="POST">
-	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button active" data-key="<%= process.env.STRIPE_PUBLISHABLE_KEY %>" data-amount="10500" data-name="Premium Membership For 1 days" data-description="" data-image="../img/marketplace.png" data-locale="auto">
-	</script><button type="submit" class="stripe-button-el" style="visibility: visible; display: none;"><span style="display: block; min-height: 30px;">Pay with Card</span></button>
+					<h4 style="<% if (currentUser.bronzePack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
+<form action="/charge/<%= currentUser._id %>" method="POST">
+	<script src="https://checkout.stripe.com/checkout.js" 
+	class="stripe-button" 
+	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
+	data-amount="10500" 
+	data-name="Bronze Membership For 7 days" 
+	data-description="" 
+	data-image="../img/marketplace.png" data-locale="auto">
+	</script>
 	<script>
 	// Hide default stripe button
 	document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
 	</script>
 	<input type="text" value="7" name="days" style="display:none;">
 	<input type="text" value="10500" name="ammount" style="display:none;">
-	<input type="text" value="true" name="bronzePack[sevenDay]" style="display:none;">
+	<input type="text" value="true" name="[pack][bronzePack][sevenDay]" style="display:none;">
 	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$105</button>
-</form>
+</form>	
 					</h4>
 				</div>
 			</div>

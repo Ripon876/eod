@@ -12,38 +12,11 @@ var nodeMailer    = require("nodemailer");
 var crypto        = require('crypto');
 var fileUpload    = require('express-fileupload');
 var stripe        = require("stripe")(process.env.STRIPE_SECREATE_KEY);
+var compression   = require('compression');
 var fs            = require('fs');
 var path          = require('path');
 var ejs           = require("ejs");
 var port          = process.env.PORT || 5000; 
-
-// Schedule tasks to be run on the server.
-// cron.schedule('* * * * *', function() {
-//   console.log('running a task every minute');
-
-//  fs.rmdirSync("./tmp", { recursive: true },function(){
-//   console.log('temp file successfully deleted');
-//  });
-
-
-//  User.find({},function(err,users){
-//   if(err){
-//     console.log(err)
-//   }else {
-    
-
-// users.forEach( function(user) {
- 
-
-
-// });
-
-
-//   }
-//  })
- 
-
-// }); 
 
 
 
@@ -60,7 +33,8 @@ mongoose.set('useFindAndModify', false);
 // =============================
 var app = express();
 app.set("view engine","ejs");
-app.use(express.static("public"));
+app.use(compression()); //use compression
+app.use(express.static("public")); // serving public directory
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(flash());
@@ -90,6 +64,47 @@ app.use(function(req,res,next){
 	res.locals.currentUser = req.user;
 	next();
 })
+// =============================
+//  cron jobs
+// =============================
+
+// Schedule tasks to be run on the server.
+// cron.schedule('* * * * *', function() {
+//   console.log('running a task every minute');
+
+ // fs.rmdirSync("./tmp", { recursive: true },function(){
+ //  console.log('temp file successfully deleted');
+ // });
+
+
+ 
+
+// }); 
+
+
+
+ User.find({},function(err,users){
+  if(err){
+    console.log(err)
+  }else {
+    
+
+users.forEach( function(user) {
+ var avDays = user.advertiseForDays;
+ console.log(avDays)
+var showForDays = 0;
+for(var i = 0;i < avDays.length;i++){
+
+        showForDays += avDays[i] ;
+}
+// showForDays = showForDays - 1;
+console.log(showForDays);
+
+});
+
+
+  }
+ })
 
 // =============================
 //        routs start here
@@ -656,7 +671,17 @@ app.get("/s/:id",function(req,res){
 // Charge Route
 // =============================
 app.post('/charge/:id', (req, res) => {
-   var boughtPack = req.body.platinumPack;
+// console.log(req.body.pack);
+   // var boughtPack = req.body.platinumPack;
+
+ 
+    var bghtPack ;
+     for (var p in req.body.pack) {
+
+                bghtPack = p;
+             
+            }
+   var boughtPack = req.body.pack[bghtPack];
    console.log(boughtPack);
    var pack;
       for (var k in boughtPack) {
@@ -687,9 +712,14 @@ app.post('/charge/:id', (req, res) => {
   .then(function(charge){
 
     addNewDays(days,id);
-    turnPackOn(pack,id)
+    turnPackOn(pack,bghtPack,id)
 
-    res.render('success')
+if(bghtPack == "bronzePack"){
+   res.redirect('/bronze/' + id)
+}else {
+   res.redirect('/platinum/' + id)
+}
+
  
   })
 });
@@ -699,14 +729,31 @@ app.post('/charge/:id', (req, res) => {
 
 app.get("/platinum/:id",isLoggedIn,function(req,res){
   var id = req.params.id;
-  var title = "EOD | Platinum Memberships"
-  res.render("platinum",{title: title})
+  var title = "EOD | Platinum Memberships";
+
+User.findById(id,function(err,user){
+  if(err){
+    console.log(err)
+  }
+
+  res.render("platinum",{currentUser: user,title: title})
+
+})
+
+
   
 });
 app.get("/bronze/:id",isLoggedIn,function(req,res){
   var id = req.params.id;
-  var title = "EOD | Bronze Memberships"
-  res.render("bronze",{title: title})
+  var title = "EOD | Bronze Memberships";
+  User.findById(id,function(err,user){
+  if(err){
+    console.log(err)
+  }
+
+  res.render("bronze",{currentUser: user,title: title})
+
+})
   
 });
 
@@ -768,15 +815,16 @@ return true;
 
 }
 
-async function turnPackOn(packname,id){
-  var packName = packname;
+async function turnPackOn(pack,mainPack,id){
+  var pack = pack;
+  var mainPack = mainPack;
   var id = id;
   User.findById(id,function(err,user){
     if(err){
       console.log(err);
     }
 
-user.platinumPack[packName] =  true;
+user[mainPack][pack] =  true;
 user.save(function(err){
   if(err){
     console.log(err);

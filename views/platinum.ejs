@@ -74,7 +74,10 @@
 					<h4>1 Day</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
+					<h4 style="<% if (currentUser.platinumPack.oneDay === true || currentUser.platinumPack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
 <form action="/charge/<%= currentUser._id %>" method="POST">
 	<script src="https://checkout.stripe.com/checkout.js" 
 	class="stripe-button" 
@@ -90,7 +93,7 @@
 	</script>
 	<input type="text" value="1" name="days" style="display:none;">
 	<input type="text" value="2500" name="ammount" style="display:none;">
-	<input type="text" value="true" name="platinumPack[oneDay]" style="display:none;">
+	<input type="text" value="true" name="[pack][platinumPack][oneDay]" style="display:none;">
 	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$25</button>
 </form>
 					</h4>
@@ -102,7 +105,7 @@
 					<h4>2 Days</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4 style="<% if (currentUser.platinumPack.twoDay === true) { %>
+					<h4 style="<% if (currentUser.platinumPack.twoDay === true || currentUser.platinumPack.sevenDay === true) { %>
 						border: 2px solid rgb(52 183 47) !important;
 					<% }%>
 					">
@@ -111,7 +114,7 @@
 	class="stripe-button" 
 	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
 	data-amount="5000" 
-	data-name="Premium Membership For 1 days" 
+	data-name="Premium Membership For 2 days" 
 	data-description="" 
 	data-image="../img/marketplace.png" data-locale="auto">
 	</script>
@@ -121,7 +124,7 @@
 	</script>
 	<input type="text" value="2" name="days" style="display:none;">
 	<input type="text" value="5000" name="ammount" style="display:none;">
-	<input type="text" value="true" name="platinumPack[twoDay]" style="display:none;">
+	<input type="text" value="true" name="[pack][platinumPack][twoDay]" style="display:none;">
 	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$50</button>
 </form>
 					</h4>
@@ -133,13 +136,16 @@
 					<h4>3 Days</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
+					<h4 style="<% if (currentUser.platinumPack.threeDay === true || currentUser.platinumPack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
 <form action="/charge/<%= currentUser._id %>" method="POST">
 	<script src="https://checkout.stripe.com/checkout.js" 
 	class="stripe-button" 
 	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
 	data-amount="7500" 
-	data-name="Premium Membership For 1 days" 
+	data-name="Premium Membership For 3 days" 
 	data-description="" 
 	data-image="../img/marketplace.png" data-locale="auto">
 	</script>
@@ -149,7 +155,7 @@
 	</script>
 	<input type="text" value="3" name="days" style="display:none;">
 	<input type="text" value="7500" name="ammount" style="display:none;">
-	<input type="text" value="true" name="platinumPack[threeDay]" style="display:none;">
+	<input type="text" value="true" name="[pack][platinumPack][threeDay]" style="display:none;">
 	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$75</button>
 </form>
 					</h4>
@@ -161,13 +167,16 @@
 					<h4>4 Days</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
+					<h4 style="<% if (currentUser.platinumPack.fourDay === true || currentUser.platinumPack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
 <form action="/charge/<%= currentUser._id %>" method="POST">
 	<script src="https://checkout.stripe.com/checkout.js" 
 	class="stripe-button" 
 	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
 	data-amount="10000" 
-	data-name="Premium Membership For 1 days" 
+	data-name="Premium Membership For 4 days" 
 	data-description="" 
 	data-image="../img/marketplace.png" data-locale="auto">
 	</script>
@@ -177,7 +186,7 @@
 	</script>
 	<input type="text" value="4" name="days" style="display:none;">
 	<input type="text" value="10000" name="ammount" style="display:none;">
-	<input type="text" value="true" name="platinumPack[fourDay]" style="display:none;">
+	<input type="text" value="true" name="[pack][platinumPack][fourDay]" style="display:none;">
 	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$100</button>
 </form>		</h4>
 				</div>
@@ -188,13 +197,16 @@
 					<h4>5 Days</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
+					<h4 style="<% if (currentUser.platinumPack.fiveDay === true || currentUser.platinumPack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
 <form action="/charge/<%= currentUser._id %>" method="POST">
 	<script src="https://checkout.stripe.com/checkout.js" 
 	class="stripe-button" 
 	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
 	data-amount="12500" 
-	data-name="Premium Membership For 1 days" 
+	data-name="Premium Membership For 5 days" 
 	data-description="" 
 	data-image="../img/marketplace.png" data-locale="auto">
 	</script>
@@ -204,7 +216,7 @@
 	</script>
 	<input type="text" value="5" name="days" style="display:none;">
 	<input type="text" value="12500" name="ammount" style="display:none;">
-	<input type="text" value="true" name="platinumPack[fiveDay]" style="display:none;">
+	<input type="text" value="true" name="[pack][platinumPack][fiveDay]" style="display:none;">
 	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$125</button>
 </form>	
 					</h4>
@@ -216,13 +228,16 @@
 					<h4>6 Days</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
+					<h4 style="<% if (currentUser.platinumPack.sixDay === true || currentUser.platinumPack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
 <form action="/charge/<%= currentUser._id %>" method="POST">
 	<script src="https://checkout.stripe.com/checkout.js" 
 	class="stripe-button" 
 	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
 	data-amount="15000" 
-	data-name="Premium Membership For 1 days" 
+	data-name="Premium Membership For 6 days" 
 	data-description="" 
 	data-image="../img/marketplace.png" data-locale="auto">
 	</script>
@@ -232,7 +247,7 @@
 	</script>
 	<input type="text" value="6" name="days" style="display:none;">
 	<input type="text" value="15000" name="ammount" style="display:none;">
-	<input type="text" value="true" name="platinumPack[sixDay]" style="display:none;">
+	<input type="text" value="true" name="[pack][platinumPack][sixDay]" style="display:none;">
 	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$150</button>
 </form>	
 					</h4>
@@ -248,13 +263,16 @@
 					<h4>7 Days</h4>
 				</div>
 				<div class="rate-text p- text-center mb-3">
-					<h4>
+					<h4 style="<% if (currentUser.platinumPack.sevenDay === true) { %>
+						border: 2px solid rgb(52 183 47) !important;
+					<% }%>
+					">
 <form action="/charge/<%= currentUser._id %>" method="POST">
 	<script src="https://checkout.stripe.com/checkout.js" 
 	class="stripe-button" 
 	data-key="pk_test_51IT6NiI7ttdO5TTgwOdBrehIDjqwMp52nLhQWOFP01Iji7Lh0F9PgmLPhJ5HfE5FHkjeeFTd4bSNJqfunA3xASCW00fisw0dxV" 
 	data-amount="17500" 
-	data-name="Premium Membership For 1 days" 
+	data-name="Premium Membership For 7 days" 
 	data-description="" 
 	data-image="../img/marketplace.png" data-locale="auto">
 	</script>
@@ -264,7 +282,7 @@
 	</script>
 	<input type="text" value="7" name="days" style="display:none;">
 	<input type="text" value="17500" name="ammount" style="display:none;">
-	<input type="text" value="true" name="platinumPack[fourDay]" style="display:none;">
+	<input type="text" value="true" name="[pack][platinumPack][sevenDay]" style="display:none;">
 	<button type="submit" class="btn  text-white btn-lg" style="margin-top: -15px;">$175</button>
 </form>	
 					</h4>
