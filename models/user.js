@@ -32,6 +32,7 @@ var userSchema = new mongoose.Schema({
     websiteUrl: String,
     PreferredContactMethod: String,
     avilable: { type: Boolean, default: false },
+    visible: { type: Boolean, default: false },
     instagramUrl: String,
     followMe: String,
     isUser: { type: Boolean, default: true },
@@ -68,6 +69,10 @@ var userSchema = new mongoose.Schema({
         fiveDay: { type: Boolean, default: false },
         sixDay: { type: Boolean, default: false },
         sevenDay: { type: Boolean, default: false }
+    },
+    visibleFromTo:{
+        to: Number,
+        from: Number
     }
 });
 

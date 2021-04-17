@@ -5,6 +5,7 @@ var passport      = require("passport");
 var mongoose      = require("mongoose");
 var flash         = require("connect-flash");
 var User          = require("./models/user");
+// var Visibility_Controler   = require("./models/visibilityControler");
 var CSF           = require("./customFuctions/copysamplefiles");
 var localStrategy = require("passport-local");
 var bodyParser    = require("body-parser");
@@ -19,7 +20,7 @@ var ejs           = require("ejs");
 var port          = process.env.PORT || 5000; 
 
 
-
+ // akhon atar kaj kortesi...
 
 // =============================
 // database - configuration
@@ -64,50 +65,50 @@ app.use(function(req,res,next){
 	res.locals.currentUser = req.user;
 	next();
 })
-// =============================
-//  cron jobs
+  // =============================
+ //  cron jobs
 // =============================
 
 // Schedule tasks to be run on the server.
-// cron.schedule('* * * * *', function() {
-//   console.log('running a task every minute');
+cron.schedule('* * * * *', function() {
+  console.log('running a task every minute');
 
- // fs.rmdirSync("./tmp", { recursive: true },function(){
- //  console.log('temp file successfully deleted');
- // });
-
-
- 
-
-// }); 
+ fs.rmdirSync("./tmp", { recursive: true },function(){
+  console.log('temp file successfully deleted');
+ });
 
 
-
- User.find({},function(err,users){
+  User.find({},function(err,users){
   if(err){
     console.log(err)
   }else {
     
 
 users.forEach( function(user) {
- var avDays = user.advertiseForDays;
- console.log(avDays)
-var showForDays = 0;
-for(var i = 0;i < avDays.length;i++){
-
-        showForDays += avDays[i] ;
+ var currentDate = Date.now();
+ var visibleTo   = user.visibleFromTo.to;
+if (1 == 1) {
+  user.visible = false;
+  user.visibleFromTo.to = currentDate;
+  user.advertiseForDays = [];
+  user.save(function(err){
+    if(err){
+      console.log(err);
+    }
+  })
 }
-// showForDays = showForDays - 1;
-console.log(showForDays);
-
 });
 
 
   }
  })
 
-// =============================
-//        routs start here
+}); 
+
+
+
+  // =============================
+ //        routs start here
 // =============================
 
 
@@ -171,7 +172,6 @@ var transporter = nodeMailer.createTransport({
     pass: process.env.GMAIL_PASSWORD
   }
 });
-// mdforhadhossain297@gmail.com
 var mailOptions = {
   from: process.env.GMAIL_ADDRESS,
   to: email,
@@ -272,7 +272,6 @@ User.findOneAndUpdate({verificationId: oneTimeId},update, {new: true}, function 
 app.get("/user-profile",isLoggedIn,function(req,res){ 
   var title = "EOD| Member Profile";
   var id = req.user._id;
-  // console.log(user);
 
 User.findById(id,function(err,user){
   if(err){
@@ -354,8 +353,8 @@ User.findByIdAndUpdate(id,user,{new:true},function(err,user){
 });
 
 
-// =============================
-//    contact us routs
+  // =============================
+ //    contact us routs
 // =============================
 
 app.get("/contact-us",function(req,res){
@@ -378,8 +377,8 @@ var message = {
 
 console.log(email, sub, mes)
 
-// =============================
-//         node mailer
+  // =============================
+ //         node mailer
 // =============================
 
 
@@ -390,7 +389,7 @@ var transporter = nodeMailer.createTransport({
     pass: process.env.GMAIL_PASSWORD
   }
 });
-// mdforhadhossain297@gmail.com
+
 
 
 ejs.renderFile(__dirname + "/views/contact-email-template.ejs", { message: message}, function (err, data) {
@@ -423,8 +422,8 @@ transporter.sendMail(mailOptions, function(error, info){
 
 });
 
-// =============================
-//   term and condition rout
+  // =============================
+ //   term and condition rout
 // =============================
 
 app.get("/term-conditions",function(req,res){
@@ -445,8 +444,8 @@ app.get("/change-location",function(req,res){
 });
 
 
-// =============================
-//    elite escorts only rout
+  // =============================
+ //    elite escorts only rout
 // =============================
 
 app.get("/elite-escorts-only",function(req,res){
@@ -523,8 +522,8 @@ if(req.files !== null){
 
 });
 
-// =============================
-//       update info rout
+  // =============================
+ //       update info rout
 // =============================
 app.post("/update-info/:id",function(req,res){
   var id = req.params.id;
@@ -621,8 +620,8 @@ user.save(function(err){
 });
 
 
-// =============================
-//   term and condition rout
+  // =============================
+ //   term and condition rout
 // =============================
 
 app.get("/terms_conditions",function(req,res){
@@ -631,8 +630,8 @@ app.get("/terms_conditions",function(req,res){
   
   res.render("term-conditions",{title: title});
 });
-// =============================
-//   advirtiser route
+  // =============================
+ //   advirtiser route
 // =============================
 app.get("/advertise-with-us",function(req,res){
   var title = "EOD | Advertise With Us"
@@ -640,7 +639,7 @@ app.get("/advertise-with-us",function(req,res){
 });
 
 // =============================
-//   location route
+ //   location route
 // =============================
 app.get("/location/:location",function(req,res){
   var location = req.params.location;
@@ -670,10 +669,9 @@ app.get("/s/:id",function(req,res){
 // =============================
 // Charge Route
 // =============================
-app.post('/charge/:id', (req, res) => {
-// console.log(req.body.pack);
-   // var boughtPack = req.body.platinumPack;
-
+app.post('/charge/:id',isLoggedIn, (req, res) => {
+   var id = req.params.id;
+   var days = req.body.days;
  
     var bghtPack ;
      for (var p in req.body.pack) {
@@ -689,14 +687,9 @@ app.post('/charge/:id', (req, res) => {
                 pack = k;
              
             }
+ 
 
-
-
-   var id = req.params.id;
-   var days = req.body.days;
-   // console.log(days);
-   // console.log(pack)
-  console.log(req.body);
+  // console.log(req.body);
   const amount = req.body.ammount;
   
   stripe.customers.create({
@@ -712,7 +705,8 @@ app.post('/charge/:id', (req, res) => {
   .then(function(charge){
 
     addNewDays(days,id);
-    turnPackOn(pack,bghtPack,id)
+    turnPackOn(pack,bghtPack,id);
+    trackPack(id);
 
 if(bghtPack == "bronzePack"){
    res.redirect('/bronze/' + id)
@@ -720,9 +714,131 @@ if(bghtPack == "bronzePack"){
    res.redirect('/platinum/' + id)
 }
 
- 
-  })
+
+  }) 
+
 });
+
+  // ====================
+ // tracking bought pack
+// ====================
+
+
+function trackPack(id){
+var id = id;
+var currentDate = Date.now();
+console.log(currentDate)
+var currentDays  = 0;
+var showForDays  = 0;
+User.findById(id,function(err,user){
+  if(err){
+    console.log(err)
+  }else {
+    
+
+var avDays  = user.advertiseForDays;
+// console.log(avDays);
+
+for(var i = 0;i < avDays.length;i++){
+
+        showForDays += avDays[i];
+
+}
+currentDays = currentDays + showForDays;
+// console.log(showForDays);
+var days    = ( currentDays * 86400000 ) + currentDate;
+console.log(days)
+
+
+
+user.visible = true;
+user.visibleFromTo.from = currentDate;
+user.visibleFromTo.to = days;
+  user.save(function(err){
+  if(err){
+    console.log(err)
+  }
+
+  });
+
+  }
+
+
+})
+
+
+}
+// var f = "607abf0c43115818e4222a24";
+// console.log(f)
+// trackPack(f)
+// console.log(Date.now())
+// function trackPack(mainPack,subPack,userID){
+// var mainPack    = mainPack;
+// var subPack     = subPack;
+// var userID      = userID;
+// var currentDate = Date.now();
+// var currentDays  = 0;
+// var showForDays = 0;
+
+// User.findById(userID,function(err,user){
+//   if(err){
+//     console.log(err)
+//   }else {
+//  var avDays     = user.advertiseForDays;
+// console.log(avDays)
+
+// for(var i = 0;i < avDays.length;i++){
+
+//         showForDays += avDays[i] ;
+
+// }
+// currentDays = currentDays + showForDays;
+// console.log(showForDays);
+
+//   user.visible = true;
+//   user.save(function(err){
+//   if(err){
+//     console.log(err)
+//   }
+
+// });
+
+// var days        = ( currentDays * 86400000 ) ;
+// console.log(days);
+// // var totalDays   = currentDate + days ;
+// var totalDays   = 5000 ;
+
+
+// function myFunction() {
+
+
+//  setTimeout(function(){ 
+// turnOfVisibity(user._id);
+
+//    },totalDays);
+
+// myFunction();
+// }
+
+//   }
+  
+//  })
+// };
+// function turnOfVisibity(id){
+//   User.findById(id,function(err,user){
+//   user.visible = false;
+//   user.save(function(err){
+//   if(err){
+//     console.log(err)
+//   }
+//    });
+//   console.log("done")
+// });
+
+// }
+
+
+
 
 
 // all packeages route 
@@ -834,16 +950,4 @@ user.save(function(err){
 
   })
 };
-
-
-
-
-
-
-
-
-
-
-
-
 
