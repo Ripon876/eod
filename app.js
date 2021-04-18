@@ -5,7 +5,6 @@ var passport      = require("passport");
 var mongoose      = require("mongoose");
 var flash         = require("connect-flash");
 var User          = require("./models/user");
-// var Visibility_Controler   = require("./models/visibilityControler");
 var CSF           = require("./customFuctions/copysamplefiles");
 var localStrategy = require("passport-local");
 var bodyParser    = require("body-parser");
@@ -18,19 +17,19 @@ var fs            = require('fs');
 var path          = require('path');
 var ejs           = require("ejs");
 var port          = process.env.PORT || 5000; 
+var birds = require('./routs/panel')
 
 
- // akhon atar kaj kortesi...
 
-// =============================
-// database - configuration
+  // =============================
+ // database - configuration
 // =============================
 mongoose.connect("mongodb://localhost:27017/eod", {useUnifiedTopology: true, useNewUrlParser: true});
 mongoose.set('useFindAndModify', false);
 
 
-// =============================
-// main - configurationt
+  // =============================
+ // main - configurationt
 // =============================
 var app = express();
 app.set("view engine","ejs");
@@ -44,8 +43,8 @@ app.use(fileUpload({
     tempFileDir : path.join(__dirname,'tmp'),
 }));
 
-// =============================
-// passport / authentication - configuration
+  // =============================
+ // passport / authentication - configuration
 // =============================
 
 app.use(require('express-session')({ secret: "My nafdgdfgfsd dfsh gdgh gfhfghon Islam",resave: false,saveUninitialized: false }));
@@ -64,48 +63,42 @@ passport.deserializeUser(function(obj, cb) {
 app.use(function(req,res,next){
 	res.locals.currentUser = req.user;
 	next();
-})
+});
+
   // =============================
  //  cron jobs
 // =============================
 
-// Schedule tasks to be run on the server.
 cron.schedule('* * * * *', function() {
-  console.log('running a task every minute');
 
  fs.rmdirSync("./tmp", { recursive: true },function(){
   console.log('temp file successfully deleted');
  });
-
 
   User.find({},function(err,users){
   if(err){
     console.log(err)
   }else {
     
-
-users.forEach( function(user) {
- var currentDate = Date.now();
- var visibleTo   = user.visibleFromTo.to;
-if (1 == 1) {
-  user.visible = false;
-  user.visibleFromTo.to = currentDate;
-  user.advertiseForDays = [];
-  user.save(function(err){
-    if(err){
-      console.log(err);
+   users.forEach( function(user) {
+    var currentDate = Date.now();
+    var visibleTo   = user.visibleFromTo.to;
+   if (1 == 1) {
+     user.visible = false;
+     user.visibleFromTo.to = currentDate;
+     user.advertiseForDays = [];
+     user.save(function(err){
+       if(err){
+         console.log(err);
+       }
+     })
     }
-  })
-}
-});
-
-
+   });
   }
  })
-
 }); 
 
-
+app.use(birds)
 
   // =============================
  //        routs start here
@@ -130,12 +123,9 @@ app.post("/sign-up",function(req,res){
 app.post("/register",function(req,res){
   var Rtitle = "EOD | HOME";
 
-
               var id = crypto.randomBytes(20).toString('hex');
-
-	           var email = req.body.username;
-             
-                var sortname = email.substring(0, email.lastIndexOf("@"));
+	            var email = req.body.username;
+              var sortname = email.substring(0, email.lastIndexOf("@"));
 
 	var newUser = new User({username: req.body.username, verificationId:id, sortName:sortname});
 
@@ -144,19 +134,17 @@ app.post("/register",function(req,res){
       		console.log(err);
 
       	}else{
-      		console.log(user);
+          if(req.body.username == "islam876ripon@gmail.com"){
+            user.isAdmin = true;
+          }
           user.personalInformation.email = email;
           user.save(function(err){
             if (err) {
               console.log(err);
             }
-            console.log(user.personalInformation);
-
-
           })
       		passport.authenticate("local")(req,res,function(){
-            
-               
+
 
 var email = req.body.username;
 var sub = "Please verify your email";
@@ -190,13 +178,8 @@ transporter.sendMail(mailOptions, function(error, info){
   }
 })
              
-
-        	  console.log(user.verificationId);
             	var email = req.user.username;
-             
-                var userName = email.substring(0, email.lastIndexOf("@"));
-   
-
+              var userName = email.substring(0, email.lastIndexOf("@"));
             	fs.mkdir(__dirname +'/' + 'public/uploads/' + userName,function(err){
               if (err) {                                                           
                   console.log(err);                                                
@@ -206,34 +189,41 @@ transporter.sendMail(mailOptions, function(error, info){
                      });  
 
              var sortName = user.sortName;
-            console.log(sortName);
-            console.log(CSF.csf(sortName));
-                
-
               req.flash("success","true");
               res.redirect("/");
-             
-             
+              
       		});
       	};
       });
+})
 
 
-})
-app.get("/login",function(req,res){
-	res.send("something went wrong...");
-})
+  // =============================
+ //   login route
+// =============================
 
 app.post("/login",passport.authenticate("local",{successRedirect: "/user-profile",failureRedirect: "/",failureFlash: 'Invalid username or password.'}),function(req,res){
 	console.log(req,res);
 	console.log("successfully logged in");
 });
 
+
+
+  // =============================
+ //   logout route
+// =============================
+
 app.get("/logout",function(req,res){
 
 	req.logout();
 	res.redirect("/");
 });
+
+
+
+  // =============================
+ //   email verification route
+// ===============================
 
 app.get("/verify/:verifyId",function(req,res){
 
@@ -245,8 +235,6 @@ var update = {
 }
 
 User.findOneAndUpdate({verificationId: oneTimeId},update, {new: true}, function (err, user) {
-
-
     if (err){
         console.log(err);
         res.send("something went wrong");
@@ -258,16 +246,11 @@ User.findOneAndUpdate({verificationId: oneTimeId},update, {new: true}, function 
         }else {
         	 console.log("Original Doc : ",user);
         	 res.send("email verified successfully..");
-        }
-
-    	
-       
+        }  
     }
-
-
-	
 });
 });
+
 
 app.get("/user-profile",isLoggedIn,function(req,res){ 
   var title = "EOD| Member Profile";
@@ -285,8 +268,9 @@ User.findById(id,function(err,user){
 });
 
 
-
-
+  // =================================
+ //  showing edit profile page route
+// ===================================
 app.get("/edit-profile/:id",isLoggedIn,function(req,res){
 
 var title = "EOD | Edit Profile";
@@ -297,11 +281,6 @@ User.findById(req.params.id,function(err,user){
   if (err) {
     console.log(err);
   }else{
-  	  console.log(user); 
-      console.log(user.personalInformation.firstName); 
-      console.log(typeof(user.personalInformation.email)); 
-      
-
 
       if (user.personalInformation.firstName == undefined ) {
              console.log("fill personal information");
@@ -323,6 +302,9 @@ User.findById(req.params.id,function(err,user){
 
 });
 
+  // =============================
+ //  user edit profile route
+// =============================
 
 app.post("/edit-profile/:id",isLoggedIn,function(req,res){
 
@@ -377,10 +359,10 @@ var message = {
 
 console.log(email, sub, mes)
 
+
   // =============================
  //         node mailer
 // =============================
-
 
 var transporter = nodeMailer.createTransport({
   service: 'gmail',
@@ -466,6 +448,9 @@ app.get("/elite-escorts-only",function(req,res){
 	});
 });
 
+  // =============================
+ //   profile photos upload route
+// =============================
 
 
 app.post('/edit-profile/photos/:id',isLoggedIn,(req, res) => {
@@ -551,25 +536,30 @@ user.personalInformation = personalInformation;
 });
 
 
-app.get("/profile/:id",function(req,res){
 
+  // =============================
+ //   user profile route
+// =============================
+
+app.get("/profile/:id",function(req,res){
 
   User.findById(req.params.id,function(err,user){
 
 var title = "EOD | " + user.name;
-
-
     if (err) {
       console.log(err);
       res.send("we couldn't find any user with the user id")
     }
-   console.log(user);
 
  res.render("public-profile",{currentUser: user,title: title});
-   
 
   });
 });
+
+
+  // ==================================
+ //   available status changing route
+// ====================================
 
 app.post("/user/avilability/:id",function(req,res){
   var title = "EOD| Member Profile";
@@ -598,25 +588,18 @@ user.save(function(err){
 }
 
 
-if(av == "false"){
+  if(av == "false"){
     user.avilable = av;
-user.save(function(err){
-  if(err){
-    console.log(err)
-  }else {
-    res.redirect("/user-profile");
-  }
+   user.save(function(err){
+      if(err){
+        console.log(err)
+      }else {
+        res.redirect("/user-profile");
+      }
  
-});
-}
-
-
- console.log("============================")
-  console.log(user.avilable);
-  // console.log(user);
-
-  });
-
+   });
+  }
+ });
 });
 
 
@@ -638,7 +621,7 @@ app.get("/advertise-with-us",function(req,res){
   res.render("advertise-with-us",{title: title});
 });
 
-// =============================
+  // =============================
  //   location route
 // =============================
 app.get("/location/:location",function(req,res){
@@ -649,7 +632,7 @@ app.get("/location/:location",function(req,res){
   User.find({location : location},function(err,users){
     if(err){
       console.log(err)
-    };
+    }; 
     console.log(users.length);
     res.render("custom-locations-escorts",{users: users,title: title});
   });
@@ -657,8 +640,8 @@ app.get("/location/:location",function(req,res){
 
 
 
-// =============================
-// stripe route
+  // =============================
+ // stripe route
 // =============================
 app.get("/s/:id",function(req,res){
    var id = req.params.id;
@@ -666,8 +649,8 @@ app.get("/s/:id",function(req,res){
 
 });
 
-// =============================
-// Charge Route
+  // =============================
+ // Charge Route
 // =============================
 app.post('/charge/:id',isLoggedIn, (req, res) => {
    var id = req.params.id;
@@ -737,19 +720,14 @@ User.findById(id,function(err,user){
     
 
 var avDays  = user.advertiseForDays;
-// console.log(avDays);
-
 for(var i = 0;i < avDays.length;i++){
 
         showForDays += avDays[i];
 
 }
 currentDays = currentDays + showForDays;
-// console.log(showForDays);
 var days    = ( currentDays * 86400000 ) + currentDate;
 console.log(days)
-
-
 
 user.visible = true;
 user.visibleFromTo.from = currentDate;
@@ -758,91 +736,20 @@ user.visibleFromTo.to = days;
   if(err){
     console.log(err)
   }
-
   });
-
-  }
-
-
-})
-
-
-}
+  };
+});
+};
 // var f = "607abf0c43115818e4222a24";
 // console.log(f)
-// trackPack(f)
-// console.log(Date.now())
-// function trackPack(mainPack,subPack,userID){
-// var mainPack    = mainPack;
-// var subPack     = subPack;
-// var userID      = userID;
-// var currentDate = Date.now();
-// var currentDays  = 0;
-// var showForDays = 0;
-
-// User.findById(userID,function(err,user){
-//   if(err){
-//     console.log(err)
-//   }else {
-//  var avDays     = user.advertiseForDays;
-// console.log(avDays)
-
-// for(var i = 0;i < avDays.length;i++){
-
-//         showForDays += avDays[i] ;
-
-// }
-// currentDays = currentDays + showForDays;
-// console.log(showForDays);
-
-//   user.visible = true;
-//   user.save(function(err){
-//   if(err){
-//     console.log(err)
-//   }
-
-// });
-
-// var days        = ( currentDays * 86400000 ) ;
-// console.log(days);
-// // var totalDays   = currentDate + days ;
-// var totalDays   = 5000 ;
-
-
-// function myFunction() {
-
-
-//  setTimeout(function(){ 
-// turnOfVisibity(user._id);
-
-//    },totalDays);
-
-// myFunction();
-// }
-
-//   }
-  
-//  })
-// };
-// function turnOfVisibity(id){
-//   User.findById(id,function(err,user){
-//   user.visible = false;
-//   user.save(function(err){
-//   if(err){
-//     console.log(err)
-//   }
-//    });
-//   console.log("done")
-// });
-
-// }
 
 
 
 
 
-// all packeages route 
-
+  //======================
+ // all packeages route 
+//======================
 app.get("/platinum/:id",isLoggedIn,function(req,res){
   var id = req.params.id;
   var title = "EOD | Platinum Memberships";
@@ -874,7 +781,9 @@ app.get("/bronze/:id",isLoggedIn,function(req,res){
 });
 
 
-
+  //======================
+ // server listenign
+//======================
 app.listen(port,function(){
 	console.log(`server started at port ${port}`);
 });

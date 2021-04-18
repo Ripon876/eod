@@ -1,0 +1,24 @@
+/*.notifications{
+
+}
+li.show .notifications .show{
+    overflow-y: scroll !important;
+	height: 250px;
+	display: flex !important;
+   flex-direction: column-reverse !important;
+}
+*/
+
+.dropdown-menu.notification-container.show {
+	overflow-y: scroll;
+	height:300px;
+	 display: flex;
+    flex-direction: column;
+
+}
+.notifications {
+  /*overflow: scroll;*/
+  /*overflow-x: hidden;*/
+  display: flex !important;
+  flex-direction: column-reverse !important;
+}
