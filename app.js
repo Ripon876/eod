@@ -75,28 +75,107 @@ cron.schedule('* * * * *', function() {
   console.log('temp file successfully deleted');
  });
 
-  User.find({},function(err,users){
-  if(err){
-    console.log(err)
-  }else {
-    
+
+
+
+User.find({},function(err,users){
+//   users.forEach( function(user) {
+//     var pl = user.platinumPack;
+//     var br = user.bronzePack;
+
+
+
+// function turnOffPack(packname){
+
+// var keys = Object.keys(packname);
+// var values = Object.values(packname);
+// for(var i =0; i < keys.length -1 ;i++){
+//  var j = keys[i+1];
+//  console.log(j)
+//  packname[j] = false;
+
+
+// }
+// }
+// turnOffPack(pl);
+// turnOffPack(br);
+
+// user.save();
+//   });
+
+
    users.forEach( function(user) {
     var currentDate = Date.now();
     var visibleTo   = user.visibleFromTo.to;
-   if (1 == 1) {
+    var pl          = user.platinumPack;
+    var br          = user.bronzePack;
+
+function turnOffPack(packname){
+
+var keys = Object.keys(packname);
+var values = Object.values(packname);
+for(var i =0; i < keys.length -1 ;i++){
+ var j = keys[i+1];
+ console.log(j)
+ packname[j] = false;
+
+
+}
+}
+   if (user.visibleTo == currentDate) {
      user.visible = false;
-     user.visibleFromTo.to = currentDate;
+     user.visibleFromTo.to = 0;
      user.advertiseForDays = [];
+     turnOffPack(pl);
+     turnOffPack(br);
+
      user.save(function(err){
        if(err){
          console.log(err);
        }
+       console.log("visible and bought packs status  updated")
      })
     }
+
+
+
+
    });
-  }
- })
+
+
+})
+
+
+
+
 }); 
+
+
+// User.find({},function(err,users){
+//   users.forEach( function(user) {
+//     var pl = user.platinumPack;
+//     var br = user.bronzePack;
+
+// turnOffPack(pl);
+// turnOffPack(br);
+
+// function turnOffPack(packname){
+
+// var keys = Object.keys(packname);
+// var values = Object.values(packname);
+// for(var i =0; i < keys.length -1 ;i++){
+//  var j = keys[i+1];
+//  console.log(j)
+//  packname[j] = false;
+
+
+// }
+// }
+
+
+// user.save();
+//   });
+// })
 
 app.use(birds)
 
@@ -653,9 +732,9 @@ app.get("/s/:id",function(req,res){
  // Charge Route
 // =============================
 app.post('/charge/:id',isLoggedIn, (req, res) => {
-   var id = req.params.id;
-   var days = req.body.days;
- 
+   var id     = req.params.id;
+   var days   = req.body.days;
+   var amount = req.body.ammount;
     var bghtPack ;
      for (var p in req.body.pack) {
 
@@ -671,9 +750,10 @@ app.post('/charge/:id',isLoggedIn, (req, res) => {
              
             }
  
+    addNewDays(days,id); // this add days from bought pack
+    turnPackOn(pack,bghtPack,id); // this enables the bought pack
 
-  // console.log(req.body);
-  const amount = req.body.ammount;
+
   
   stripe.customers.create({
     email: req.body.stripeEmail,
@@ -687,8 +767,7 @@ app.post('/charge/:id',isLoggedIn, (req, res) => {
   }))
   .then(function(charge){
 
-    addNewDays(days,id);
-    turnPackOn(pack,bghtPack,id);
+ 
     trackPack(id);
 
 if(bghtPack == "bronzePack"){
@@ -702,11 +781,11 @@ if(bghtPack == "bronzePack"){
 
 });
 
+
+
   // ====================
  // tracking bought pack
 // ====================
-
-
 function trackPack(id){
 var id = id;
 var currentDate = Date.now();
@@ -720,11 +799,13 @@ User.findById(id,function(err,user){
     
 
 var avDays  = user.advertiseForDays;
+console.log(avDays)
 for(var i = 0;i < avDays.length;i++){
 
         showForDays += avDays[i];
 
 }
+console.log(showForDays)
 currentDays = currentDays + showForDays;
 var days    = ( currentDays * 86400000 ) + currentDate;
 console.log(days)
@@ -742,6 +823,7 @@ user.visibleFromTo.to = days;
 };
 // var f = "607abf0c43115818e4222a24";
 // console.log(f)
+// trackPack(f)
 
 
 
@@ -818,7 +900,7 @@ function moveFile(img,user,p){
 
 
 
-async function addNewDays(days,id){
+function addNewDays(days,id){
 var userID = id;
 User.findById(userID,function(err,user){
 if (err) {
@@ -840,7 +922,7 @@ return true;
 
 }
 
-async function turnPackOn(pack,mainPack,id){
+ function turnPackOn(pack,mainPack,id){
   var pack = pack;
   var mainPack = mainPack;
   var id = id;
