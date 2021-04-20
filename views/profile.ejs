@@ -16,9 +16,9 @@
 				<div class="content">Welcome </br>"<%= currentUser.name %>"</div>
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4 ml-auto">
 			
-			<div class="bubble-r-box" style="height: 25px;left: 16px;width: 247px;margin-top: 15px;">
+			<div class="bubble-r-box" style="height: 25px;left: 16px;width: 247px;margin-top: 15px;margin-left: auto;margin-right: auto;">
 				<div class="bubble-element Group" style="box-sizing: border-box;   z-index: 6; height: 25px; top: 0px; border-radius: 6px; width: 247px; left: 0px;">
 					<div class="bubble-r-line" style="margin-top: 0px;height: 25px;display: flex;justify-content: space-around;">
 
@@ -75,19 +75,25 @@
 					
 				</div>
 			</div>
-			<div class="bubble-r-line" style="margin-top: 18px;height: 104px;display: flex;text-align: center;">
-				<div class="bubble-r-box" style="height: 104px;left: 7px;width: 33%;float: left;">
-					<button class="bubble-element Button clickable-element" style="box-sizing: border-box;z-index: 4;height: 104px;width: 104px;padding: 0px;cursor: pointer;background: none;border: 2px solid rgb(6, 186, 0);text-align: center;user-select: none;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 22px;font-weight: bold;color: rgb(227, 227, 229);line-height: 1;border-radius: 100px;transition: box-shadow 100ms ease 0s;" tabindex="2"><a href="/platinum/<%= currentUser._id %>" style="color: white;text-decoration: none;">Platinum</a></button>
+			<div class="bubble-r-line pack_btn" style="height: auto;display: flex;text-align: center;">
+				<div class="bubble-r-box" style="height: 104px;left: 7px;width: 100%;float: left;">
+
+					<button class="bubble-element Button clickable-element  <% if (currentUser.platinumPack.oneDay == true || currentUser.platinumPack.twoDay == true || currentUser.platinumPack.threeDay == true || currentUser.platinumPack.fourDay == true || currentUser.platinumPack.fiveDay == true || currentUser.platinumPack.sixDay == true || currentUser.platinumPack.sevenDay == true ) { %>
+						
+					pl_btn
+
+					<% } %>
+					" style="box-sizing: border-box;z-index: 4;height: 104px;width: 104px;padding: 0px;cursor: pointer;background: none;border: 2px solid rgb(6, 186, 0);text-align: center;user-select: none;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 22px;font-weight: bold;color: rgb(227, 227, 229);line-height: 1;border-radius: 100px;transition: box-shadow 100ms ease 0s;" tabindex="2"><a href="/platinum/<%= currentUser._id %>" style="color: white;text-decoration: none;">Platinum</a></button>
 					<div class="bubble-element Shape" style="display: none;">
 					</div>
 					<div class="bubble-element Text" style="white-space: pre-wrap; display: none;"></div>
 				</div>
-				<div class="bubble-r-box" style="height: 104px;left: 129px;width: 33%;float: right;margin-top: 4%;">
+				<div class="bubble-r-box" style="height: 104px;left: 129px;width: 100%;float: right;margin-top: 4%;">
 					<div class="bubble-element Shape" style="display: none;"></div>
-					<button class="bubble-element Button clickable-element" style="box-sizing: border-box;z-index: 2;height: 89px;width: 91px;padding: 0px;cursor: pointer;background: none;border: 2px solid rgb(176, 103, 0);text-align: center;user-select: none;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 21px;font-weight: bold;color: rgb(227, 227, 229);line-height: 1;border-radius: 100px;transition: box-shadow 100ms ease 0s;" tabindex="3"><a href="/bronze/<%= currentUser._id %>" style="color: white;text-decoration: none;">Bronze</a></button>
+					<button class="bubble-element Button clickable-element br_btn" style="box-sizing: border-box;z-index: 2;height: 89px;width: 91px;padding: 0px;cursor: pointer;background: none;border: 2px solid rgb(176, 103, 0);text-align: center;user-select: none;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 21px;font-weight: bold;color: rgb(227, 227, 229);line-height: 1;border-radius: 100px;transition: box-shadow 100ms ease 0s;" tabindex="3"><a href="/bronze/<%= currentUser._id %>" style="color: white;text-decoration: none;">Bronze</a></button>
 					<div class="bubble-element Text" style="white-space: pre-wrap; display: none;"></div>
 				</div>
-				<div class="bubble-r-box" style="height: 92px;left: 241px;float: right;width: 33%;margin-top: 10%;">
+				<div class="bubble-r-box" style="height: 92px;left: 241px;float: right;width: 100%;margin-top: 10%;">
 					<button class="bubble-element Button clickable-element" style="box-sizing: border-box;z-index: 3;height: 65px;width: 66px;padding: 0px;cursor: pointer;background: none;border: 2px solid rgb(204, 18, 18);text-align: center;user-select: none;font-family: &quot;Sorts Mill Goudy&quot;;font-size: 14px;font-weight: bold;color: rgb(227, 227, 229);line-height: 1;border-radius: 100px;box-shadow: rgba(0, 0, 0, 0.15) 4px 4px 6px 0px;transition: box-shadow 100ms ease 0s;" tabindex="4">Log out</button>
 				</div>
 			</div>

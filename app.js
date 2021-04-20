@@ -17,7 +17,8 @@ var fs            = require('fs');
 var path          = require('path');
 var ejs           = require("ejs");
 var port          = process.env.PORT || 5000; 
-var birds = require('./routs/panel')
+var panel         = require('./routs/panel');
+var photo_album   = require('./routs/photo_album');
 
 
 
@@ -177,10 +178,15 @@ for(var i =0; i < keys.length -1 ;i++){
 //   });
 // })
 
-app.use(birds)
+  // =============================
+ //    external routs start here
+// =============================
+
+app.use(panel);
+app.use(photo_album);
 
   // =============================
- //        routs start here
+ //     Internal routs start here
 // =============================
 
 

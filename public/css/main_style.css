@@ -512,3 +512,49 @@ body{
 .stripe-button-el{
     display: none !important; 
 }
+/*==================*/
+.pl_btn::before {
+    left: 30%;
+    content: "";
+    width: 10px !important;
+    height: 10px !important;
+    background: #06ba00 !important;
+    position: absolute;
+    top: 35%;
+    border-radius: 50%;
+}
+.br_btn::before {
+    left: 60%;
+    content: "";
+    width: 10px !important;
+    height: 10px !important;
+    background: #06ba00 !important;
+    position: absolute;
+    top: 35%;
+    border-radius: 40%;
+}
+.pack_btn{
+
+
+    margin: 0 auto;
+    width: 330px !important;
+    max-width: 330px;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-auto-rows: auto;
+    gap: 10px;
+    font-family: sans-serif;
+    padding-top: 30px;
+    }
+
+/*===========================*/
+.photo_grid{
+    margin: 0 auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-auto-rows: auto;
+    gap: 80px;
+    font-family: sans-serif;
+    padding-top: 30px;
+}
