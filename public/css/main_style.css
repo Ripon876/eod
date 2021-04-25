@@ -558,3 +558,22 @@ body{
     font-family: sans-serif;
     padding-top: 30px;
 }
+
+/*=======================*/
+@media only screen and (max-width: 1170px) {
+.filters {
+    background-color: lightblue !important;
+    display: none;
+  }
+.filter {
+    background-color: lightblue !important;
+    display: none;
+  }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px){
+.about-text-holder{
+    width: 100% !important;
+}
+}

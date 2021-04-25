@@ -20,6 +20,10 @@ var port          = process.env.PORT || 5000;
 var panel         = require('./routs/panel');
 var photo_album   = require('./routs/photo_album');
 
+// email template
+var cTemplate     = require("./email_templates/contact-email-template");
+// console.log(cTemplate("ripon","islam876ripon@gmail.com","meesfdgfsdag"))
+// cTemplate("Ripon","islam876ripon@gmail.com","sdfdgfdgfsdg")
 
 
   // =============================
@@ -188,6 +192,19 @@ app.use(photo_album);
   // =============================
  //     Internal routs start here
 // =============================
+
+app.get("/kdf",function(req,res){
+  console.log("route touched...");
+  res.send("route touched")
+})
+
+
+// SL91-JQ47-HW69-CV24-XV83
+// 3AQZ-W4SX-E5DC-R6FV-T7BG
+// YGYV-TFDR-SEZA-W3SX-E4DC
+// RFVT-6GYV-6FC5-X4Z3-ZWE4
+// SXDC-5RTF-6V7Y-BVCT-XZAA
+// W4ES-X5DR-CTF6-VGY7-BHUN
 
 
 app.get("/",function(req,res){
@@ -425,8 +442,18 @@ User.findByIdAndUpdate(id,user,{new:true},function(err,user){
 // =============================
 
 app.get("/contact-us",function(req,res){
-   res.render("contact-us");
+  var title = "EOD | Contact Us";
+   res.render("contact-us",{title: title});
 });
+
+
+  // 
+ //  debuging email template
+// 
+  // 
+ //  debuging email template
+// 
+
 app.post("/contact-us",function(req,res){
     
 
@@ -459,15 +486,13 @@ var transporter = nodeMailer.createTransport({
 
 
 
-ejs.renderFile(__dirname + "/views/contact-email-template.ejs", { message: message}, function (err, data) {
-if (err) {
-	console.log(err)
-}else {
+// ejs.renderFile(__dirname + "/views/contact-email-template.ejs", { message: message}, function (err, data) {
+
 	var mailOptions = {
   from: process.env.GMAIL_ADDRESS,
   to: email,
   subject: sub,
-  html: data
+  html: cTemplate(name,email,mes)
 };
 
 transporter.sendMail(mailOptions, function(error, info){
@@ -483,9 +508,9 @@ transporter.sendMail(mailOptions, function(error, info){
   };
 });
 
-};
 
-});
+
+// });
 
 });
 
@@ -635,7 +660,7 @@ var title = "EOD | " + user.name;
       console.log(err);
       res.send("we couldn't find any user with the user id")
     }
-
+  
  res.render("public-profile",{currentUser: user,title: title});
 
   });
