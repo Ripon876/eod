@@ -58,94 +58,25 @@
 					<div class="content">Upload upto 15 photos by clicking below</div>
 				</div>
 							<div class="bubble-element multifileupload-MultiFileInput" style="box-sizing: border-box;z-index: 3;height: 539px;width: 433px;left: 0px;border-style: solid;border-width: 1px;border-color: rgb(197, 179, 88);border-radius: 5px;top: 122px;">
-								<div class="dropzone needsclick dz-clickable" style="width: 433px;height: 537px;position: absolute;">
+							<!-- 	<div class="dropzone needsclick dz-clickable" style="width: 433px;height: 537px;position: absolute;">
 									<div class="dz-default dz-message needsclick" style="font-family: Lato; font-size: 14px; font-weight: normal; text-decoration: none; font-style: normal; text-align: left; color: rgb(0, 0, 0); line-height: 1;"></div>
-								</div>
+								</div> -->
 
-<input type="file" style="
+<input type="file" id="album_photo_upload" style="
     width: 431px;
-    background: red;
+    background: transparent;
     height: 536px;
+    opacity: 0;
 ">
+<img src="" id="shW_img" alt="">
 							</div>
 							<button class="bubble-element Button clickable-element" tabindex="12" style="padding: 0px;cursor: pointer;margin-top: 20px;background: -webkit-linear-gradient(top, rgb(214, 3, 3) 0%, rgb(163, 0, 0) 100%);border: none;text-align: center;box-sizing: border-box;z-index: 2;height: 66px;width: 67px;left: 178px;font-family: Arial;font-size: 14px;font-weight: bold;color: rgb(255, 255, 255);line-height: 1;border-radius: 100px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;top: 684px;">Save</button>
 						</div>
 						<div class="bubble-r-box" style="margin-left: 10px;height: 748px;margin-top: 10px;left: 443px;width: 391px;">
 							<div class="bubble-element RepeatingGroup" style="box-sizing: border-box;z-index: 4;height: 739px;width: 391px;left: 0px;top: 9px;overflow-y: scroll;border-style: solid;border-width: 1px;border-color: rgb(197, 179, 88);border-radius: 5px;">
-								<div class="rows" style="transform: translateZ(0px); min-height: 740px; box-sizing: border-box; float: left;">
-									<div class="bubble-element GroupItem group-item entry-1" style="box-sizing: border-box; float: left; position: relative; z-index: 4; height: 184.2px; width: 194.5px; border-top-style: none; border-left-style: none; display: none;">
-										<div class="bubble-r-line" style="margin-top: 0px; height: 183px;">
-											<div class="bubble-r-box" style="height: 183px; left: -1px; width: 194px;">
-												<div class="bubble-element Image"></div>
-											</div>
-										</div>
-									</div>
-									<div class="list-dummy" style="float: left; position: relative; box-sizing: border-box; z-index: 4; height: 184.2px; width: 194.5px; border-top-style: none; border-left-style: none; display: none;"></div>
-									<div class="bubble-element GroupItem group-item entry-2" style="box-sizing: border-box; float: left; position: relative; z-index: 4; height: 184.2px; width: 176.5px; border-top-style: none; border-left: 0px none rgb(150, 150, 150); display: none;">
-										<div class="bubble-r-line" style="margin-top: 0px; height: 183px;">
-											<div class="bubble-r-box" style="height: 183px; left: -1px; width: 176px;">
-												<div class="bubble-element Image"></div>
-											</div>
-										</div>
-									</div>
-									<div class="list-dummy" style="float: left; position: relative; box-sizing: border-box; z-index: 4; height: 184.2px; width: 176.5px; border-top-style: none; border-left: 0px none rgb(150, 150, 150); display: none;"></div>
-									<div class="bubble-element GroupItem group-item entry-3" style="box-sizing: border-box; float: left; position: relative; z-index: 4; height: 184.2px; width: 194.5px; border-top: 0px none rgb(150, 150, 150); border-left-style: none; display: none;">
-										<div class="bubble-r-line" style="margin-top: 0px; height: 183px;">
-											<div class="bubble-r-box" style="height: 183px; left: -1px; width: 194px;">
-												<div class="bubble-element Image"></div>
-											</div>
-										</div>
-									</div>
-									<div class="list-dummy" style="float: left; position: relative; box-sizing: border-box; z-index: 4; height: 184.2px; width: 194.5px; border-top: 0px none rgb(150, 150, 150); border-left-style: none; display: none;"></div>
-									<div class="bubble-element GroupItem group-item entry-4" style="box-sizing: border-box; float: left; position: relative; z-index: 4; height: 184.2px; width: 176.5px; border-top: 0px none rgb(150, 150, 150); border-left: 0px none rgb(150, 150, 150); display: none;">
-										<div class="bubble-r-line" style="margin-top: 0px; height: 183px;">
-											<div class="bubble-r-box" style="height: 183px; left: -1px; width: 176px;">
-												<div class="bubble-element Image"></div>
-											</div>
-										</div>
-									</div>
-									<div class="list-dummy" style="float: left; position: relative; box-sizing: border-box; z-index: 4; height: 184.2px; width: 176.5px; border-top: 0px none rgb(150, 150, 150); border-left: 0px none rgb(150, 150, 150); display: none;"></div>
-									<div class="bubble-element GroupItem group-item entry-5" style="box-sizing: border-box; float: left; position: relative; z-index: 4; height: 184.2px; width: 194.5px; border-top: 0px none rgb(150, 150, 150); border-left-style: none; display: none;">
-										<div class="bubble-r-line" style="margin-top: 0px; height: 183px;">
-											<div class="bubble-r-box" style="height: 183px; left: -1px; width: 194px;">
-												<div class="bubble-element Image"></div>
-											</div>
-										</div>
-									</div>
-									<div class="list-dummy" style="float: left; position: relative; box-sizing: border-box; z-index: 4; height: 184.2px; width: 194.5px; border-top: 0px none rgb(150, 150, 150); border-left-style: none; display: none;"></div>
-									<div class="bubble-element GroupItem group-item entry-6" style="box-sizing: border-box; float: left; position: relative; z-index: 4; height: 184.2px; width: 176.5px; border-top: 0px none rgb(150, 150, 150); border-left: 0px none rgb(150, 150, 150); display: none;">
-										<div class="bubble-r-line" style="margin-top: 0px; height: 183px;">
-											<div class="bubble-r-box" style="height: 183px; left: -1px; width: 176px;">
-												<div class="bubble-element Image"></div>
-											</div>
-										</div>
-									</div>
-									<div class="list-dummy" style="float: left; position: relative; box-sizing: border-box; z-index: 4; height: 184.2px; width: 176.5px; border-top: 0px none rgb(150, 150, 150); border-left: 0px none rgb(150, 150, 150); display: none;"></div>
-									<div class="bubble-element GroupItem group-item entry-7" style="box-sizing: border-box; float: left; position: relative; z-index: 4; height: 184.2px; width: 194.5px; border-top: 0px none rgb(150, 150, 150); border-left-style: none; display: none;">
-										<div class="bubble-r-line" style="margin-top: 0px; height: 183px;">
-											<div class="bubble-r-box" style="height: 183px; left: -1px; width: 194px;">
-												<div class="bubble-element Image"></div>
-											</div>
-										</div>
-									</div>
-									<div class="list-dummy" style="float: left; position: relative; box-sizing: border-box; z-index: 4; height: 184.2px; width: 194.5px; border-top: 0px none rgb(150, 150, 150); border-left-style: none; display: none;"></div>
-									<div class="bubble-element GroupItem group-item entry-8" style="box-sizing: border-box; float: left; position: relative; z-index: 4; height: 184.2px; width: 176.5px; border-top: 0px none rgb(150, 150, 150); border-left: 0px none rgb(150, 150, 150); display: none;">
-										<div class="bubble-r-line" style="margin-top: 0px; height: 183px;">
-											<div class="bubble-r-box" style="height: 183px; left: -1px; width: 176px;">
-												<div class="bubble-element Image"></div>
-											</div>
-										</div>
-									</div>
-									<div class="list-dummy" style="float: left; position: relative; box-sizing: border-box; z-index: 4; height: 184.2px; width: 176.5px; border-top: 0px none rgb(150, 150, 150); border-left: 0px none rgb(150, 150, 150); display: none;"></div>
-									<div class="bubble-element GroupItem group-item entry-9" style="box-sizing: border-box; float: left; position: relative; z-index: 4; height: 184.2px; width: 194.5px; border-top: 0px none rgb(150, 150, 150); border-left-style: none; display: none;">
-										<div class="bubble-r-line" style="margin-top: 0px; height: 183px;">
-											<div class="bubble-r-box" style="height: 183px; left: -1px; width: 194px;">
-												<div class="bubble-element Image"></div>
-											</div>
-										</div>
-									</div>
-									<div class="list-dummy" style="float: left; position: relative; box-sizing: border-box; z-index: 4; height: 184.2px; width: 194.5px; border-top: 0px none rgb(150, 150, 150); border-left-style: none; display: none;"></div>
-								</div>
+        <div id="addgthgrfhdf_153">
+        	
+        </div>
 							</div>
 						</div>
 					</div>
@@ -164,58 +95,49 @@
 
 
 
-	<h2>HTML5 File Upload Progress Bar Tutorial</h2>
-<form id="upload_form" enctype="multipart/form-data" method="post">
-  <input type="file" name="file1" id="file1" onchange="uploadFile()"><br>
-  <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status"></h3>
-  <p id="loaded_n_total"></p>
-</form>
-
-
-
 <script>
 
-function _(el) {
-  return document.getElementById(el);
+
+// var photoContainer = .RepeatingGroup
+var photoContainer = document.querySelector("div#addgthgrfhdf_153");
+console.log(photoContainer)
+
+function readURL(input) {
+
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+reader.onload = function(e) {
+
+
+function na(){
+
+// $('#shW_img').attr('src',e.target.result);
+
+let im = document.createElement("img");
+
+im.src = e.target.result;
+
+photoContainer.appendChild(im);
 }
+na();
 
-function uploadFile() {
-  var file = _("file1").files[0];
-  var formdata = new FormData();
-  formdata.append("file1", file);
-  var ajax = new XMLHttpRequest();
-  ajax.upload.addEventListener("progress", progressHandler, false);
-  ajax.addEventListener("load", completeHandler, false);
-  ajax.addEventListener("error", errorHandler, false);
-  ajax.addEventListener("abort", abortHandler, false);
-  ajax.open("GET", "/kdf"); // http://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
-  //use file_upload_parser.php from above url
-  ajax.send(formdata);
+
+
+
+
+
+
 }
-
-function progressHandler(event) {
-  _("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
-  var percent = (event.loaded / event.total) * 100;
-  _("progressBar").value = Math.round(percent);
-  _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
+reader.readAsDataURL(input.files[0]); // convert to base64 string
 }
-
-function completeHandler(event) {
-  _("status").innerHTML = event.target.responseText;
-  _("progressBar").value = 0; //wil clear progress bar after successful upload
 }
-
-function errorHandler(event) {
-  _("status").innerHTML = "Upload Failed";
-}
-
-function abortHandler(event) {
-  _("status").innerHTML = "Upload Aborted";
-}
+$("#album_photo_upload").change(function() {
+readURL(this);
+});
 
 
-
+</script>
+<script>
 $(document).ready(function(){
 $(".widget-bar-btn").click(function(){
 $(".widget-bar").addClass("on") && $(".widget-bar").removeClass("off") && $("#pop-up-overlay").addClass("overlay");
@@ -236,5 +158,6 @@ $("#pop-up-overlay").removeClass("overlay") && $(".Sign-up-popup").css("display"
 }
 });
 </script>
+
 </body>
 </html>
