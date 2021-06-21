@@ -22,8 +22,7 @@ var photo_album   = require('./routs/photo_album');
 
 // email template
 var cTemplate     = require("./email_templates/contact-email-template");
-// console.log(cTemplate("ripon","islam876ripon@gmail.com","meesfdgfsdag"))
-// cTemplate("Ripon","islam876ripon@gmail.com","sdfdgfdgfsdg")
+
 
 
   // =============================
@@ -193,18 +192,11 @@ app.use(photo_album);
  //     Internal routs start here
 // =============================
 
-app.get("/kdf",function(req,res){
-  console.log("route touched...");
-  res.send("route touched")
+
+
+app.post("/r",function(req,res){
+  console.log(req.body.gt);
 })
-
-
-// SL91-JQ47-HW69-CV24-XV83
-// 3AQZ-W4SX-E5DC-R6FV-T7BG
-// YGYV-TFDR-SEZA-W3SX-E4DC
-// RFVT-6GYV-6FC5-X4Z3-ZWE4
-// SXDC-5RTF-6V7Y-BVCT-XZAA
-// W4ES-X5DR-CTF6-VGY7-BHUN
 
 
 app.get("/",function(req,res){
@@ -447,12 +439,6 @@ app.get("/contact-us",function(req,res){
 });
 
 
-  // 
- //  debuging email template
-// 
-  // 
- //  debuging email template
-// 
 
 app.post("/contact-us",function(req,res){
     

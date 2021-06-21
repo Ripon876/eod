@@ -52,31 +52,27 @@
 							
 							
 
-
+<form action="/r" method="POST" id="myFormId">
+	<input type="text" name="gt" id="abcd">
+	<input type="submit" value="submit">
+</form>
 
 <div class="bubble-element Text" style=" box-sizing: border-box; z-index: 3; width: 269px; left: 0px; top: 103px; height: 22px; overflow: visible; padding-bottom: 0px; font-family: &quot;Sorts Mill Goudy&quot;; font-size: 14px; font-weight: bold; color: rgb(229, 228, 226); line-height: 1.5; border-radius: 0px;">
 					<div class="content">Upload upto 15 photos by clicking below</div>
 				</div>
 							<div class="bubble-element multifileupload-MultiFileInput" style="box-sizing: border-box;z-index: 3;height: 539px;width: 433px;left: 0px;border-style: solid;border-width: 1px;border-color: rgb(197, 179, 88);border-radius: 5px;top: 122px;">
-							<!-- 	<div class="dropzone needsclick dz-clickable" style="width: 433px;height: 537px;position: absolute;">
-									<div class="dz-default dz-message needsclick" style="font-family: Lato; font-size: 14px; font-weight: normal; text-decoration: none; font-style: normal; text-align: left; color: rgb(0, 0, 0); line-height: 1;"></div>
-								</div> -->
+<p>dsffgsd gd</p>
+                                     
+                                      <input type="file" id="album_photo_upload" style="width: 431px;background: transparent;height: 536px;opacity: 0;">
 
-<input type="file" id="album_photo_upload" style="
-    width: 431px;
-    background: transparent;
-    height: 536px;
-    opacity: 0;
-">
-<img src="" id="shW_img" alt="">
 							</div>
 							<button class="bubble-element Button clickable-element" tabindex="12" style="padding: 0px;cursor: pointer;margin-top: 20px;background: -webkit-linear-gradient(top, rgb(214, 3, 3) 0%, rgb(163, 0, 0) 100%);border: none;text-align: center;box-sizing: border-box;z-index: 2;height: 66px;width: 67px;left: 178px;font-family: Arial;font-size: 14px;font-weight: bold;color: rgb(255, 255, 255);line-height: 1;border-radius: 100px;box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px 0px;transition: box-shadow 100ms ease 0s;top: 684px;">Save</button>
 						</div>
 						<div class="bubble-r-box" style="margin-left: 10px;height: 748px;margin-top: 10px;left: 443px;width: 391px;">
 							<div class="bubble-element RepeatingGroup" style="box-sizing: border-box;z-index: 4;height: 739px;width: 391px;left: 0px;top: 9px;overflow-y: scroll;border-style: solid;border-width: 1px;border-color: rgb(197, 179, 88);border-radius: 5px;">
-        <div id="addgthgrfhdf_153">
+                                <div id="addgthgrfhdf_153" class="photo_upload_grid">
         	
-        </div>
+                                </div>
 							</div>
 						</div>
 					</div>
@@ -93,14 +89,28 @@
 		</div>
 	</div>
 
+<script>
 
+	document.getElementById("#myFormId").addEventListener("submit", function(e){
+       var inp =document.getElementById("abcd").value;
+  	//do whatever an submit the form
+  	function gt(){
+		var g = ["sdfgdgdsgf","dfgfdsgfdgf","dfsgfdsf","dsfgdfgf"];
+		inp = g;
+	}
+	gt();
+});
+	
+</script>
 
 <script>
 
 
 // var photoContainer = .RepeatingGroup
 var photoContainer = document.querySelector("div#addgthgrfhdf_153");
-console.log(photoContainer)
+var inp = document.getElementById("abcd").value;
+var photos = [];
+
 
 function readURL(input) {
 
@@ -116,6 +126,10 @@ function na(){
 let im = document.createElement("img");
 
 im.src = e.target.result;
+photos.push(e.target.result);
+photos.save();
+inp = photos;
+
 
 photoContainer.appendChild(im);
 }
